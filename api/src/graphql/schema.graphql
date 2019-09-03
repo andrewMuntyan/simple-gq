@@ -1,0 +1,8 @@
+# import * from './generated/prisma.graphql'
+
+type Mutation {
+  createCategory(name: String, description: String, image: String): Category!
+}
+type Query {
+  categories: [Category!]!
+}

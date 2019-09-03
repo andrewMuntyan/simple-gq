@@ -2,22 +2,32 @@
   "name": "api",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "src/index.js",
   "scripts": {
-    "start": "nodemon index.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "nodemon -e js,graphql -x node src/index.js",
+    "debug": "nodemon -e js,graphql -x node --inspect src/index.js",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "deploy": "prisma deploy --env-file variables.env",
+    "dev": "npm-run-all --parallel debug playground"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
     "apollo-server": "^2.6.1",
-    "graphql": "^14.3.1"
+    "dotenv": "6.0.0",
+    "graphql": "^14.3.1",
+    "graphql-import": "latest",
+    "prisma": "1.17.1",
+    "prisma-binding": "2.1.6"
   },
   "devDependencies": {
+    "npm-run-all": "^4.1.5",
     "nodemon": "^1.19.1",
     "eslint": "^5.16.0",
     "eslint-config-airbnb-base": "^14.0.0",
-    "eslint-plugin-import": "^2.18.2"
+    "eslint-plugin-import": "^2.18.2",
+    "eslint-config-prettier": "^6.1.0",
+    "eslint-plugin-prettier": "^3.1.0"
   }
 }

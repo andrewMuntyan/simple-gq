@@ -1,0 +1,12 @@
+type User {
+  id: ID! @id
+  name: String!
+  email: String! @unique
+}
+
+type Category {
+  id: ID! @id
+  name: String!
+  description: String!
+  image: String
+}
