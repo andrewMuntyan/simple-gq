@@ -1,0 +1,22 @@
+# type User {
+#   id: ID! @id
+#   name: String!
+#   email: String! @unique
+# }
+
+type Category {
+  id: ID! @id
+  name: String! @unique
+  # description: String!
+  createdAt: DateTime! @createdAt
+  updatedAt: DateTime! @updatedAt
+  # image: String
+}
+
+type Word {
+  id: ID! @id
+  content: String!
+  createdAt: DateTime! @createdAt
+  updatedAt: DateTime! @updatedAt
+  category: Category!
+}
