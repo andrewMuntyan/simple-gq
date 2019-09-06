@@ -2,7 +2,7 @@ type AggregateCategory {
   count: Int!
 }
 
-type AggregateUser {
+type AggregateWord {
   count: Int!
 }
 
@@ -13,8 +13,8 @@ type BatchPayload {
 type Category {
   id: ID!
   name: String!
-  description: String!
-  image: String
+  createdAt: DateTime!
+  updatedAt: DateTime!
 }
 
 type CategoryConnection {
@@ -25,8 +25,11 @@ type CategoryConnection {
 
 input CategoryCreateInput {
   name: String!
-  description: String!
-  image: String
+}
+
+input CategoryCreateOneInput {
+  create: CategoryCreateInput
+  connect: CategoryWhereUniqueInput
 }
 
 type CategoryEdge {
@@ -39,10 +42,6 @@ enum CategoryOrderByInput {
   id_DESC
   name_ASC
   name_DESC
-  description_ASC
-  description_DESC
-  image_ASC
-  image_DESC
   createdAt_ASC
   createdAt_DESC
   updatedAt_ASC
@@ -52,8 +51,8 @@ enum CategoryOrderByInput {
 type CategoryPreviousValues {
   id: ID!
   name: String!
-  description: String!
-  image: String
+  createdAt: DateTime!
+  updatedAt: DateTime!
 }
 
 type CategorySubscriptionPayload {
@@ -74,10 +73,24 @@ input CategorySubscriptionWhereInput {
   NOT: [CategorySubscriptionWhereInput!]
 }
 
+input CategoryUpdateDataInput {
+  name: String
+}
+
 input CategoryUpdateInput {
   name: String
-  description: String
-  image: String
+}
+
+input CategoryUpdateOneRequiredInput {
+  create: CategoryCreateInput
+  update: CategoryUpdateDataInput
+  upsert: CategoryUpsertNestedInput
+  connect: CategoryWhereUniqueInput
+}
+
+input CategoryUpsertNestedInput {
+  update: CategoryUpdateDataInput!
+  create: CategoryCreateInput!
 }
 
 input CategoryWhereInput {
@@ -109,58 +122,45 @@ input CategoryWhereInput {
   name_not_starts_with: String
   name_ends_with: String
   name_not_ends_with: String
-  description: String
-  description_not: String
-  description_in: [String!]
-  description_not_in: [String!]
-  description_lt: String
-  description_lte: String
-  description_gt: String
-  description_gte: String
-  description_contains: String
-  description_not_contains: String
-  description_starts_with: String
-  description_not_starts_with: String
-  description_ends_with: String
-  description_not_ends_with: String
-  image: String
-  image_not: String
-  image_in: [String!]
-  image_not_in: [String!]
-  image_lt: String
-  image_lte: String
-  image_gt: String
-  image_gte: String
-  image_contains: String
-  image_not_contains: String
-  image_starts_with: String
-  image_not_starts_with: String
-  image_ends_with: String
-  image_not_ends_with: String
+  createdAt: DateTime
+  createdAt_not: DateTime
+  createdAt_in: [DateTime!]
+  createdAt_not_in: [DateTime!]
+  createdAt_lt: DateTime
+  createdAt_lte: DateTime
+  createdAt_gt: DateTime
+  createdAt_gte: DateTime
+  updatedAt: DateTime
+  updatedAt_not: DateTime
+  updatedAt_in: [DateTime!]
+  updatedAt_not_in: [DateTime!]
+  updatedAt_lt: DateTime
+  updatedAt_lte: DateTime
+  updatedAt_gt: DateTime
+  updatedAt_gte: DateTime
   AND: [CategoryWhereInput!]
   OR: [CategoryWhereInput!]
   NOT: [CategoryWhereInput!]
 }
 
+input CategoryWhereUniqueInput {
+  name: String
+}
+
+scalar DateTime
+
 scalar Long
 
 type Mutation {
   createCategory(data: CategoryCreateInput!): Category!
-  updateManyCategories(
-    data: CategoryUpdateInput!
-    where: CategoryWhereInput
-  ): BatchPayload!
+  updateCategory(data: CategoryUpdateInput!, where: CategoryWhereUniqueInput!): Category
+  updateManyCategories(data: CategoryUpdateInput!, where: CategoryWhereInput): BatchPayload!
+  upsertCategory(where: CategoryWhereUniqueInput!, create: CategoryCreateInput!, update: CategoryUpdateInput!): Category!
+  deleteCategory(where: CategoryWhereUniqueInput!): Category
   deleteManyCategories(where: CategoryWhereInput): BatchPayload!
-  createUser(data: UserCreateInput!): User!
-  updateUser(data: UserUpdateInput!, where: UserWhereUniqueInput!): User
-  updateManyUsers(data: UserUpdateInput!, where: UserWhereInput): BatchPayload!
-  upsertUser(
-    where: UserWhereUniqueInput!
-    create: UserCreateInput!
-    update: UserUpdateInput!
-  ): User!
-  deleteUser(where: UserWhereUniqueInput!): User
-  deleteManyUsers(where: UserWhereInput): BatchPayload!
+  createWord(data: WordCreateInput!): Word!
+  updateManyWords(data: WordUpdateInput!, where: WordWhereInput): BatchPayload!
+  deleteManyWords(where: WordWhereInput): BatchPayload!
 }
 
 enum MutationType {
@@ -181,116 +181,85 @@ type PageInfo {
 }
 
 type Query {
-  categories(
-    where: CategoryWhereInput
-    orderBy: CategoryOrderByInput
-    skip: Int
-    after: String
-    before: String
-    first: Int
-    last: Int
-  ): [Category]!
-  categoriesConnection(
-    where: CategoryWhereInput
-    orderBy: CategoryOrderByInput
-    skip: Int
-    after: String
-    before: String
-    first: Int
-    last: Int
-  ): CategoryConnection!
-  user(where: UserWhereUniqueInput!): User
-  users(
-    where: UserWhereInput
-    orderBy: UserOrderByInput
-    skip: Int
-    after: String
-    before: String
-    first: Int
-    last: Int
-  ): [User]!
-  usersConnection(
-    where: UserWhereInput
-    orderBy: UserOrderByInput
-    skip: Int
-    after: String
-    before: String
-    first: Int
-    last: Int
-  ): UserConnection!
+  category(where: CategoryWhereUniqueInput!): Category
+  categories(where: CategoryWhereInput, orderBy: CategoryOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Category]!
+  categoriesConnection(where: CategoryWhereInput, orderBy: CategoryOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): CategoryConnection!
+  words(where: WordWhereInput, orderBy: WordOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Word]!
+  wordsConnection(where: WordWhereInput, orderBy: WordOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): WordConnection!
   node(id: ID!): Node
 }
 
 type Subscription {
   category(where: CategorySubscriptionWhereInput): CategorySubscriptionPayload
-  user(where: UserSubscriptionWhereInput): UserSubscriptionPayload
+  word(where: WordSubscriptionWhereInput): WordSubscriptionPayload
 }
 
-type User {
+type Word {
   id: ID!
-  name: String!
-  email: String!
+  content: String!
+  createdAt: DateTime!
+  updatedAt: DateTime!
+  category: Category!
 }
 
-type UserConnection {
+type WordConnection {
   pageInfo: PageInfo!
-  edges: [UserEdge]!
-  aggregate: AggregateUser!
+  edges: [WordEdge]!
+  aggregate: AggregateWord!
 }
 
-input UserCreateInput {
-  name: String!
-  email: String!
+input WordCreateInput {
+  content: String!
+  category: CategoryCreateOneInput!
 }
 
-type UserEdge {
-  node: User!
+type WordEdge {
+  node: Word!
   cursor: String!
 }
 
-enum UserOrderByInput {
+enum WordOrderByInput {
   id_ASC
   id_DESC
-  name_ASC
-  name_DESC
-  email_ASC
-  email_DESC
+  content_ASC
+  content_DESC
   createdAt_ASC
   createdAt_DESC
   updatedAt_ASC
   updatedAt_DESC
 }
 
-type UserPreviousValues {
+type WordPreviousValues {
   id: ID!
-  name: String!
-  email: String!
+  content: String!
+  createdAt: DateTime!
+  updatedAt: DateTime!
 }
 
-type UserSubscriptionPayload {
+type WordSubscriptionPayload {
   mutation: MutationType!
-  node: User
+  node: Word
   updatedFields: [String!]
-  previousValues: UserPreviousValues
+  previousValues: WordPreviousValues
 }
 
-input UserSubscriptionWhereInput {
+input WordSubscriptionWhereInput {
   mutation_in: [MutationType!]
   updatedFields_contains: String
   updatedFields_contains_every: [String!]
   updatedFields_contains_some: [String!]
-  node: UserWhereInput
-  AND: [UserSubscriptionWhereInput!]
-  OR: [UserSubscriptionWhereInput!]
-  NOT: [UserSubscriptionWhereInput!]
+  node: WordWhereInput
+  AND: [WordSubscriptionWhereInput!]
+  OR: [WordSubscriptionWhereInput!]
+  NOT: [WordSubscriptionWhereInput!]
 }
 
-input UserUpdateInput {
-  name: String
-  email: String
+input WordUpdateInput {
+  content: String
+  category: CategoryUpdateOneRequiredInput
 }
 
-input UserWhereInput {
+input WordWhereInput {
   id: ID
   id_not: ID
   id_in: [ID!]
@@ -305,39 +274,38 @@ input UserWhereInput {
   id_not_starts_with: ID
   id_ends_with: ID
   id_not_ends_with: ID
-  name: String
-  name_not: String
-  name_in: [String!]
-  name_not_in: [String!]
-  name_lt: String
-  name_lte: String
-  name_gt: String
-  name_gte: String
-  name_contains: String
-  name_not_contains: String
-  name_starts_with: String
-  name_not_starts_with: String
-  name_ends_with: String
-  name_not_ends_with: String
-  email: String
-  email_not: String
-  email_in: [String!]
-  email_not_in: [String!]
-  email_lt: String
-  email_lte: String
-  email_gt: String
-  email_gte: String
-  email_contains: String
-  email_not_contains: String
-  email_starts_with: String
-  email_not_starts_with: String
-  email_ends_with: String
-  email_not_ends_with: String
-  AND: [UserWhereInput!]
-  OR: [UserWhereInput!]
-  NOT: [UserWhereInput!]
-}
-
-input UserWhereUniqueInput {
-  email: String
+  content: String
+  content_not: String
+  content_in: [String!]
+  content_not_in: [String!]
+  content_lt: String
+  content_lte: String
+  content_gt: String
+  content_gte: String
+  content_contains: String
+  content_not_contains: String
+  content_starts_with: String
+  content_not_starts_with: String
+  content_ends_with: String
+  content_not_ends_with: String
+  createdAt: DateTime
+  createdAt_not: DateTime
+  createdAt_in: [DateTime!]
+  createdAt_not_in: [DateTime!]
+  createdAt_lt: DateTime
+  createdAt_lte: DateTime
+  createdAt_gt: DateTime
+  createdAt_gte: DateTime
+  updatedAt: DateTime
+  updatedAt_not: DateTime
+  updatedAt_in: [DateTime!]
+  updatedAt_not_in: [DateTime!]
+  updatedAt_lt: DateTime
+  updatedAt_lte: DateTime
+  updatedAt_gt: DateTime
+  updatedAt_gte: DateTime
+  category: CategoryWhereInput
+  AND: [WordWhereInput!]
+  OR: [WordWhereInput!]
+  NOT: [WordWhereInput!]
 }
