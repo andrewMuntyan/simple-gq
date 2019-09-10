@@ -1,0 +1,85 @@
+import React from 'react';
+// import PropTypes from "prop-types";
+
+import { ListRow } from '../ListRow';
+import { List } from '../List';
+
+// TODO: change with request result
+const data = [
+  { name: 'cars' },
+  { name: 'fruits' },
+  { name: 'cells' },
+  { name: 'dogs' },
+  { name: 'cars' },
+  { name: 'fruits' },
+  { name: 'cells' },
+  { name: 'dogs' },
+  { name: 'cars' },
+  { name: 'fruits' },
+  { name: 'cells' },
+  { name: 'dogs' },
+  { name: 'cars' },
+  { name: 'fruits' },
+  { name: 'cells' },
+  { name: 'dogs' },
+  { name: 'cars' },
+  { name: 'fruits' },
+  { name: 'cells' },
+  { name: 'dogs' },
+  { name: 'cars' },
+  { name: 'fruits' },
+  { name: 'cells' },
+  { name: 'cars' },
+  { name: 'fruits' },
+  { name: 'cells' },
+  { name: 'dogs' },
+  { name: 'cars' },
+  { name: 'fruits' },
+  { name: 'cells' },
+  { name: 'dogs' },
+  { name: 'cars' },
+  { name: 'fruits' },
+  { name: 'cells' },
+  { name: 'dogs' },
+  { name: 'cars' },
+  { name: 'fruits' },
+  { name: 'cells' },
+  { name: 'dogs' },
+  { name: 'cars' },
+  { name: 'fruits' },
+  { name: 'cells' },
+  { name: 'dogs' },
+  { name: 'cars' },
+  { name: 'fruits' },
+  { name: 'cells' },
+  { name: 'cars' },
+  { name: 'fruits' },
+  { name: 'cells' },
+  { name: 'dogs' },
+  { name: 'cars' },
+  { name: 'fruits' },
+  { name: 'cells' },
+  { name: 'dogs' },
+  { name: 'cars' },
+  { name: 'fruits' },
+  { name: 'cells' },
+  { name: 'dogs' },
+  { name: 'cars' },
+  { name: 'fruits' },
+  { name: 'cells' },
+  { name: 'dogs' },
+  { name: 'cars' },
+  { name: 'fruits' },
+  { name: 'cells' },
+  { name: 'dogs' },
+  { name: 'cars' },
+  { name: 'fruits' },
+  { name: 'cells' },
+  { name: 'dogs' }
+];
+
+const CategoryContent = () => {
+  return <List itemsData={data} RowRenderer={ListRow} />;
+};
+
+export default CategoryContent;

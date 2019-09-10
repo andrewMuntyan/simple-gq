@@ -10,6 +10,7 @@ import Grid from '@material-ui/core/Grid';
 import { withApollo } from '../withApollo';
 import theme from './theme';
 import { AppBar } from '../AppBar';
+import { CategoriesList } from '../CategoriesList';
 
 // import { useQuery } from '@apollo/react-hooks';
 // import gql from 'graphql-tag';
@@ -23,10 +24,18 @@ import { AppBar } from '../AppBar';
 //   }
 // `;
 
+// TODO: move to constants maybe )
+const headerHeight = 64;
 // eslint-disable-next-line no-unused-vars
 const useStyles = makeStyles(currentTheme => ({
   root: {
     flexGrow: 1
+  },
+  headContainer: {
+    height: headerHeight
+  },
+  bodyContainer: {
+    height: `calc(100vh - ${headerHeight}px)`
   }
 }));
 
@@ -40,15 +49,15 @@ function App() {
       <CssBaseline />
       <Container maxWidth="md">
         <Box>
-          <Grid container className={classes.root} spacing={2}>
-            <Grid item xs={12} sm={12}>
+          <Grid container className={classes.root} spacing={0}>
+            <Grid item xs={12} className={classes.headContainer}>
               <AppBar />
             </Grid>
-            <Grid item xs={12} sm={4}>
-              categories list
-              {/* <CategoriesList /> */}
+
+            <Grid item xs={4} className={classes.bodyContainer}>
+              <CategoriesList />
             </Grid>
-            <Grid item xs={12} sm={8}>
+            <Grid item xs={8} className={classes.bodyContainer}>
               category content
               {/* <CategoryContent /> */}
             </Grid>
