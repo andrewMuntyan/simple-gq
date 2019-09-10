@@ -9,6 +9,7 @@ import Grid from '@material-ui/core/Grid';
 
 import { withApollo } from '../withApollo';
 import theme from './theme';
+import { AppBar } from '../AppBar';
 
 // import { useQuery } from '@apollo/react-hooks';
 // import gql from 'graphql-tag';
@@ -41,7 +42,7 @@ function App() {
         <Box>
           <Grid container className={classes.root} spacing={2}>
             <Grid item xs={12} sm={12}>
-              header
+              <AppBar />
             </Grid>
             <Grid item xs={12} sm={4}>
               categories list
