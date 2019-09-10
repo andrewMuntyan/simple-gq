@@ -5,6 +5,9 @@ const db = require("./db");
 const Mutation = require("./resolvers/Mutation");
 const Query = require("./resolvers/Query");
 
+// we use it on order to have ability to use
+// forwardTo("db") feature
+// see resolvers/Query.js
 const typeDefsFile = importSchema(__dirname.concat("/graphql/schema.graphql"));
 const typeDefs = gql(typeDefsFile);
 
