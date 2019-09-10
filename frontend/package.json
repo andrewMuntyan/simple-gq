@@ -5,10 +5,16 @@
   "dependencies": {
     "react": "^16.9.0",
     "react-dom": "^16.9.0",
-    "react-scripts": "3.1.1"
+    "react-scripts": "3.1.1",
+    "@apollo/react-hooks": "3.0.0",
+    "apollo-client": "^2.6.3",
+    "apollo-cache-inmemory": "^1.6.2",
+    "apollo-link-http": "^1.5.15",
+    "graphql-tag": "^2.10.1",
+    "graphql": "^14.4.2"
   },
   "devDependencies": {
-    "eslint": "5.16.0",
+    "eslint": "^6.1.0",
     "eslint-config-airbnb": "^18.0.1",
     "eslint-config-prettier": "^6.1.0",
     "eslint-plugin-import": "^2.18.2",
