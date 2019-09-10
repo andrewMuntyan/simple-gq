@@ -11,6 +11,7 @@ import { withApollo } from '../withApollo';
 import theme from './theme';
 import { AppBar } from '../AppBar';
 import { CategoriesList } from '../CategoriesList';
+import { CategoryContent } from '../CategoryContent';
 
 // import { useQuery } from '@apollo/react-hooks';
 // import gql from 'graphql-tag';
@@ -54,12 +55,12 @@ function App() {
               <AppBar />
             </Grid>
 
-            <Grid item xs={4} className={classes.bodyContainer}>
+            <Grid item xs={3} className={classes.bodyContainer}>
               <CategoriesList />
             </Grid>
-            <Grid item xs={8} className={classes.bodyContainer}>
-              category content
-              {/* <CategoryContent /> */}
+
+            <Grid item xs={9} className={classes.bodyContainer}>
+              <CategoryContent />
             </Grid>
           </Grid>
         </Box>

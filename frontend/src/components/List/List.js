@@ -34,7 +34,7 @@ const List = ({ itemsData, RowRenderer, itemSize }) => {
               {({ style, ...rest }) => (
                 <div style={style}>
                   {/* eslint-disable-next-line react/jsx-props-no-spreading */}
-                  <RowRenderer {...rest} />
+                  <RowRenderer data={rest} />
                 </div>
               )}
             </FixedSizeList>

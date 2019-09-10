@@ -14,7 +14,7 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
-const ListRow = ({ index, data }) => {
+const ListRow = ({ data: { index, data } }) => {
   const classes = useStyles();
   // Access the items array using the "data" prop:
   const item = data[index];
@@ -27,12 +27,15 @@ const ListRow = ({ index, data }) => {
 };
 
 ListRow.propTypes = {
-  index: PropTypes.number.isRequired,
-  data: PropTypes.arrayOf(
-    PropTypes.shape({
-      name: PropTypes.string.isRequired
-    })
-  ).isRequired
+  data: PropTypes.shape({
+    index: PropTypes.number.isRequired,
+    data: PropTypes.arrayOf(
+      PropTypes.shape({
+        name: PropTypes.string.isRequired,
+        id: PropTypes.string.isRequired
+      })
+    ).isRequired
+  }).isRequired
 };
 
 export default ListRow;
