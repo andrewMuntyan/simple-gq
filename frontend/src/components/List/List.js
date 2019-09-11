@@ -5,7 +5,8 @@ import { makeStyles } from '@material-ui/core/styles';
 import { FixedSizeList } from 'react-window';
 import AutoSizer from 'react-virtualized-auto-sizer';
 
-import { DefaultRowRenderer } from '../../utils';
+import { log } from 'util';
+import { DefaultRowRenderer, noop } from '../../utils';
 
 // eslint-disable-next-line no-unused-vars
 const useStyles = makeStyles(theme => ({
@@ -15,7 +16,13 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
-const List = ({ itemsData, RowRenderer, itemSize }) => {
+const List = ({
+  itemsData,
+  RowRenderer,
+  itemSize,
+  onItemClick,
+  selectedItem
+}) => {
   const classes = useStyles();
 
   return (
@@ -34,7 +41,11 @@ const List = ({ itemsData, RowRenderer, itemSize }) => {
               {({ style, ...rest }) => (
                 <div style={style}>
                   {/* eslint-disable-next-line react/jsx-props-no-spreading */}
-                  <RowRenderer data={rest} />
+                  <RowRenderer
+                    data={rest}
+                    onItemClick={onItemClick}
+                    selectedItem={selectedItem}
+                  />
                 </div>
               )}
             </FixedSizeList>
@@ -46,18 +57,23 @@ const List = ({ itemsData, RowRenderer, itemSize }) => {
 };
 
 List.propTypes = {
+  // eslint-disable-next-line react/no-unused-prop-types
+  onItemClick: PropTypes.func,
   itemsData: PropTypes.arrayOf(
     PropTypes.shape({
       name: PropTypes.string.isRequired
     })
   ).isRequired,
   RowRenderer: PropTypes.elementType,
-  itemSize: PropTypes.number
+  itemSize: PropTypes.number,
+  selectedItem: PropTypes.string
 };
 
 List.defaultProps = {
   itemSize: 40,
-  RowRenderer: DefaultRowRenderer
+  RowRenderer: DefaultRowRenderer,
+  onItemClick: noop,
+  selectedItem: null
 };
 
 export default List;

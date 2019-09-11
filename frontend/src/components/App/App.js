@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 import CssBaseline from '@material-ui/core/CssBaseline';
 import { ThemeProvider } from '@material-ui/styles';
@@ -14,18 +14,6 @@ import { CategoriesList } from '../CategoriesList';
 import { CategoryContent } from '../CategoryContent';
 import CreateWordForm from '../CreateWordForm/CreateWordForm';
 import { CreateCategoryForm } from '../CreateCategoryForm';
-
-// import { useQuery } from '@apollo/react-hooks';
-// import gql from 'graphql-tag';
-
-// export const GET_CATEGORIES = gql`
-//   query GET_CATEGORIES {
-//     categories {
-//       id
-//       name
-//     }
-//   }
-// `;
 
 // TODO: move to constants maybe )
 const headerHeight = 65;
@@ -45,8 +33,11 @@ const useStyles = makeStyles(currentTheme => ({
 
 function App() {
   const classes = useStyles();
-  // const { data, loading, error, fetchMore } = useQuery(GET_CATEGORIES);
-  // console.log({ data, loading, error, fetchMore });
+
+  const [selectedCategory, setSelectedCategory] = useState(null);
+
+  const onPickCategoryHandler = e => setSelectedCategory(e.target.textContent);
+
   return (
     <ThemeProvider theme={theme}>
       {/* CssBaseline kickstart an elegant, consistent, and simple baseline to build upon. */}
@@ -64,12 +55,15 @@ function App() {
               </Grid>
               <Grid item xs={false} sm={3} />
               <Grid item xs={12} sm={5}>
-                <CreateWordForm />
+                <CreateWordForm selectedCategory={selectedCategory} />
               </Grid>
             </Grid>
 
             <Grid item xs={3} sm={4} className={classes.bodyContainer}>
-              <CategoriesList />
+              <CategoriesList
+                onCategoryPick={onPickCategoryHandler}
+                selectedCategory={selectedCategory}
+              />
             </Grid>
 
             <Grid item xs={9} sm={8} className={classes.bodyContainer}>

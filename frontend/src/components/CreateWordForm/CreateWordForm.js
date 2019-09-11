@@ -1,4 +1,5 @@
 import React, { useCallback } from 'react';
+import PropTypes from 'prop-types';
 
 import { useMutation } from '@apollo/react-hooks';
 import gql from 'graphql-tag';
@@ -19,7 +20,7 @@ export const CREATE_WORD = gql`
   }
 `;
 
-const CreateWordForm = () => {
+const CreateWordForm = ({ selectedCategory }) => {
   // eslint-disable-next-line no-unused-vars
   const [createWord, { data, loading, error }] = useMutation(CREATE_WORD, {
     update(
@@ -36,22 +37,35 @@ const CreateWordForm = () => {
       });
     }
   });
+
   const onSubmitHandler = useCallback(
     async value => {
       await createWord({
-        variables: { content: value, category: { connect: { name: 'lol' } } }
+        variables: {
+          content: value,
+          // TODO: backend: selectedCategory should be id, not name
+          category: { connect: { name: selectedCategory } }
+        }
       });
     },
-    [createWord]
+    [createWord, selectedCategory]
   );
 
-  return (
+  return selectedCategory ? (
     <AddEntityForm
       onSubmit={onSubmitHandler}
       loading={loading}
       error={!!error}
     />
-  );
+  ) : null;
+};
+
+CreateWordForm.propTypes = {
+  selectedCategory: PropTypes.string
+};
+
+CreateWordForm.defaultProps = {
+  selectedCategory: null
 };
 
 export default CreateWordForm;

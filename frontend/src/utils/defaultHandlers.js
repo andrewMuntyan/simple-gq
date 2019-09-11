@@ -8,3 +8,5 @@ export const defaultOnChange = () => {
   // eslint-disable-next-line no-console
   console.warn('Default Change handler is triggered');
 };
+
+export const noop = () => {};
