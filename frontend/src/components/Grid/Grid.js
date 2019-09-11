@@ -11,11 +11,9 @@ const useStyles = makeStyles(theme => ({
     margin: 0,
     padding: 0,
     width: '100%',
-    height: '100%',
     display: 'grid',
     gridTemplateColumns: 'repeat(auto-fit, minmax(175px, 1fr))',
     gridTemplateRows: 'max-content',
-    // justifyItems: 'stretch',
     alignItems: 'start',
     userSelect: 'none'
   }

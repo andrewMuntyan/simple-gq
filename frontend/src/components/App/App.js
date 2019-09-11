@@ -12,6 +12,7 @@ import theme from './theme';
 import { AppBar } from '../AppBar';
 import { CategoriesList } from '../CategoriesList';
 import { CategoryContent } from '../CategoryContent';
+import { AddEntityForm } from '../AddEntityForm';
 
 // import { useQuery } from '@apollo/react-hooks';
 // import gql from 'graphql-tag';
@@ -26,7 +27,8 @@ import { CategoryContent } from '../CategoryContent';
 // `;
 
 // TODO: move to constants maybe )
-const headerHeight = 64;
+const headerHeight = 65;
+const addFormContainerHeight = 65;
 // eslint-disable-next-line no-unused-vars
 const useStyles = makeStyles(currentTheme => ({
   root: {
@@ -35,8 +37,11 @@ const useStyles = makeStyles(currentTheme => ({
   headContainer: {
     height: headerHeight
   },
+  addFormContainer: {
+    height: addFormContainerHeight
+  },
   bodyContainer: {
-    height: `calc(100vh - ${headerHeight}px)`
+    height: `calc(100vh - ${headerHeight}px - ${addFormContainerHeight}px)`
   }
 }));
 
@@ -53,6 +58,16 @@ function App() {
           <Grid container className={classes.root} spacing={0}>
             <Grid item xs={12} className={classes.headContainer}>
               <AppBar />
+            </Grid>
+
+            <Grid container className={classes.addFormContainer} spacing={0}>
+              <Grid item xs={3}>
+                <AddEntityForm />
+              </Grid>
+              <Grid item xs={false} sm={4} />
+              <Grid item xs={9} sm={5}>
+                <AddEntityForm />
+              </Grid>
             </Grid>
 
             <Grid item xs={3} className={classes.bodyContainer}>
