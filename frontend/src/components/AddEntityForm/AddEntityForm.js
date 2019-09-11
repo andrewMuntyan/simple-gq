@@ -1,10 +1,9 @@
-/* eslint-disable import/no-extraneous-dependencies */
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 
 import Fab from '@material-ui/core/Fab';
+// eslint-disable-next-line import/no-extraneous-dependencies
 import AddIcon from '@material-ui/icons/Add';
-
 import { makeStyles } from '@material-ui/core/styles';
 
 import { TextInput } from '../TextInput';
@@ -25,17 +24,36 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
-const AddEnity = ({ onSubmit }) => {
+const AddEnity = ({ onSubmit, loading, error }) => {
   const classes = useStyles();
+
+  const [value, setValue] = useState(null);
+  const [errorState, setErrorState] = useState(error);
+
+  const submitHandler = e => {
+    e.preventDefault();
+    onSubmit(value);
+  };
+
+  useEffect(() => {
+    setErrorState(error);
+  }, [error]);
+
+  const onChangeHandler = e => {
+    setValue(e.target.value);
+    setErrorState(false);
+  };
+
   return (
-    <form
-      className={classes.container}
-      noValidate
-      autoComplete="off"
-      onSubmit={onSubmit}
-    >
+    <form className={classes.container} noValidate onSubmit={submitHandler}>
       <span className={classes.input}>
-        <TextInput />
+        <TextInput
+          autoComplete="off"
+          onChange={onChangeHandler}
+          disabled={loading}
+          error={errorState}
+          required
+        />
       </span>
 
       <Fab
@@ -43,6 +61,7 @@ const AddEnity = ({ onSubmit }) => {
         aria-label="add"
         className={classes.fab}
         type="submit"
+        disabled={loading || !value}
       >
         <AddIcon />
       </Fab>
@@ -51,10 +70,14 @@ const AddEnity = ({ onSubmit }) => {
 };
 
 AddEnity.propTypes = {
-  onSubmit: PropTypes.func
+  onSubmit: PropTypes.func,
+  loading: PropTypes.bool,
+  error: PropTypes.bool
 };
 AddEnity.defaultProps = {
-  onSubmit: defaultSubmit
+  onSubmit: defaultSubmit,
+  loading: false,
+  error: false
 };
 
 export default AddEnity;

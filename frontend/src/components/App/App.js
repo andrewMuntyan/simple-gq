@@ -12,7 +12,8 @@ import theme from './theme';
 import { AppBar } from '../AppBar';
 import { CategoriesList } from '../CategoriesList';
 import { CategoryContent } from '../CategoryContent';
-import { AddEntityForm } from '../AddEntityForm';
+import CreateWordForm from '../CreateWordForm/CreateWordForm';
+import { CreateCategoryForm } from '../CreateCategoryForm';
 
 // import { useQuery } from '@apollo/react-hooks';
 // import gql from 'graphql-tag';
@@ -37,9 +38,6 @@ const useStyles = makeStyles(currentTheme => ({
   headContainer: {
     height: headerHeight
   },
-  addFormContainer: {
-    height: addFormContainerHeight
-  },
   bodyContainer: {
     height: `calc(100vh - ${headerHeight}px - ${addFormContainerHeight}px)`
   }
@@ -60,21 +58,21 @@ function App() {
               <AppBar />
             </Grid>
 
-            <Grid container className={classes.addFormContainer} spacing={0}>
-              <Grid item xs={3}>
-                <AddEntityForm />
+            <Grid container spacing={0}>
+              <Grid item xs={12} sm={4}>
+                <CreateCategoryForm />
               </Grid>
-              <Grid item xs={false} sm={4} />
-              <Grid item xs={9} sm={5}>
-                <AddEntityForm />
+              <Grid item xs={false} sm={3} />
+              <Grid item xs={12} sm={5}>
+                <CreateWordForm />
               </Grid>
             </Grid>
 
-            <Grid item xs={3} className={classes.bodyContainer}>
+            <Grid item xs={3} sm={4} className={classes.bodyContainer}>
               <CategoriesList />
             </Grid>
 
-            <Grid item xs={9} className={classes.bodyContainer}>
+            <Grid item xs={9} sm={8} className={classes.bodyContainer}>
               <CategoryContent />
             </Grid>
           </Grid>

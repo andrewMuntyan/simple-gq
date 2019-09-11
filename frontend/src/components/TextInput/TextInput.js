@@ -4,6 +4,8 @@ import PropTypes from 'prop-types';
 import { makeStyles } from '@material-ui/core/styles';
 import TextField from '@material-ui/core/TextField';
 
+import { defaultOnChange } from '../../utils';
+
 const useStyles = makeStyles(theme => ({
   container: {
     display: 'flex',
@@ -23,7 +25,7 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
-const TextInput = props => {
+const TextInput = ({ onChange, disabled, error, required }) => {
   const classes = useStyles();
   return (
     <TextField
@@ -31,11 +33,27 @@ const TextInput = props => {
       label="Add"
       className={classes.textField}
       margin="dense"
+      onChange={onChange}
+      disabled={disabled}
+      error={error}
+      required={required}
     />
   );
 };
 
 // TODO: add props
-TextInput.propTypes = {};
+TextInput.propTypes = {
+  onChange: PropTypes.func,
+  disabled: PropTypes.bool,
+  error: PropTypes.bool,
+  required: PropTypes.bool
+};
+
+TextInput.defaultProps = {
+  onChange: defaultOnChange,
+  disabled: false,
+  error: false,
+  required: false
+};
 
 export default TextInput;
