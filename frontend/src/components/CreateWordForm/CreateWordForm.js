@@ -1,10 +1,11 @@
-import React, { useCallback } from 'react';
-import PropTypes from 'prop-types';
+import React, { useCallback, useContext } from 'react';
 
 import { useMutation } from '@apollo/react-hooks';
 import gql from 'graphql-tag';
 import { AddEntityForm } from '../AddEntityForm';
 import { GET_WORDS } from '../CategoryContent';
+
+import { AppContext } from '../../context';
 
 export const CREATE_WORD = gql`
   mutation CREATE_WORD(
@@ -23,7 +24,8 @@ export const CREATE_WORD = gql`
   }
 `;
 
-const CreateWordForm = ({ selectedCategory }) => {
+const CreateWordForm = () => {
+  const [{ selectedCategory }] = useContext(AppContext);
   // eslint-disable-next-line no-unused-vars
   const [createWord, { data, loading, error }] = useMutation(CREATE_WORD, {
     update(
@@ -68,14 +70,6 @@ const CreateWordForm = ({ selectedCategory }) => {
   ) : (
     <h2>Please chose the Category</h2>
   );
-};
-
-CreateWordForm.propTypes = {
-  selectedCategory: PropTypes.string
-};
-
-CreateWordForm.defaultProps = {
-  selectedCategory: null
 };
 
 export default CreateWordForm;

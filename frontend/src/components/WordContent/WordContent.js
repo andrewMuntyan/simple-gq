@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import PropTypes from 'prop-types';
 
 import { makeStyles } from '@material-ui/core/styles';
@@ -13,6 +13,8 @@ import { useMutation } from '@apollo/react-hooks';
 import gql from 'graphql-tag';
 
 import { GET_WORDS } from '../CategoryContent';
+
+import { AppContext } from '../../context';
 
 export const DELETE_WORD = gql`
   mutation DELETE_WORD($id: ID!) {
@@ -34,11 +36,8 @@ const useStyles = makeStyles(theme => ({
 }));
 
 // eslint-disable-next-line no-unused-vars
-const WordContent = ({
-  data: { content, createdAt, id },
-  // TODO: move selectedCategory to context!!!
-  selectedCategory
-}) => {
+const WordContent = ({ data: { content, createdAt, id } }) => {
+  const [{ selectedCategory }] = useContext(AppContext);
   const classes = useStyles();
 
   const [deleteWord, { data, loading, error }] = useMutation(DELETE_WORD, {

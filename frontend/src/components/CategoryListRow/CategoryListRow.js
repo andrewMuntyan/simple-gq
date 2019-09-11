@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useContext, useCallback } from 'react';
 import PropTypes from 'prop-types';
 
 import { makeStyles } from '@material-ui/core/styles';
@@ -15,6 +15,8 @@ import gql from 'graphql-tag';
 
 import { GET_CATEGORIES } from '../CategoriesList';
 import { GET_WORDS } from '../CategoryContent';
+
+import { AppContext } from '../../context';
 
 export const DELETE_CATEGORY = gql`
   mutation DELETE_CATEGORY($name: String!) {
@@ -34,7 +36,9 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
-const ListRow = ({ data: categoryData, onItemClick, selectedItem }) => {
+const ListRow = ({ data: categoryData }) => {
+  const [{ selectedCategory }, setAppContext] = useContext(AppContext);
+
   const { name } = categoryData;
   const classes = useStyles();
 
@@ -87,11 +91,24 @@ const ListRow = ({ data: categoryData, onItemClick, selectedItem }) => {
     }
   );
 
+  const onClickHandler = useCallback(
+    e => {
+      const {
+        target: { textContent }
+      } = e;
+      setAppContext(appContextValue => ({
+        ...appContextValue,
+        selectedCategory: textContent
+      }));
+    },
+    [setAppContext]
+  );
+
   return (
     <ListItem
       button
-      selected={name === selectedItem}
-      onClick={onItemClick}
+      selected={name === selectedCategory}
+      onClick={onClickHandler}
       className={classes.item}
     >
       <ListItemText primary={`${name}`} />
@@ -116,15 +133,10 @@ const ListRow = ({ data: categoryData, onItemClick, selectedItem }) => {
 };
 
 ListRow.propTypes = {
-  selectedItem: PropTypes.string,
-  onItemClick: PropTypes.func.isRequired,
   data: PropTypes.shape({
     name: PropTypes.string.isRequired,
     id: PropTypes.string.isRequired
   }).isRequired
-};
-ListRow.defaultProps = {
-  selectedItem: null
 };
 
 export default ListRow;
