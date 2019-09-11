@@ -15,19 +15,10 @@ import { CategoryContent } from '../CategoryContent';
 import CreateWordForm from '../CreateWordForm/CreateWordForm';
 import { CreateCategoryForm } from '../CreateCategoryForm';
 
-// TODO: move to constants maybe )
-const headerHeight = 65;
-const addFormContainerHeight = 65;
 // eslint-disable-next-line no-unused-vars
 const useStyles = makeStyles(currentTheme => ({
   root: {
     flexGrow: 1
-  },
-  headContainer: {
-    height: headerHeight
-  },
-  bodyContainer: {
-    height: `calc(100vh - ${headerHeight}px - ${addFormContainerHeight}px)`
   }
 }));
 
@@ -45,7 +36,7 @@ function App() {
       <Container maxWidth="md">
         <Box>
           <Grid container className={classes.root} spacing={0}>
-            <Grid item xs={12} className={classes.headContainer}>
+            <Grid item xs={12}>
               <AppBar />
             </Grid>
 
@@ -58,14 +49,14 @@ function App() {
               </Grid>
             </Grid>
 
-            <Grid item xs={3} sm={4} className={classes.bodyContainer}>
+            <Grid item xs={12} sm={4}>
               <CategoriesList
                 onCategoryPick={onPickCategoryHandler}
                 selectedCategory={selectedCategory}
               />
             </Grid>
 
-            <Grid item xs={9} sm={8} className={classes.bodyContainer}>
+            <Grid item xs={12} sm={8}>
               {selectedCategory && (
                 <CategoryContent selectedCategory={selectedCategory} />
               )}

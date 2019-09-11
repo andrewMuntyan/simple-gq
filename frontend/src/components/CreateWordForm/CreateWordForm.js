@@ -63,7 +63,7 @@ const CreateWordForm = ({ selectedCategory }) => {
       error={!!error}
     />
   ) : (
-    <h2>Please chose the category</h2>
+    <h2>Please chose the Category</h2>
   );
 };
 

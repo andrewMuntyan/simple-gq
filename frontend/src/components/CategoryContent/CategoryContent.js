@@ -29,7 +29,7 @@ const CategoryContent = ({ selectedCategory }) => {
 
   // TODO: add spinner
   if (loading) {
-    return <h2>Loading...</h2>;
+    return <h2>Loading Words for {selectedCategory} category...</h2>;
   }
 
   if (!selectedCategory) {

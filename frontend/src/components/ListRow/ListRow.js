@@ -14,19 +14,13 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
-const ListRow = ({ data: { index, data }, onItemClick, selectedItem }) => {
+const ListRow = ({ data, onItemClick, selectedItem }) => {
+  const { name } = data;
   const classes = useStyles();
-  // Access the items array using the "data" prop:
-  const item = data[index];
 
   return (
-    <ListItem
-      key={item.name}
-      button
-      selected={item.name === selectedItem}
-      onClick={onItemClick}
-    >
-      <ListItemText primary={`${item.name}`} className={classes.item} />
+    <ListItem button selected={name === selectedItem} onClick={onItemClick}>
+      <ListItemText primary={`${name}`} className={classes.item} />
     </ListItem>
   );
 };
@@ -35,13 +29,8 @@ ListRow.propTypes = {
   selectedItem: PropTypes.string,
   onItemClick: PropTypes.func.isRequired,
   data: PropTypes.shape({
-    index: PropTypes.number.isRequired,
-    data: PropTypes.arrayOf(
-      PropTypes.shape({
-        name: PropTypes.string.isRequired,
-        id: PropTypes.string.isRequired
-      })
-    ).isRequired
+    name: PropTypes.string.isRequired,
+    id: PropTypes.string.isRequired
   }).isRequired
 };
 ListRow.defaultProps = {
