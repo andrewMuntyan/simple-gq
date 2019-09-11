@@ -15,6 +15,7 @@ type Category {
   name: String!
   createdAt: DateTime!
   updatedAt: DateTime!
+  words(where: WordWhereInput, orderBy: WordOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Word!]
 }
 
 type CategoryConnection {
@@ -25,11 +26,16 @@ type CategoryConnection {
 
 input CategoryCreateInput {
   name: String!
+  words: WordCreateManyWithoutCategoryInput
 }
 
-input CategoryCreateOneInput {
-  create: CategoryCreateInput
+input CategoryCreateOneWithoutWordsInput {
+  create: CategoryCreateWithoutWordsInput
   connect: CategoryWhereUniqueInput
+}
+
+input CategoryCreateWithoutWordsInput {
+  name: String!
 }
 
 type CategoryEdge {
@@ -73,24 +79,25 @@ input CategorySubscriptionWhereInput {
   NOT: [CategorySubscriptionWhereInput!]
 }
 
-input CategoryUpdateDataInput {
-  name: String
-}
-
 input CategoryUpdateInput {
   name: String
+  words: WordUpdateManyWithoutCategoryInput
 }
 
-input CategoryUpdateOneRequiredInput {
-  create: CategoryCreateInput
-  update: CategoryUpdateDataInput
-  upsert: CategoryUpsertNestedInput
+input CategoryUpdateOneRequiredWithoutWordsInput {
+  create: CategoryCreateWithoutWordsInput
+  update: CategoryUpdateWithoutWordsDataInput
+  upsert: CategoryUpsertWithoutWordsInput
   connect: CategoryWhereUniqueInput
 }
 
-input CategoryUpsertNestedInput {
-  update: CategoryUpdateDataInput!
-  create: CategoryCreateInput!
+input CategoryUpdateWithoutWordsDataInput {
+  name: String
+}
+
+input CategoryUpsertWithoutWordsInput {
+  update: CategoryUpdateWithoutWordsDataInput!
+  create: CategoryCreateWithoutWordsInput!
 }
 
 input CategoryWhereInput {
@@ -138,6 +145,9 @@ input CategoryWhereInput {
   updatedAt_lte: DateTime
   updatedAt_gt: DateTime
   updatedAt_gte: DateTime
+  words_every: WordWhereInput
+  words_some: WordWhereInput
+  words_none: WordWhereInput
   AND: [CategoryWhereInput!]
   OR: [CategoryWhereInput!]
   NOT: [CategoryWhereInput!]
@@ -210,7 +220,15 @@ type WordConnection {
 
 input WordCreateInput {
   content: String!
-  category: CategoryCreateOneInput!
+  category: CategoryCreateOneWithoutWordsInput!
+}
+
+input WordCreateManyWithoutCategoryInput {
+  create: [WordCreateWithoutCategoryInput!]
+}
+
+input WordCreateWithoutCategoryInput {
+  content: String!
 }
 
 type WordEdge {
@@ -256,7 +274,11 @@ input WordSubscriptionWhereInput {
 
 input WordUpdateInput {
   content: String
-  category: CategoryUpdateOneRequiredInput
+  category: CategoryUpdateOneRequiredWithoutWordsInput
+}
+
+input WordUpdateManyWithoutCategoryInput {
+  create: [WordCreateWithoutCategoryInput!]
 }
 
 input WordWhereInput {

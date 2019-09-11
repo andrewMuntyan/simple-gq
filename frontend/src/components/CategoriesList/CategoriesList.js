@@ -33,7 +33,7 @@ const CategoriesList = ({ onCategoryPick, selectedCategory }) => {
       selectedItem={selectedCategory}
     />
   ) : (
-    <h2>There is nothing! Add new Category</h2>
+    <h2>There is Nothing... Add new Category!</h2>
   );
 };
 

@@ -7,7 +7,10 @@ import { AddEntityForm } from '../AddEntityForm';
 import { GET_WORDS } from '../CategoryContent';
 
 export const CREATE_WORD = gql`
-  mutation CREATE_WORD($content: String!, $category: CategoryCreateOneInput!) {
+  mutation CREATE_WORD(
+    $content: String!
+    $category: CategoryCreateOneWithoutWordsInput!
+  ) {
     createWord(content: $content, category: $category) {
       id
       content

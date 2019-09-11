@@ -35,12 +35,21 @@ const CategoryContent = ({ selectedCategory }) => {
   if (!selectedCategory) {
     return null;
   }
+  // TODO: move selectedCategory to context!!!
+  const cellRenderer = props => {
+    // eslint-disable-next-line react/jsx-props-no-spreading
+    return <WordContent {...props} selectedCategory={selectedCategory} />;
+  };
 
   const { words = [] } = data;
   return words.length ? (
-    <Grid itemsData={words} CellRenderer={WordContent} />
+    <Grid
+      itemsData={words}
+      CellRenderer={cellRenderer}
+      selectedCategory={selectedCategory}
+    />
   ) : (
-    <h2>There is Nothing. Add new Word!</h2>
+    <h2>There is Nothing... Add new Word!</h2>
   );
 };
 

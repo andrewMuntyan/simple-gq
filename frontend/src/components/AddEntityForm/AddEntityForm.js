@@ -13,11 +13,12 @@ import { defaultSubmit } from '../../utils';
 const useStyles = makeStyles(theme => ({
   container: {
     display: 'flex',
-    flexWrap: 'wrap'
+    flexWrap: 'wrap',
+    alignItems: 'center'
   },
   input: {
     flex: '1 1 0',
-    marginRight: '5px'
+    marginRight: '-48px'
   },
   fab: {
     margin: theme.spacing(1)
@@ -27,12 +28,13 @@ const useStyles = makeStyles(theme => ({
 const AddEnity = ({ onSubmit, loading, error, label }) => {
   const classes = useStyles();
 
-  const [value, setValue] = useState(null);
+  const [value, setValue] = useState('');
   const [errorState, setErrorState] = useState(error);
 
-  const submitHandler = e => {
+  const submitHandler = async e => {
     e.preventDefault();
-    onSubmit(value);
+    await onSubmit(value);
+    setValue('');
   };
 
   useEffect(() => {
@@ -49,10 +51,10 @@ const AddEnity = ({ onSubmit, loading, error, label }) => {
       <span className={classes.input}>
         <TextInput
           label={label}
-          autoComplete="off"
           onChange={onChangeHandler}
           disabled={loading}
           error={errorState}
+          value={value}
           required
         />
       </span>
@@ -62,6 +64,7 @@ const AddEnity = ({ onSubmit, loading, error, label }) => {
         aria-label="add"
         className={classes.fab}
         type="submit"
+        size="small"
         disabled={loading || !value}
       >
         <AddIcon />

@@ -25,6 +25,7 @@ const useStyles = makeStyles(currentTheme => ({
 function App() {
   const classes = useStyles();
 
+  // TODO: move selectedCategory to context!!!
   const [selectedCategory, setSelectedCategory] = useState(null);
 
   const onPickCategoryHandler = e => setSelectedCategory(e.target.textContent);
@@ -35,28 +36,26 @@ function App() {
       <CssBaseline />
       <Container maxWidth="md">
         <Box>
-          <Grid container className={classes.root} spacing={0}>
+          <Grid container className={classes.root} spacing={2}>
             <Grid item xs={12}>
               <AppBar />
             </Grid>
 
-            <Grid container spacing={0}>
-              <Grid item xs={12} sm={4}>
-                <CreateCategoryForm />
-              </Grid>
-              <Grid item xs={12} sm={8}>
-                <CreateWordForm selectedCategory={selectedCategory} />
-              </Grid>
+            <Grid item xs={12} sm={5} md={4}>
+              <CreateCategoryForm />
+            </Grid>
+            <Grid item xs={12} sm={7} md={8}>
+              <CreateWordForm selectedCategory={selectedCategory} />
             </Grid>
 
-            <Grid item xs={12} sm={4}>
+            <Grid item xs={12} sm={5} md={4}>
               <CategoriesList
                 onCategoryPick={onPickCategoryHandler}
                 selectedCategory={selectedCategory}
               />
             </Grid>
 
-            <Grid item xs={12} sm={8}>
+            <Grid item xs={12} sm={7} md={8}>
               {selectedCategory && (
                 <CategoryContent selectedCategory={selectedCategory} />
               )}

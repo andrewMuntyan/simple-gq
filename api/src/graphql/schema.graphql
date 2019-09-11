@@ -1,8 +1,13 @@
 # import * from './generated/prisma.graphql'
 
 type Mutation {
+  deleteWord(id: ID!): BatchPayload
+  deleteCategory(name: String!): Category
   createCategory(name: String!): Category!
-  createWord(content: String!, category: CategoryCreateOneInput!): Word!
+  createWord(
+    content: String!
+    category: CategoryCreateOneWithoutWordsInput!
+  ): Word!
 }
 type Query {
   categories: [Category!]!

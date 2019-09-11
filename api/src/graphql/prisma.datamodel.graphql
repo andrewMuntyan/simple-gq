@@ -10,6 +10,7 @@ type Category {
   # description: String!
   createdAt: DateTime! @createdAt
   updatedAt: DateTime! @updatedAt
+  words: [Word!]! @relation(name: "WordsInCategory", onDelete: CASCADE)
   # image: String
 }
 
@@ -18,5 +19,5 @@ type Word {
   content: String!
   createdAt: DateTime! @createdAt
   updatedAt: DateTime! @updatedAt
-  category: Category!
+  category: Category! @relation(name: "WordsInCategory")
 }

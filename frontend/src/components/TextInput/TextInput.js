@@ -14,18 +14,11 @@ const useStyles = makeStyles(theme => ({
   textField: {
     marginLeft: theme.spacing(1),
     marginRight: theme.spacing(1),
-    width: '100%',
-    marginTop: 19
-  },
-  dense: {
-    marginTop: 19
-  },
-  menu: {
-    width: 200
+    width: '100%'
   }
 }));
 
-const TextInput = ({ onChange, disabled, error, required, label }) => {
+const TextInput = ({ onChange, disabled, error, required, label, value }) => {
   const classes = useStyles();
   return (
     <TextField
@@ -37,6 +30,8 @@ const TextInput = ({ onChange, disabled, error, required, label }) => {
       disabled={disabled}
       error={error}
       required={required}
+      value={value}
+      autoComplete="off"
     />
   );
 };
@@ -47,12 +42,14 @@ TextInput.propTypes = {
   disabled: PropTypes.bool,
   error: PropTypes.bool,
   required: PropTypes.bool,
-  label: PropTypes.string
+  label: PropTypes.string,
+  value: PropTypes.string
 };
 
 TextInput.defaultProps = {
   onChange: defaultOnChange,
   disabled: false,
+  value: '',
   error: false,
   required: false,
   label: 'Add...'
