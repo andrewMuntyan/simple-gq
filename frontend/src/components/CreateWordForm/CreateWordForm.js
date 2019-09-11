@@ -29,11 +29,15 @@ const CreateWordForm = ({ selectedCategory }) => {
         data: { createWord: newWordData }
       }
     ) {
-      const { words } = cache.readQuery({ query: GET_WORDS });
+      const { words } = cache.readQuery({
+        query: GET_WORDS,
+        variables: { category: selectedCategory }
+      });
 
       cache.writeQuery({
         query: GET_WORDS,
-        data: { words: words.concat([newWordData]) }
+        data: { words: words.concat([newWordData]) },
+        variables: { category: selectedCategory }
       });
     }
   });
@@ -53,11 +57,14 @@ const CreateWordForm = ({ selectedCategory }) => {
 
   return selectedCategory ? (
     <AddEntityForm
+      label={`Add Word to ${selectedCategory} category`}
       onSubmit={onSubmitHandler}
       loading={loading}
       error={!!error}
     />
-  ) : null;
+  ) : (
+    <h2>Please chose the category</h2>
+  );
 };
 
 CreateWordForm.propTypes = {

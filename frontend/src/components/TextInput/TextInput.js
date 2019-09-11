@@ -25,12 +25,12 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
-const TextInput = ({ onChange, disabled, error, required }) => {
+const TextInput = ({ onChange, disabled, error, required, label }) => {
   const classes = useStyles();
   return (
     <TextField
+      label={label}
       id="standard-dense"
-      label="Add"
       className={classes.textField}
       margin="dense"
       onChange={onChange}
@@ -46,14 +46,16 @@ TextInput.propTypes = {
   onChange: PropTypes.func,
   disabled: PropTypes.bool,
   error: PropTypes.bool,
-  required: PropTypes.bool
+  required: PropTypes.bool,
+  label: PropTypes.string
 };
 
 TextInput.defaultProps = {
   onChange: defaultOnChange,
   disabled: false,
   error: false,
-  required: false
+  required: false,
+  label: 'Add...'
 };
 
 export default TextInput;

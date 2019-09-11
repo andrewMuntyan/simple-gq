@@ -53,8 +53,7 @@ function App() {
               <Grid item xs={12} sm={4}>
                 <CreateCategoryForm />
               </Grid>
-              <Grid item xs={false} sm={3} />
-              <Grid item xs={12} sm={5}>
+              <Grid item xs={12} sm={8}>
                 <CreateWordForm selectedCategory={selectedCategory} />
               </Grid>
             </Grid>
@@ -67,7 +66,9 @@ function App() {
             </Grid>
 
             <Grid item xs={9} sm={8} className={classes.bodyContainer}>
-              <CategoryContent />
+              {selectedCategory && (
+                <CategoryContent selectedCategory={selectedCategory} />
+              )}
             </Grid>
           </Grid>
         </Box>

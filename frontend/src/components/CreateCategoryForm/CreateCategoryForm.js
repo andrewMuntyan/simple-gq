@@ -47,6 +47,7 @@ const CreateWordForm = () => {
 
   return (
     <AddEntityForm
+      label="Add new category"
       onSubmit={onSubmitHandler}
       loading={loading}
       error={!!error}

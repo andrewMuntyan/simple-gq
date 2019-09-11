@@ -24,7 +24,7 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
-const AddEnity = ({ onSubmit, loading, error }) => {
+const AddEnity = ({ onSubmit, loading, error, label }) => {
   const classes = useStyles();
 
   const [value, setValue] = useState(null);
@@ -48,6 +48,7 @@ const AddEnity = ({ onSubmit, loading, error }) => {
     <form className={classes.container} noValidate onSubmit={submitHandler}>
       <span className={classes.input}>
         <TextInput
+          label={label}
           autoComplete="off"
           onChange={onChangeHandler}
           disabled={loading}
@@ -72,12 +73,14 @@ const AddEnity = ({ onSubmit, loading, error }) => {
 AddEnity.propTypes = {
   onSubmit: PropTypes.func,
   loading: PropTypes.bool,
-  error: PropTypes.bool
+  error: PropTypes.bool,
+  label: PropTypes.string
 };
 AddEnity.defaultProps = {
   onSubmit: defaultSubmit,
   loading: false,
-  error: false
+  error: false,
+  label: null
 };
 
 export default AddEnity;

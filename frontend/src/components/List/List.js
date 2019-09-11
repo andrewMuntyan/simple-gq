@@ -5,7 +5,6 @@ import { makeStyles } from '@material-ui/core/styles';
 import { FixedSizeList } from 'react-window';
 import AutoSizer from 'react-virtualized-auto-sizer';
 
-import { log } from 'util';
 import { DefaultRowRenderer, noop } from '../../utils';
 
 // eslint-disable-next-line no-unused-vars

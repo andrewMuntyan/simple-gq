@@ -1,5 +1,5 @@
 import React from 'react';
-// import PropTypes from 'prop-types';
+import PropTypes from 'prop-types';
 
 import { useQuery } from '@apollo/react-hooks';
 import gql from 'graphql-tag';
@@ -8,8 +8,8 @@ import { WordContent } from '../WordContent';
 import { Grid } from '../Grid';
 
 export const GET_WORDS = gql`
-  query GET_WORDS {
-    words {
+  query GET_WORDS($category: String!) {
+    words(where: { category: { name: $category } }) {
       category {
         name
       }
@@ -22,14 +22,33 @@ export const GET_WORDS = gql`
 `;
 
 // eslint-disable-next-line no-unused-vars
-const CategoryContent = props => {
-  const { data, loading, error, fetchMore } = useQuery(GET_WORDS);
+const CategoryContent = ({ selectedCategory }) => {
+  const { data, loading, error, fetchMore } = useQuery(GET_WORDS, {
+    variables: { category: selectedCategory }
+  });
 
-  const { words } = data;
   // TODO: add spinner
-  return words ? <Grid itemsData={words} CellRenderer={WordContent} /> : null;
+  if (loading) {
+    return <h2>Loading...</h2>;
+  }
+
+  if (!selectedCategory) {
+    return null;
+  }
+
+  const { words = [] } = data;
+  return words.length ? (
+    <Grid itemsData={words} CellRenderer={WordContent} />
+  ) : (
+    <h2>There is Nothing. Add new Word!</h2>
+  );
 };
 
-CategoryContent.propTypes = {};
+CategoryContent.propTypes = {
+  selectedCategory: PropTypes.string
+};
+CategoryContent.defaultProps = {
+  selectedCategory: null
+};
 
 export default CategoryContent;

@@ -16,26 +16,33 @@ export const GET_CATEGORIES = gql`
   }
 `;
 
-const CategoryContent = ({ onCategoryPick, selectedCategory }) => {
+const CategoriesList = ({ onCategoryPick, selectedCategory }) => {
   const { data, loading, error, fetchMore } = useQuery(GET_CATEGORIES);
-  const { categories } = data;
+  const { categories = [] } = data;
+
+  if (loading) {
+    return <h2>Loading Categories...</h2>;
+  }
+
   // TODO: add spinner
-  return categories ? (
+  return categories.length ? (
     <List
       itemsData={categories}
       RowRenderer={ListRow}
       onItemClick={onCategoryPick}
       selectedItem={selectedCategory}
     />
-  ) : null;
+  ) : (
+    <h2>There is nothing! Add new Category</h2>
+  );
 };
 
-CategoryContent.propTypes = {
+CategoriesList.propTypes = {
   onCategoryPick: PropTypes.func.isRequired,
   selectedCategory: PropTypes.string
 };
-CategoryContent.defaultProps = {
+CategoriesList.defaultProps = {
   selectedCategory: null
 };
 
-export default CategoryContent;
+export default CategoriesList;

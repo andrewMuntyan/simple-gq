@@ -6,5 +6,5 @@ type Mutation {
 }
 type Query {
   categories: [Category!]!
-  words: [Word!]!
+  words(where: WordWhereInput): [Word!]!
 }
