@@ -42,7 +42,7 @@ const useStyles = makeStyles(theme => ({
 }));
 
 // eslint-disable-next-line no-unused-vars
-const WordContent = ({ data: { name, id } }) => {
+const WordContent = ({ data: { content, createdAt, id } }) => {
   const classes = useStyles();
   // const [expanded, setExpanded] = React.useState(false);
 
@@ -60,8 +60,8 @@ const WordContent = ({ data: { name, id } }) => {
               <MoreVertIcon />
             </IconButton>
           }
-          title={name}
-          subheader="additional info here"
+          title={content}
+          subheader={createdAt}
         />
         {/* <CardMedia
         className={classes.media}
@@ -132,7 +132,7 @@ const WordContent = ({ data: { name, id } }) => {
 
 WordContent.propTypes = {
   data: PropTypes.shape({
-    name: PropTypes.string.isRequired,
+    content: PropTypes.string.isRequired,
     id: PropTypes.string.isRequired
   }).isRequired
 };

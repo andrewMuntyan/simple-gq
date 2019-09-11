@@ -34,7 +34,6 @@ const Grid = ({ itemsData, CellRenderer }) => {
 Grid.propTypes = {
   itemsData: PropTypes.arrayOf(
     PropTypes.shape({
-      name: PropTypes.string.isRequired,
       id: PropTypes.string.isRequired
     })
   ).isRequired,

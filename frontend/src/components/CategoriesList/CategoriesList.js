@@ -1,19 +1,28 @@
 import React from 'react';
 // import PropTypes from "prop-types";
 
+import { useQuery } from '@apollo/react-hooks';
+import gql from 'graphql-tag';
+
 import { ListRow } from '../ListRow';
 import { List } from '../List';
 
-// TODO: change with request result
-const data = [
-  { name: 'cars', id: '1' },
-  { name: 'fruits', id: '2' },
-  { name: 'cells', id: '3' },
-  { name: 'dogs', id: '4' }
-];
+export const GET_CATEGORIES = gql`
+  query GET_CATEGORIES {
+    categories {
+      id
+      name
+    }
+  }
+`;
 
 const CategoryContent = () => {
-  return <List itemsData={data} RowRenderer={ListRow} />;
+  const { data, loading, error, fetchMore } = useQuery(GET_CATEGORIES);
+  const { categories } = data;
+  // TODO: add spinner
+  return categories ? (
+    <List itemsData={categories} RowRenderer={ListRow} />
+  ) : null;
 };
 
 export default CategoryContent;

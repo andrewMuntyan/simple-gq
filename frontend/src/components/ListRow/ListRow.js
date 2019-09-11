@@ -20,7 +20,7 @@ const ListRow = ({ data: { index, data } }) => {
   const item = data[index];
 
   return (
-    <ListItem key={item.name}>
+    <ListItem key={item.name} button selected={item.name === 'lol'}>
       <ListItemText primary={`${item.name}`} className={classes.item} />
     </ListItem>
   );
