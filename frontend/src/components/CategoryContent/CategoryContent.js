@@ -43,7 +43,7 @@ const CategoryContent = () => {
   const [{ selectedCategory }] = useContext(AppContext);
   const [loadingNextPage, setLoadingNextPage] = useState(false);
 
-  const { data: wordsData, loading, error, fetchMore } = useQuery(GET_WORDS, {
+  const { data: wordsData, loading, fetchMore } = useQuery(GET_WORDS, {
     variables: { category: selectedCategory }
   });
 

@@ -40,54 +40,51 @@ const ListRow = ({ data: categoryData }) => {
   const { name } = categoryData;
   const classes = useStyles();
 
-  const [deleteCategory, { data, loading, error }] = useMutation(
-    DELETE_CATEGORY,
-    {
-      variables: { name },
-      update(
-        cache,
-        {
-          // TODO: we need better names
-          data: { deleteCategory: deletedCategory }
-        }
-      ) {
-        const { categories } = cache.readQuery({
-          query: GET_CATEGORIES
-        });
+  const [deleteCategory, { loading }] = useMutation(DELETE_CATEGORY, {
+    variables: { name },
+    update(
+      cache,
+      {
+        // TODO: we need better names
+        data: { deleteCategory: deletedCategory }
+      }
+    ) {
+      const { categories } = cache.readQuery({
+        query: GET_CATEGORIES
+      });
 
-        const newCategories = categories.filter(
-          category => category.name !== deletedCategory.name
+      const newCategories = categories.filter(
+        category => category.name !== deletedCategory.name
+      );
+
+      cache.writeQuery({
+        query: GET_CATEGORIES,
+        data: {
+          categories: newCategories
+        }
+      });
+
+      // cache.readQuery throws an error if there are no words in local cache
+      // make it silent for now
+      // TODO: try to use fragment here
+      try {
+        const { words } = cache.readQuery({
+          query: GET_WORDS,
+          variables: { category: deletedCategory.name }
+        });
+        const newWords = words.filter(
+          word => word.category.name !== deletedCategory.name
         );
-
         cache.writeQuery({
-          query: GET_CATEGORIES,
-          data: {
-            categories: newCategories
-          }
+          query: GET_WORDS,
+          variables: { category: deletedCategory.name },
+          data: { words: newWords }
         });
-
-        // cache.readQuery throws an error if there are no words in local cache
-        // make it silent for now
-        // TODO: try to use fragment here
-        try {
-          const { words } = cache.readQuery({
-            query: GET_WORDS,
-            variables: { category: deletedCategory.name }
-          });
-          const newWords = words.filter(
-            word => word.category.name !== deletedCategory.name
-          );
-          cache.writeQuery({
-            query: GET_WORDS,
-            variables: { category: deletedCategory.name },
-            data: { words: newWords }
-          });
-        } catch (queryError) {
-          console.error(queryError);
-        }
+      } catch (queryError) {
+        console.error(queryError);
       }
     }
-  );
+  });
 
   const onClickHandler = useCallback(
     e => {

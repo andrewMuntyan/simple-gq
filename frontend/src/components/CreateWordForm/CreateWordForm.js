@@ -26,7 +26,7 @@ export const CREATE_WORD = gql`
 
 const CreateWordForm = () => {
   const [{ selectedCategory }] = useContext(AppContext);
-  const [createWord, { data, loading, error }] = useMutation(CREATE_WORD, {
+  const [createWord, { loading, error }] = useMutation(CREATE_WORD, {
     // cache updating
     update(
       cache,

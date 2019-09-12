@@ -38,7 +38,7 @@ const WordContent = ({ data: { content, createdAt, id } }) => {
   const [{ selectedCategory }] = useContext(AppContext);
   const classes = useStyles();
 
-  const [deleteWord, { loading, error }] = useMutation(DELETE_WORD, {
+  const [deleteWord, { loading }] = useMutation(DELETE_WORD, {
     variables: { id },
     update(cache) {
       const { words } = cache.readQuery({
