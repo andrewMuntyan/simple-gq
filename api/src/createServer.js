@@ -19,6 +19,8 @@ const createServer = () =>
       Mutation,
       Query
     },
-    context: req => ({ ...req, db })
+    context: req => ({ ...req, db }),
+    playground: true,
+    introspection: true
   });
 module.exports = createServer;
