@@ -1,6 +1,7 @@
-endpoint: ${env:PRISMA_ENDPOINT}
+#endpoint: ${env:PRISMA_ENDPOINT}
+endpoint: https://searchmetrics-prod-95292d95bc.herokuapp.com/searchmetrics-prod-api/prod
 datamodel: src/graphql/prisma.datamodel.graphql
-# secret: ${env:PRISMA_SECRET}
+secret: ${env:PRISMA_SECRET}
 # hooks:
 #   post-deploy:
 #     - graphql get-schema -p prisma
