@@ -16,7 +16,7 @@ export const CREATE_CATEGORY = gql`
   }
 `;
 
-const CreateWordForm = () => {
+const CreateCategoryForm = () => {
   const [createcategory, { data, loading, error }] = useMutation(
     CREATE_CATEGORY,
     {
@@ -54,4 +54,4 @@ const CreateWordForm = () => {
   );
 };
 
-export default CreateWordForm;
+export default CreateCategoryForm;

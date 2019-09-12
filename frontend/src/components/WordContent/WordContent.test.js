@@ -2,7 +2,7 @@ import React from 'react';
 import { shallow } from 'enzyme';
 import toJSON from 'enzyme-to-json';
 
-import { WordContent } from '..';
+import { WordContent } from '.';
 
 const mockedWord = {
   content: 'word',

@@ -23,7 +23,7 @@ const useStyles = makeStyles(() => ({
   }
 }));
 
-function App() {
+export const App = () => {
   const classes = useStyles();
 
   return (
@@ -33,23 +33,28 @@ function App() {
         <Container maxWidth="md">
           <Box>
             {/* Main Layout part */}
-            <Grid container className={classes.root} spacing={2}>
+            <Grid
+              container
+              className={classes.root}
+              spacing={2}
+              data-test="gr-container"
+            >
               <Grid item xs={12}>
                 <AppBar />
               </Grid>
 
-              <Grid item xs={12} sm={5} md={4}>
+              <Grid item xs={12} sm={5} md={4} data-test="gr-categoryForm">
                 <CreateCategoryForm />
               </Grid>
-              <Grid item xs={12} sm={7} md={8}>
+              <Grid item xs={12} sm={7} md={8} data-test="gr-wordForm">
                 <CreateWordForm />
               </Grid>
 
-              <Grid item xs={12} sm={5} md={4}>
+              <Grid item xs={12} sm={5} md={4} data-test="gr-categoryList">
                 <CategoriesList />
               </Grid>
 
-              <Grid item xs={12} sm={7} md={8}>
+              <Grid item xs={12} sm={7} md={8} data-test="gr-categoryContent">
                 <CategoryContent />
               </Grid>
             </Grid>
@@ -58,6 +63,6 @@ function App() {
       </ThemeProvider>
     </AppContextProvider>
   );
-}
+};
 
 export default withApollo(App);
