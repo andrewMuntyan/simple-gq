@@ -8,11 +8,13 @@ import { InMemoryCache } from 'apollo-cache-inmemory';
 import { endpoint, prodEndpoint } from '../../config';
 
 // Apollo HTTP Link
+const uri =
+  process.env.NODE_ENV === 'development' || process.env.NODE_ENV === 'test'
+    ? endpoint
+    : prodEndpoint;
+
 const httpLink = new HttpLink({
-  uri:
-    process.env.NODE_ENV === 'development' || process.env.NODE_ENV === 'test'
-      ? endpoint
-      : prodEndpoint
+  uri
 });
 
 // Create Apollo Link with cache
