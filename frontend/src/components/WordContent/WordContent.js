@@ -62,7 +62,10 @@ const WordContent = ({ data: { content, createdAt, id } }) => {
   return (
     <ListItem>
       <Card className={classes.card}>
-        <CardHeader title={content} subheader={createdAt} />
+        <CardHeader
+          title={content}
+          subheader={new Date(createdAt).toLocaleString()}
+        />
         <CardContent>
           <Button color="secondary" size="small" fullWidth onClick={deleteWord}>
             Delete
