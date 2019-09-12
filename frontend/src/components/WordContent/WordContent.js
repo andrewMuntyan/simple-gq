@@ -24,8 +24,7 @@ export const DELETE_WORD = gql`
   }
 `;
 
-// eslint-disable-next-line no-unused-vars
-const useStyles = makeStyles(theme => ({
+const useStyles = makeStyles(() => ({
   card: {
     maxWidth: 345
   },
@@ -35,7 +34,6 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
-// eslint-disable-next-line no-unused-vars
 const WordContent = ({ data: { content, createdAt, id } }) => {
   const [{ selectedCategory }] = useContext(AppContext);
   const classes = useStyles();

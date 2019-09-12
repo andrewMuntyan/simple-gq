@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 
 import Fab from '@material-ui/core/Fab';
-// eslint-disable-next-line import/no-extraneous-dependencies
 import AddIcon from '@material-ui/icons/Add';
 import { makeStyles } from '@material-ui/core/styles';
 

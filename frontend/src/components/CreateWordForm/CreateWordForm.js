@@ -3,7 +3,7 @@ import React, { useCallback, useContext } from 'react';
 import { useMutation } from '@apollo/react-hooks';
 import gql from 'graphql-tag';
 import { AddEntityForm } from '../AddEntityForm';
-import { GET_WORDS } from '../CategoryContent';
+import { GET_WORDS, PAGINATION_QUERY } from '../CategoryContent';
 
 import { AppContext } from '../../context';
 
@@ -26,8 +26,8 @@ export const CREATE_WORD = gql`
 
 const CreateWordForm = () => {
   const [{ selectedCategory }] = useContext(AppContext);
-  // eslint-disable-next-line no-unused-vars
   const [createWord, { data, loading, error }] = useMutation(CREATE_WORD, {
+    // cache updating
     update(
       cache,
       {
@@ -41,10 +41,14 @@ const CreateWordForm = () => {
 
       cache.writeQuery({
         query: GET_WORDS,
-        data: { words: words.concat([newWordData]) },
-        variables: { category: selectedCategory }
+        variables: { category: selectedCategory },
+        data: { words: [newWordData, ...words] }
       });
-    }
+    },
+    // refetching queries
+    refetchQueries: [
+      { query: PAGINATION_QUERY, variables: { category: selectedCategory } }
+    ]
   });
 
   const onSubmitHandler = useCallback(

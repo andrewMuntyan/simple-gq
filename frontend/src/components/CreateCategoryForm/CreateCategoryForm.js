@@ -17,7 +17,6 @@ export const CREATE_CATEGORY = gql`
 `;
 
 const CreateWordForm = () => {
-  // eslint-disable-next-line no-unused-vars
   const [createcategory, { data, loading, error }] = useMutation(
     CREATE_CATEGORY,
     {

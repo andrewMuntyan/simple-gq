@@ -11,5 +11,11 @@ type Mutation {
 }
 type Query {
   categories: [Category!]!
-  words(where: WordWhereInput): [Word!]!
+  words(
+    where: WordWhereInput
+    orderBy: WordOrderByInput
+    skip: Int
+    first: Int
+  ): [Word!]!
+  wordsConnection(where: WordWhereInput): WordConnection!
 }

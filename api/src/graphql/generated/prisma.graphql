@@ -15,7 +15,15 @@ type Category {
   name: String!
   createdAt: DateTime!
   updatedAt: DateTime!
-  words(where: WordWhereInput, orderBy: WordOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Word!]
+  words(
+    where: WordWhereInput
+    orderBy: WordOrderByInput
+    skip: Int
+    after: String
+    before: String
+    first: Int
+    last: Int
+  ): [Word!]
 }
 
 type CategoryConnection {
@@ -163,9 +171,19 @@ scalar Long
 
 type Mutation {
   createCategory(data: CategoryCreateInput!): Category!
-  updateCategory(data: CategoryUpdateInput!, where: CategoryWhereUniqueInput!): Category
-  updateManyCategories(data: CategoryUpdateInput!, where: CategoryWhereInput): BatchPayload!
-  upsertCategory(where: CategoryWhereUniqueInput!, create: CategoryCreateInput!, update: CategoryUpdateInput!): Category!
+  updateCategory(
+    data: CategoryUpdateInput!
+    where: CategoryWhereUniqueInput!
+  ): Category
+  updateManyCategories(
+    data: CategoryUpdateInput!
+    where: CategoryWhereInput
+  ): BatchPayload!
+  upsertCategory(
+    where: CategoryWhereUniqueInput!
+    create: CategoryCreateInput!
+    update: CategoryUpdateInput!
+  ): Category!
   deleteCategory(where: CategoryWhereUniqueInput!): Category
   deleteManyCategories(where: CategoryWhereInput): BatchPayload!
   createWord(data: WordCreateInput!): Word!
@@ -192,10 +210,42 @@ type PageInfo {
 
 type Query {
   category(where: CategoryWhereUniqueInput!): Category
-  categories(where: CategoryWhereInput, orderBy: CategoryOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Category]!
-  categoriesConnection(where: CategoryWhereInput, orderBy: CategoryOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): CategoryConnection!
-  words(where: WordWhereInput, orderBy: WordOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Word]!
-  wordsConnection(where: WordWhereInput, orderBy: WordOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): WordConnection!
+  categories(
+    where: CategoryWhereInput
+    orderBy: CategoryOrderByInput
+    skip: Int
+    after: String
+    before: String
+    first: Int
+    last: Int
+  ): [Category]!
+  categoriesConnection(
+    where: CategoryWhereInput
+    orderBy: CategoryOrderByInput
+    skip: Int
+    after: String
+    before: String
+    first: Int
+    last: Int
+  ): CategoryConnection!
+  words(
+    where: WordWhereInput
+    orderBy: WordOrderByInput
+    skip: Int
+    after: String
+    before: String
+    first: Int
+    last: Int
+  ): [Word]!
+  wordsConnection(
+    where: WordWhereInput
+    orderBy: WordOrderByInput
+    skip: Int
+    after: String
+    before: String
+    first: Int
+    last: Int
+  ): WordConnection!
   node(id: ID!): Node
 }
 

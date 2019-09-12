@@ -5,12 +5,9 @@ import { makeStyles } from '@material-ui/core/styles';
 
 import { DefaultRowRenderer, noop } from '../../utils';
 
-// eslint-disable-next-line no-unused-vars
-const useStyles = makeStyles(theme => ({
+const useStyles = makeStyles(() => ({
   root: {
     width: '100%',
-    // height: '100%'
-
     // TODO: add styles reset
     margin: 0,
     padding: 0

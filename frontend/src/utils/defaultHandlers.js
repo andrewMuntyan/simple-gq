@@ -4,7 +4,7 @@ export const defaultSubmit = e => {
   console.warn('Default Submit handler is triggered');
 };
 
-export const defaultOnChange = () => {
+export const defaultOnSMTH = () => {
   // eslint-disable-next-line no-console
   console.warn('Default Change handler is triggered');
 };

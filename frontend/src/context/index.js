@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 
 const defaultContextValue = {
-  selectedCategory: null
+  selectedCategory: ''
 };
 
 export const AppContext = React.createContext([defaultContextValue, () => {}]);
