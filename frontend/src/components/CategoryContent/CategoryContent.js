@@ -63,7 +63,7 @@ const CategoryContent = () => {
       }
     });
     setLoadingNextPage(false);
-  }, [wordsData.words, setLoadingNextPage]);
+  }, [wordsData.words, setLoadingNextPage, fetchMore]);
 
   // TODO: add spinner
   if (loading) {
