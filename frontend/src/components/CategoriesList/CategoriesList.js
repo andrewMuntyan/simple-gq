@@ -25,7 +25,11 @@ const CategoriesList = () => {
 
   // TODO: add spinner
   return categories.length ? (
-    <List itemsData={categories} RowRenderer={CategoryListRow} />
+    <List
+      itemsData={categories}
+      RowRenderer={CategoryListRow}
+      data-test="list-component"
+    />
   ) : (
     <h2>There is Nothing... Add new Category!</h2>
   );

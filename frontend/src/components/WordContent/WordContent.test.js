@@ -2,17 +2,13 @@ import React from 'react';
 import { shallow } from 'enzyme';
 import toJSON from 'enzyme-to-json';
 
-import { WordContent } from '.';
+import { fakeWord } from '../../testUtils';
 
-const mockedWord = {
-  content: 'word',
-  id: 'unoquie',
-  createdAt: '2019-09-11T21:13:39.695Z'
-};
+import { WordContent } from '.';
 
 describe('<WordContent />', () => {
   it('renders and displays properly', () => {
-    const wrapper = shallow(<WordContent data={mockedWord} />);
+    const wrapper = shallow(<WordContent data={fakeWord()} />);
     expect(toJSON(wrapper)).toMatchSnapshot();
   });
 });
