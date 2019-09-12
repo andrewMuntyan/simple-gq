@@ -46,7 +46,12 @@ const AddEnity = ({ onSubmit, loading, error, label }) => {
   };
 
   return (
-    <form className={classes.container} noValidate onSubmit={submitHandler}>
+    <form
+      className={classes.container}
+      noValidate
+      onSubmit={submitHandler}
+      data-test="add-entity-form"
+    >
       <span className={classes.input}>
         <TextInput
           label={label}

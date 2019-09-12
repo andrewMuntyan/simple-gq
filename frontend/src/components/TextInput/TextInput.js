@@ -22,6 +22,9 @@ const TextInput = ({ onChange, disabled, error, required, label, value }) => {
   const classes = useStyles();
   return (
     <TextField
+      inputProps={{
+        'data-test': 'text-field'
+      }}
       label={label}
       id="standard-dense"
       className={classes.textField}

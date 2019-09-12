@@ -23,3 +23,5 @@ export const getFakeCategoriesData = () => ({
     }
   ]
 });
+
+export const fakeCategory = () => getFakeCategoriesData().categories[0];
