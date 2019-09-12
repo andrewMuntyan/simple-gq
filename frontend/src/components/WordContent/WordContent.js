@@ -38,14 +38,9 @@ const WordContent = ({ data: { content, createdAt, id } }) => {
   const [{ selectedCategory }] = useContext(AppContext);
   const classes = useStyles();
 
-  const [deleteWord, { data, loading, error }] = useMutation(DELETE_WORD, {
+  const [deleteWord, { loading, error }] = useMutation(DELETE_WORD, {
     variables: { id },
-    update(
-      cache,
-      {
-        data: { deleteWord: deletedWord }
-      }
-    ) {
+    update(cache) {
       const { words } = cache.readQuery({
         query: GET_WORDS,
         variables: { category: selectedCategory }
@@ -63,6 +58,7 @@ const WordContent = ({ data: { content, createdAt, id } }) => {
     <ListItem>
       <Card className={classes.card}>
         <CardHeader
+          data-test="wordContentHeader"
           title={content}
           subheader={new Date(createdAt).toLocaleString()}
         />

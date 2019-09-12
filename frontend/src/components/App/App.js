@@ -29,10 +29,10 @@ function App() {
   return (
     <AppContextProvider>
       <ThemeProvider theme={theme}>
-        {/* CssBaseline kickstart an elegant, consistent, and simple baseline to build upon. */}
         <CssBaseline />
         <Container maxWidth="md">
           <Box>
+            {/* Main Layout part */}
             <Grid container className={classes.root} spacing={2}>
               <Grid item xs={12}>
                 <AppBar />

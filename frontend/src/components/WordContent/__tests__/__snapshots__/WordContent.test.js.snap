@@ -1,0 +1,25 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<WordContent /> renders and displays properly 1`] = `
+<WithStyles(ForwardRef(ListItem))>
+  <WithStyles(ForwardRef(Card))
+    className="makeStyles-card-1"
+  >
+    <WithStyles(ForwardRef(CardHeader))
+      data-test="wordContentHeader"
+      subheader="9/12/2019, 12:13:39 AM"
+      title="word"
+    />
+    <WithStyles(ForwardRef(CardContent))>
+      <WithStyles(ForwardRef(Button))
+        color="secondary"
+        fullWidth={true}
+        onClick={[Function]}
+        size="small"
+      >
+        Delete
+      </WithStyles(ForwardRef(Button))>
+    </WithStyles(ForwardRef(CardContent))>
+  </WithStyles(ForwardRef(Card))>
+</WithStyles(ForwardRef(ListItem))>
+`;
