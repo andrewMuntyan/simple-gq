@@ -22,8 +22,7 @@ const mocks = [
       query: CREATE_CATEGORY_MUTATION,
       variables: mutationVariables
     },
-    result: { data: newCategoryResponseData },
-    newData: jest.fn(() => newCategoryResponseData)
+    result: jest.fn(() => ({ data: newCategoryResponseData }))
   }
 ];
 
@@ -91,7 +90,7 @@ describe('<CreateCategoryForm />', () => {
     await wait(50);
 
     // Check if mutation has been called
-    expect(mocks[0].newData).toHaveBeenCalledTimes(1);
+    expect(mocks[0].result).toHaveBeenCalledTimes(1);
 
     // cache is updated with data from mocked response
     const { categories: resultedCategoriesData } = cache.readQuery({
