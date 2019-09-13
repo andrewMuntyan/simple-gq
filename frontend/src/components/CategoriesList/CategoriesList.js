@@ -16,12 +16,12 @@ export const GET_CATEGORIES = gql`
 `;
 
 const CategoriesList = () => {
-  const { data, loading } = useQuery(GET_CATEGORIES);
-  const { categories = [] } = data;
+  const { data, loading, error } = useQuery(GET_CATEGORIES);
 
   if (loading) {
     return <h2>Loading Categories...</h2>;
   }
+  const { categories = [] } = data;
 
   // TODO: add spinner
   return categories.length ? (

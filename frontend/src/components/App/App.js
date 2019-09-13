@@ -8,6 +8,7 @@ import Box from '@material-ui/core/Box';
 import Grid from '@material-ui/core/Grid';
 
 import { withApollo } from '../withApollo';
+import { Shield } from '../ErrorBoundary';
 import { AppBar } from '../AppBar';
 import { CategoriesList } from '../CategoriesList';
 import { CategoryContent } from '../CategoryContent';
@@ -39,24 +40,26 @@ export const App = () => {
               spacing={2}
               data-test="gr-container"
             >
-              <Grid item xs={12}>
-                <AppBar />
-              </Grid>
+              {/* Error Boundary */}
+              <Shield>
+                <Grid item xs={12}>
+                  <AppBar />
+                </Grid>
 
-              <Grid item xs={12} sm={5} md={4} data-test="gr-categoryForm">
-                <CreateCategoryForm />
-              </Grid>
-              <Grid item xs={12} sm={7} md={8} data-test="gr-wordForm">
-                <CreateWordForm />
-              </Grid>
+                <Grid item xs={12} sm={5} md={4} data-test="gr-categoryForm">
+                  <CreateCategoryForm />
+                </Grid>
+                <Grid item xs={12} sm={7} md={8} data-test="gr-wordForm">
+                  <CreateWordForm />
+                </Grid>
 
-              <Grid item xs={12} sm={5} md={4} data-test="gr-categoryList">
-                <CategoriesList />
-              </Grid>
-
-              <Grid item xs={12} sm={7} md={8} data-test="gr-categoryContent">
-                <CategoryContent />
-              </Grid>
+                <Grid item xs={12} sm={5} md={4} data-test="gr-categoryList">
+                  <CategoriesList />
+                </Grid>
+                <Grid item xs={12} sm={7} md={8} data-test="gr-categoryContent">
+                  <CategoryContent />
+                </Grid>
+              </Shield>
             </Grid>
           </Box>
         </Container>
