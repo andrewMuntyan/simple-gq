@@ -2,7 +2,6 @@ import React from 'react';
 
 import CssBaseline from '@material-ui/core/CssBaseline';
 import { ThemeProvider } from '@material-ui/styles';
-import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
 import Box from '@material-ui/core/Box';
 import Grid from '@material-ui/core/Grid';
@@ -15,16 +14,11 @@ import CreateWordForm from '../CreateWordForm/CreateWordForm';
 import { CreateCategoryForm } from '../CreateCategoryForm';
 import { FinalAppContextProvider } from '../../context';
 
+import getClasses from './styles';
 import theme from './theme';
 
-const useStyles = makeStyles(() => ({
-  root: {
-    flexGrow: 1
-  }
-}));
-
 export const App = () => {
-  const classes = useStyles();
+  const classes = getClasses();
 
   return (
     <ThemeProvider theme={theme}>

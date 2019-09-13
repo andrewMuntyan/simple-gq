@@ -1,32 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import { makeStyles } from '@material-ui/core/styles';
 import Fab from '@material-ui/core/Fab';
 import GetAppIcon from '@material-ui/icons/GetApp';
 
 import { DefaultRowRenderer, defaultOnSMTH } from '../../utils';
 
-const useStyles = makeStyles(() => ({
-  root: {
-    position: 'relative'
-  },
-  list: {
-    // TODO: add styles reset
-    margin: 0,
-    padding: 0,
-    width: '100%',
-    display: 'grid',
-    gridTemplateColumns: 'repeat(auto-fit, minmax(175px, 1fr))',
-    gridTemplateRows: 'max-content',
-    alignItems: 'start',
-    userSelect: 'none'
-  },
-  loadMore: {
-    position: 'absolute',
-    right: 0
-  }
-}));
+import getClasses from './styles';
 
 const CardsList = ({
   itemsData,
@@ -35,7 +15,7 @@ const CardsList = ({
   wordsCount,
   loadingNextPage
 }) => {
-  const classes = useStyles();
+  const classes = getClasses();
 
   return (
     <section className={classes.root}>

@@ -1,21 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import { makeStyles } from '@material-ui/core/styles';
-
 import { DefaultRowRenderer, noop } from '../../utils';
 
-const useStyles = makeStyles(() => ({
-  root: {
-    width: '100%',
-    // TODO: add styles reset
-    margin: 0,
-    padding: 0
-  }
-}));
+import getClasses from './styles';
 
 const List = ({ itemsData, RowRenderer, onItemClick, selectedItem }) => {
-  const classes = useStyles();
+  const classes = getClasses();
 
   return (
     <ul className={classes.root}>

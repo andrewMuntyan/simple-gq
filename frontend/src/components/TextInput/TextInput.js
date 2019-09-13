@@ -1,25 +1,14 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import { makeStyles } from '@material-ui/core/styles';
 import TextField from '@material-ui/core/TextField';
 
 import { defaultOnSMTH } from '../../utils';
 
-const useStyles = makeStyles(theme => ({
-  container: {
-    display: 'flex',
-    flexWrap: 'wrap'
-  },
-  textField: {
-    marginLeft: theme.spacing(1),
-    marginRight: theme.spacing(1),
-    width: '100%'
-  }
-}));
+import getClasses from './styles';
 
 const TextInput = ({ onChange, disabled, error, required, label, value }) => {
-  const classes = useStyles();
+  const classes = getClasses();
   return (
     <TextField
       inputProps={{

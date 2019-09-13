@@ -1,8 +1,6 @@
 import React, { useContext, useCallback } from 'react';
 import PropTypes from 'prop-types';
 
-import { makeStyles } from '@material-ui/core/styles';
-
 import ListItem from '@material-ui/core/ListItem';
 import ListItemText from '@material-ui/core/ListItemText';
 import CircularProgress from '@material-ui/core/CircularProgress';
@@ -17,6 +15,8 @@ import { GET_WORDS } from '../CategoryContent';
 
 import { AppContext } from '../../context';
 
+import getClasses from './styles';
+
 export const DELETE_CATEGORY = gql`
   mutation DELETE_CATEGORY($name: String!) {
     deleteCategory(name: $name) {
@@ -26,19 +26,11 @@ export const DELETE_CATEGORY = gql`
   }
 `;
 
-const useStyles = makeStyles(theme => ({
-  item: {
-    userSelect: 'none',
-    cursor: 'pointer',
-    borderBottom: `1px solid ${theme.palette.divider}`
-  }
-}));
-
 const ListRow = ({ data: categoryData }) => {
   const [{ selectedCategory }, setAppContext] = useContext(AppContext);
 
   const { name } = categoryData;
-  const classes = useStyles();
+  const classes = getClasses();
 
   const [deleteCategory, { loading }] = useMutation(DELETE_CATEGORY, {
     variables: { name },

@@ -3,29 +3,15 @@ import PropTypes from 'prop-types';
 
 import Fab from '@material-ui/core/Fab';
 import AddIcon from '@material-ui/icons/Add';
-import { makeStyles } from '@material-ui/core/styles';
 
 import { TextInput } from '../TextInput';
 
 import { defaultSubmit } from '../../utils';
 
-const useStyles = makeStyles(theme => ({
-  container: {
-    display: 'flex',
-    flexWrap: 'wrap',
-    alignItems: 'center'
-  },
-  input: {
-    flex: '1 1 0',
-    marginRight: '-48px'
-  },
-  fab: {
-    margin: theme.spacing(1)
-  }
-}));
+import getClasses from './styles';
 
 const AddEnity = ({ onSubmit, loading, error, label }) => {
-  const classes = useStyles();
+  const classes = getClasses();
 
   const [value, setValue] = useState('');
   const [errorState, setErrorState] = useState(error);

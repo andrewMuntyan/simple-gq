@@ -16,6 +16,8 @@ import { GET_WORDS } from '../CategoryContent';
 
 import { AppContext } from '../../context';
 
+import getClasses from './styles';
+
 export const DELETE_WORD = gql`
   mutation DELETE_WORD($id: ID!) {
     deleteWord(id: $id) {
@@ -24,19 +26,9 @@ export const DELETE_WORD = gql`
   }
 `;
 
-const useStyles = makeStyles(() => ({
-  card: {
-    maxWidth: 345
-  },
-  progress: {
-    position: 'absolute',
-    right: 5
-  }
-}));
-
 const WordContent = ({ data: { content, createdAt, id } }) => {
+  const classes = getClasses();
   const [{ selectedCategory }] = useContext(AppContext);
-  const classes = useStyles();
 
   const [deleteWord, { loading }] = useMutation(DELETE_WORD, {
     variables: { id },
