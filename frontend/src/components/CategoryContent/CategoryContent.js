@@ -40,14 +40,24 @@ export const PAGINATION_QUERY = gql`
 `;
 
 const CategoryContent = () => {
-  const [{ selectedCategory }] = useContext(AppContext);
+  const [{ selectedCategory, onActionDone }] = useContext(AppContext);
   const [loadingNextPage, setLoadingNextPage] = useState(false);
 
-  const { data: wordsData, loading, fetchMore } = useQuery(GET_WORDS, {
+  const {
+    data: wordsData,
+    loading: wordsLoading,
+    fetchMore,
+    error: wordsError
+  } = useQuery(GET_WORDS, {
     variables: { category: selectedCategory }
   });
 
-  const { data: paginationData } = useQuery(PAGINATION_QUERY, {
+  // TODO: move this to CardsList to avoid complexity with handling two mutations
+  const {
+    data: paginationData,
+    loading: paginationLoading,
+    error: paginationError
+  } = useQuery(PAGINATION_QUERY, {
     variables: { category: selectedCategory }
   });
 
@@ -63,16 +73,22 @@ const CategoryContent = () => {
       }
     });
     setLoadingNextPage(false);
-  }, [wordsData.words, setLoadingNextPage, fetchMore]);
-
-  // TODO: add spinner
-  if (loading) {
-    return <h2>Loading Words for {selectedCategory} category...</h2>;
-  }
+  }, [wordsData, setLoadingNextPage, fetchMore]);
 
   // do not render until category is chosen
   if (!selectedCategory) {
     return null;
+  }
+
+  if (wordsError || paginationError) {
+    // show message according to results
+    onActionDone(wordsError || paginationError);
+    return <h2>Something went wrong...</h2>;
+  }
+
+  // TODO: add spinner
+  if (wordsLoading || paginationLoading) {
+    return <h2>Loading Words for {selectedCategory} category...</h2>;
   }
 
   const {
@@ -81,7 +97,7 @@ const CategoryContent = () => {
     }
   } = paginationData;
 
-  const { words } = wordsData;
+  const { words = [] } = wordsData;
 
   return words.length ? (
     <CardsList

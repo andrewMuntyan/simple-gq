@@ -1,10 +1,12 @@
-import React from 'react';
+import React, { useContext } from 'react';
 
 import { useQuery } from '@apollo/react-hooks';
 import gql from 'graphql-tag';
 
 import { CategoryListRow } from '../CategoryListRow';
 import { List } from '../List';
+
+import { AppContext } from '../../context';
 
 export const GET_CATEGORIES = gql`
   query GET_CATEGORIES {
@@ -16,10 +18,18 @@ export const GET_CATEGORIES = gql`
 `;
 
 const CategoriesList = () => {
+  const [{ onActionDone }] = useContext(AppContext);
+
   const { data, loading, error } = useQuery(GET_CATEGORIES);
 
   if (loading) {
     return <h2>Loading Categories...</h2>;
+  }
+
+  if (error) {
+    // show message according to results
+    onActionDone(error);
+    return <h2>Something went wrong...</h2>;
   }
   const { categories = [] } = data;
 

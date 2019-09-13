@@ -32,8 +32,12 @@ const AddEnity = ({ onSubmit, loading, error, label }) => {
 
   const submitHandler = async e => {
     e.preventDefault();
-    await onSubmit(value);
-    setValue('');
+
+    const result = await onSubmit(value).then(() => {
+      setValue('');
+    });
+
+    return result;
   };
 
   useEffect(() => {

@@ -26,7 +26,7 @@ describe('<App />', () => {
   });
 
   it('should be wrapped in AppContextProvider and render all necessary elements', () => {
-    const AppContextProvider = wrapper.find('AppContextProvider');
+    const AppContextProvider = wrapper.find('FinalAppContextProvider');
     const CssBaseline = wrapper.find('CssBaseline');
     const SearchAppBar = wrapper.find('SearchAppBar');
     const CreateCategoryForm = wrapper.find('CreateCategoryForm');

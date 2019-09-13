@@ -8,6 +8,9 @@ import { InMemoryCache } from 'apollo-cache-inmemory';
 
 import { CreateCategoryForm, CREATE_CATEGORY_MUTATION } from '.';
 import { GET_CATEGORIES } from '../CategoriesList';
+import { AppContext } from '../../context';
+import { getMessage } from '../../utils';
+
 import { fakeCategory } from '../../testUtils';
 
 const categoryData = fakeCategory();
@@ -16,6 +19,7 @@ const mutationVariables = { name: newCategoryName };
 const newCategoryResponseData = {
   createCategory: categoryData
 };
+
 const mocks = [
   {
     request: {
@@ -56,9 +60,12 @@ describe('<CreateCategoryForm />', () => {
     expect(initialCategoriesData).toBeInstanceOf(Array);
     expect(initialCategoriesData).toHaveLength(0);
 
+    const showMessage = jest.fn();
     const wrapper = mount(
       <MockedProvider mocks={mocks} cache={cache}>
-        <CreateCategoryForm />
+        <AppContext.Provider value={[{ showMessage }]}>
+          <CreateCategoryForm />
+        </AppContext.Provider>
       </MockedProvider>
     );
 
@@ -92,6 +99,10 @@ describe('<CreateCategoryForm />', () => {
     // Check if mutation has been called
     expect(mocks[0].result).toHaveBeenCalledTimes(1);
 
+    // Check if success message was shown
+    expect(showMessage).toHaveBeenCalledTimes(1);
+    expect(showMessage).toHaveBeenCalledWith(getMessage(true));
+
     // cache is updated with data from mocked response
     const { categories: resultedCategoriesData } = cache.readQuery({
       query: GET_CATEGORIES
@@ -101,4 +112,6 @@ describe('<CreateCategoryForm />', () => {
     expect(resultedCategoriesData).toHaveLength(1);
     expect(resultedCategoriesData[0]).toEqual(categoryData);
   });
+
+  // TODO: add test for case whent there is an error
 });

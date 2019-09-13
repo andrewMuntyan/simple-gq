@@ -1,7 +1,10 @@
-import React, { useCallback } from 'react';
+import React, { useCallback, useContext } from 'react';
 
 import { useMutation } from '@apollo/react-hooks';
 import gql from 'graphql-tag';
+
+import { AppContext } from '../../context';
+
 import { AddEntityForm } from '../AddEntityForm';
 import { GET_CATEGORIES } from '../CategoriesList';
 
@@ -17,6 +20,7 @@ export const CREATE_CATEGORY_MUTATION = gql`
 `;
 
 const CreateCategoryForm = () => {
+  const [{ onActionDone }] = useContext(AppContext);
   const [createcategory, { loading, error }] = useMutation(
     CREATE_CATEGORY_MUTATION,
     {
@@ -34,13 +38,19 @@ const CreateCategoryForm = () => {
       }
     }
   );
+
   const onSubmitHandler = useCallback(
     async value => {
-      await createcategory({
+      return createcategory({
         variables: { name: value }
-      });
+      })
+        .then(onActionDone)
+        .catch(e => {
+          onActionDone(e);
+          throw e;
+        });
     },
-    [createcategory]
+    [createcategory, onActionDone]
   );
 
   return (

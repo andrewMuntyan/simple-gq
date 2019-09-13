@@ -81,7 +81,10 @@ const ListRow = ({ data: categoryData }) => {
           data: { words: newWords }
         });
       } catch (queryError) {
-        console.error(queryError);
+        if (process.env.NODE_ENV === 'development') {
+          // eslint-disable-next-line no-console
+          console.error(queryError);
+        }
       }
     }
   });

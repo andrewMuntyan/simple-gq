@@ -25,7 +25,7 @@ export const CREATE_WORD = gql`
 `;
 
 const CreateWordForm = () => {
-  const [{ selectedCategory }] = useContext(AppContext);
+  const [{ selectedCategory, onActionDone }] = useContext(AppContext);
   const [createWord, { loading, error }] = useMutation(CREATE_WORD, {
     // cache updating
     update(
@@ -53,15 +53,20 @@ const CreateWordForm = () => {
 
   const onSubmitHandler = useCallback(
     async value => {
-      await createWord({
+      return createWord({
         variables: {
           content: value,
           // TODO: backend: selectedCategory should be id, not name
           category: { connect: { name: selectedCategory } }
         }
-      });
+      })
+        .then(onActionDone)
+        .catch(e => {
+          onActionDone(e);
+          throw e;
+        });
     },
-    [createWord, selectedCategory]
+    [createWord, selectedCategory, onActionDone]
   );
 
   return selectedCategory ? (
