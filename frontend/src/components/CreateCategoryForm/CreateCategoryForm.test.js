@@ -9,7 +9,6 @@ import { InMemoryCache } from 'apollo-cache-inmemory';
 import { CreateCategoryForm, CREATE_CATEGORY_MUTATION } from '.';
 import { GET_CATEGORIES } from '../CategoriesList';
 import { AppContext } from '../../context';
-import { getMessage } from '../../utils';
 
 import { fakeCategory } from '../../testUtils';
 
@@ -60,10 +59,10 @@ describe('<CreateCategoryForm />', () => {
     expect(initialCategoriesData).toBeInstanceOf(Array);
     expect(initialCategoriesData).toHaveLength(0);
 
-    const showMessage = jest.fn();
+    const onActionDone = jest.fn();
     const wrapper = mount(
       <MockedProvider mocks={mocks} cache={cache}>
-        <AppContext.Provider value={[{ showMessage }]}>
+        <AppContext.Provider value={[{ onActionDone }]}>
           <CreateCategoryForm />
         </AppContext.Provider>
       </MockedProvider>
@@ -100,8 +99,11 @@ describe('<CreateCategoryForm />', () => {
     expect(mocks[0].result).toHaveBeenCalledTimes(1);
 
     // Check if success message was shown
-    expect(showMessage).toHaveBeenCalledTimes(1);
-    expect(showMessage).toHaveBeenCalledWith(getMessage(true));
+    expect(onActionDone).toHaveBeenCalledTimes(1);
+
+    expect(onActionDone).toHaveBeenCalledWith({
+      data: { createCategory: categoryData }
+    });
 
     // cache is updated with data from mocked response
     const { categories: resultedCategoriesData } = cache.readQuery({
