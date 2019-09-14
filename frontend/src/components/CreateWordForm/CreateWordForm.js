@@ -56,7 +56,6 @@ const CreateWordForm = () => {
       return createWord({
         variables: {
           content: value,
-          // TODO: backend: selectedCategory should be id, not name
           category: { connect: { name: selectedCategory } }
         }
       })
@@ -77,7 +76,7 @@ const CreateWordForm = () => {
       error={!!error}
     />
   ) : (
-    <h2>Please chose the Category</h2>
+    <h2 className="infoMessage">Please chose the Category</h2>
   );
 };
 

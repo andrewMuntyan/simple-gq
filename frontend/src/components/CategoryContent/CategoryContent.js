@@ -83,12 +83,16 @@ const CategoryContent = () => {
   if (wordsError || paginationError) {
     // show message according to results
     onActionDone(wordsError || paginationError);
-    return <h2>Something went wrong...</h2>;
+    return <h2 className="infoMessage">Something went wrong...</h2>;
   }
 
   // TODO: add spinner
   if (wordsLoading || paginationLoading) {
-    return <h2>Loading Words for {selectedCategory} category...</h2>;
+    return (
+      <h2 className="infoMessage">
+        Loading Words for {selectedCategory} category...
+      </h2>
+    );
   }
 
   const {
@@ -109,7 +113,9 @@ const CategoryContent = () => {
       loadingNextPage={loadingNextPage}
     />
   ) : (
-    <h2>There is Nothing in {selectedCategory} category... Add new Word!</h2>
+    <h2 className="infoMessage">
+      There is Nothing in {selectedCategory} category... Add new Word!
+    </h2>
   );
 };
 

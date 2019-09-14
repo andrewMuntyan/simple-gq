@@ -28,7 +28,6 @@ const TextInput = ({ onChange, disabled, error, required, label, value }) => {
   );
 };
 
-// TODO: add props
 TextInput.propTypes = {
   onChange: PropTypes.func,
   disabled: PropTypes.bool,

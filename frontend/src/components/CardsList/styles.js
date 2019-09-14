@@ -5,9 +5,6 @@ export default makeStyles(() => ({
     position: 'relative'
   },
   list: {
-    // TODO: add styles reset
-    margin: 0,
-    padding: 0,
     width: '100%',
     display: 'grid',
     gridTemplateColumns: 'repeat(auto-fit, minmax(175px, 1fr))',

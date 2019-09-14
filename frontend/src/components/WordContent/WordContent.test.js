@@ -6,6 +6,7 @@ import { fakeWord } from '../../testUtils';
 
 import { WordContent } from '.';
 
+// TODO: complete tests
 describe('<WordContent />', () => {
   it('renders and displays properly', () => {
     const wrapper = shallow(<WordContent data={fakeWord()} />);
