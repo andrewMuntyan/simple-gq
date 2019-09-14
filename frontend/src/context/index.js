@@ -16,11 +16,13 @@ export const AppContextProvider = ({ children }) => {
   const { enqueueSnackbar } = useSnackbar();
 
   const showMessage = ({ variant, text }) => {
+    const isError = variant === 'error';
     // variant could be success, error, warning, info, or default
     enqueueSnackbar(text, {
       variant,
       anchorOrigin: { vertical: 'bottom', horizontal: 'right' },
-      autoHideDuration: variant === 'error' ? 4000 : 2000
+      autoHideDuration: isError ? 4000 : 2000
+      // preventDuplicate: isError
     });
   };
 

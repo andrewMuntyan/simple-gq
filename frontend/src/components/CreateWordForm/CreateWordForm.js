@@ -3,7 +3,8 @@ import React, { useCallback, useContext } from 'react';
 import { useMutation } from '@apollo/react-hooks';
 import gql from 'graphql-tag';
 import { AddEntityForm } from '../AddEntityForm';
-import { GET_WORDS, PAGINATION_QUERY } from '../CategoryContent';
+import { GET_WORDS_QUERY } from '../CategoryContent';
+import { PAGINATION_QUERY } from '../WordsLoadMoreBtn';
 
 import { AppContext } from '../../context';
 
@@ -26,6 +27,7 @@ export const CREATE_WORD = gql`
 
 const CreateWordForm = () => {
   const [{ selectedCategory, onActionDone }] = useContext(AppContext);
+
   const [createWord, { loading, error }] = useMutation(CREATE_WORD, {
     // cache updating
     update(
@@ -34,21 +36,42 @@ const CreateWordForm = () => {
         data: { createWord: newWordData }
       }
     ) {
-      const { words } = cache.readQuery({
-        query: GET_WORDS,
-        variables: { category: selectedCategory }
-      });
+      const queryVars = { variables: { category: selectedCategory } };
 
+      const { words } = cache.readQuery({
+        query: GET_WORDS_QUERY,
+        ...queryVars
+      });
       cache.writeQuery({
-        query: GET_WORDS,
-        variables: { category: selectedCategory },
+        query: GET_WORDS_QUERY,
+        ...queryVars,
         data: { words: [newWordData, ...words] }
       });
-    },
-    // refetching queries
-    refetchQueries: [
-      { query: PAGINATION_QUERY, variables: { category: selectedCategory } }
-    ]
+
+      // TODO: DRY
+      const paginationChache = cache.readQuery({
+        query: PAGINATION_QUERY,
+        ...queryVars
+      });
+      const {
+        wordsConnection: {
+          aggregate: { count: cachedCount }
+        }
+      } = paginationChache;
+      cache.writeQuery({
+        query: PAGINATION_QUERY,
+        ...queryVars,
+        data: {
+          wordsConnection: {
+            aggregate: {
+              count: cachedCount + 1,
+              __typename: 'AggregateWord'
+            },
+            __typename: 'WordConnection'
+          }
+        }
+      });
+    }
   });
 
   const onSubmitHandler = useCallback(

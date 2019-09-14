@@ -11,7 +11,7 @@ import { useMutation } from '@apollo/react-hooks';
 import gql from 'graphql-tag';
 
 import { GET_CATEGORIES } from '../CategoriesList';
-import { GET_WORDS } from '../CategoryContent';
+import { GET_WORDS_QUERY } from '../CategoryContent';
 
 import { AppContext } from '../../context';
 
@@ -61,14 +61,14 @@ const ListRow = ({ data: categoryData }) => {
       // TODO: try to use fragment here
       try {
         const { words } = cache.readQuery({
-          query: GET_WORDS,
+          query: GET_WORDS_QUERY,
           variables: { category: deletedCategory.name }
         });
         const newWords = words.filter(
           word => word.category.name !== deletedCategory.name
         );
         cache.writeQuery({
-          query: GET_WORDS,
+          query: GET_WORDS_QUERY,
           variables: { category: deletedCategory.name },
           data: { words: newWords }
         });

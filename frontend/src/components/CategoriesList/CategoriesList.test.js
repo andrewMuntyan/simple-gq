@@ -1,10 +1,9 @@
 import React from 'react';
 
 import { mount } from 'enzyme';
-import wait from 'waait';
 import { MockedProvider } from '@apollo/react-testing';
 
-import { getFakeCategoriesData } from '../../testUtils';
+import { getFakeCategoriesData, updateWrapper } from '../../testUtils';
 
 import { CategoriesList, GET_CATEGORIES } from '.';
 
@@ -34,8 +33,8 @@ describe('<CategoriesList />', () => {
     // this is first phase of rendering when categories are still loading
     expect(wrapper.text()).toContain('Loading Categories...');
 
-    await wait();
-    wrapper.update();
+    // wait for query result
+    await updateWrapper(wrapper);
 
     const ListComponent = wrapper.find(ListComponentSelector);
     // ListComponent should be rendered
@@ -62,8 +61,8 @@ describe('<CategoriesList />', () => {
         <CategoriesList />
       </MockedProvider>
     );
-    await wait();
-    wrapper.update();
+    // wait for query result
+    await updateWrapper(wrapper);
     const ListComponentSelector = '[data-test="list-component"]';
 
     // ListComponent should not be rendered

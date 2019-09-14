@@ -1,0 +1,150 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<LoadMoreBtn /> renders and displays properly 1`] = `
+<LoadMoreBtn
+  allItemsCount={2}
+  displayedItemsCount={1}
+  onClick={[Function]}
+>
+  <WithStyles(ForwardRef(Fab))
+    className="makeStyles-loadMore-1"
+    color="secondary"
+    disabled={false}
+    onClick={[Function]}
+    variant="extended"
+  >
+    <ForwardRef(Fab)
+      className="makeStyles-loadMore-1"
+      classes={
+        Object {
+          "colorInherit": "MuiFab-colorInherit",
+          "disabled": "Mui-disabled",
+          "extended": "MuiFab-extended",
+          "focusVisible": "Mui-focusVisible",
+          "label": "MuiFab-label",
+          "primary": "MuiFab-primary",
+          "root": "MuiFab-root",
+          "secondary": "MuiFab-secondary",
+          "sizeMedium": "MuiFab-sizeMedium",
+          "sizeSmall": "MuiFab-sizeSmall",
+        }
+      }
+      color="secondary"
+      disabled={false}
+      onClick={[Function]}
+      variant="extended"
+    >
+      <WithStyles(ForwardRef(ButtonBase))
+        className="MuiFab-root makeStyles-loadMore-1 MuiFab-extended MuiFab-secondary"
+        component="button"
+        disabled={false}
+        focusRipple={true}
+        focusVisibleClassName="Mui-focusVisible"
+        onClick={[Function]}
+      >
+        <ForwardRef(ButtonBase)
+          className="MuiFab-root makeStyles-loadMore-1 MuiFab-extended MuiFab-secondary"
+          classes={
+            Object {
+              "disabled": "Mui-disabled",
+              "focusVisible": "Mui-focusVisible",
+              "root": "MuiButtonBase-root",
+            }
+          }
+          component="button"
+          disabled={false}
+          focusRipple={true}
+          focusVisibleClassName="Mui-focusVisible"
+          onClick={[Function]}
+        >
+          <button
+            className="MuiButtonBase-root MuiFab-root makeStyles-loadMore-1 MuiFab-extended MuiFab-secondary"
+            disabled={false}
+            onBlur={[Function]}
+            onClick={[Function]}
+            onDragLeave={[Function]}
+            onFocus={[Function]}
+            onKeyDown={[Function]}
+            onKeyUp={[Function]}
+            onMouseDown={[Function]}
+            onMouseLeave={[Function]}
+            onMouseUp={[Function]}
+            onTouchEnd={[Function]}
+            onTouchMove={[Function]}
+            onTouchStart={[Function]}
+            tabIndex={0}
+            type="button"
+          >
+            <span
+              className="MuiFab-label"
+            >
+              Load More
+              <ForwardRef>
+                <WithStyles(ForwardRef(SvgIcon))>
+                  <ForwardRef(SvgIcon)
+                    classes={
+                      Object {
+                        "colorAction": "MuiSvgIcon-colorAction",
+                        "colorDisabled": "MuiSvgIcon-colorDisabled",
+                        "colorError": "MuiSvgIcon-colorError",
+                        "colorPrimary": "MuiSvgIcon-colorPrimary",
+                        "colorSecondary": "MuiSvgIcon-colorSecondary",
+                        "fontSizeInherit": "MuiSvgIcon-fontSizeInherit",
+                        "fontSizeLarge": "MuiSvgIcon-fontSizeLarge",
+                        "fontSizeSmall": "MuiSvgIcon-fontSizeSmall",
+                        "root": "MuiSvgIcon-root",
+                      }
+                    }
+                  >
+                    <svg
+                      aria-hidden="true"
+                      className="MuiSvgIcon-root"
+                      focusable="false"
+                      role="presentation"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z"
+                      />
+                    </svg>
+                  </ForwardRef(SvgIcon)>
+                </WithStyles(ForwardRef(SvgIcon))>
+              </ForwardRef>
+            </span>
+            <NoSsr>
+              <WithStyles(undefined)
+                center={false}
+              >
+                <ForwardRef(TouchRipple)
+                  center={false}
+                  classes={
+                    Object {
+                      "child": "MuiTouchRipple-child",
+                      "childLeaving": "MuiTouchRipple-childLeaving",
+                      "childPulsate": "MuiTouchRipple-childPulsate",
+                      "ripple": "MuiTouchRipple-ripple",
+                      "ripplePulsate": "MuiTouchRipple-ripplePulsate",
+                      "rippleVisible": "MuiTouchRipple-rippleVisible",
+                      "root": "MuiTouchRipple-root",
+                    }
+                  }
+                >
+                  <span
+                    className="MuiTouchRipple-root"
+                  >
+                    <TransitionGroup
+                      childFactory={[Function]}
+                      component={null}
+                      exit={true}
+                    />
+                  </span>
+                </ForwardRef(TouchRipple)>
+              </WithStyles(undefined)>
+            </NoSsr>
+          </button>
+        </ForwardRef(ButtonBase)>
+      </WithStyles(ForwardRef(ButtonBase))>
+    </ForwardRef(Fab)>
+  </WithStyles(ForwardRef(Fab))>
+</LoadMoreBtn>
+`;

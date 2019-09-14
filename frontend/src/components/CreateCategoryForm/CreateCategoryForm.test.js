@@ -10,7 +10,7 @@ import { CreateCategoryForm, CREATE_CATEGORY_MUTATION } from '.';
 import { GET_CATEGORIES } from '../CategoriesList';
 import { AppContext } from '../../context';
 
-import { fakeCategory } from '../../testUtils';
+import { fakeCategory, updateWrapper } from '../../testUtils';
 
 const categoryData = fakeCategory();
 const { name: newCategoryName } = categoryData;
@@ -81,8 +81,7 @@ describe('<CreateCategoryForm />', () => {
       target: { value: newCategoryName }
     });
 
-    await wait();
-    wrapper.update();
+    await updateWrapper(wrapper);
 
     // input value is changed
     const dirtyInput = wrapper.find(inputSelector);
@@ -93,7 +92,7 @@ describe('<CreateCategoryForm />', () => {
     expect(form).toHaveLength(1);
     form.simulate('submit');
 
-    await wait(50);
+    await updateWrapper(wrapper);
 
     // Check if mutation has been called
     expect(mocks[0].result).toHaveBeenCalledTimes(1);

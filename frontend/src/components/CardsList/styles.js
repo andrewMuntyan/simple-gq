@@ -1,9 +1,6 @@
 import { makeStyles } from '@material-ui/core/styles';
 
 export default makeStyles(() => ({
-  root: {
-    position: 'relative'
-  },
   list: {
     width: '100%',
     display: 'grid',
@@ -11,9 +8,5 @@ export default makeStyles(() => ({
     gridTemplateRows: 'max-content',
     alignItems: 'start',
     userSelect: 'none'
-  },
-  loadMore: {
-    position: 'absolute',
-    right: 0
   }
 }));

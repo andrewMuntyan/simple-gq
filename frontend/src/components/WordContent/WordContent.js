@@ -11,7 +11,8 @@ import Button from '@material-ui/core/Button';
 import { useMutation } from '@apollo/react-hooks';
 import gql from 'graphql-tag';
 
-import { GET_WORDS } from '../CategoryContent';
+import { GET_WORDS_QUERY } from '../CategoryContent';
+import { PAGINATION_QUERY } from '../WordsLoadMoreBtn';
 
 import { AppContext } from '../../context';
 
@@ -32,17 +33,45 @@ const WordContent = ({ data: { content, createdAt, id } }) => {
   const [deleteWord, { loading }] = useMutation(DELETE_WORD, {
     variables: { id },
     update(cache) {
+      const queryVars = { variables: { category: selectedCategory } };
       const { words } = cache.readQuery({
-        query: GET_WORDS,
-        variables: { category: selectedCategory }
+        query: GET_WORDS_QUERY,
+        ...queryVars
       });
-
       cache.writeQuery({
-        query: GET_WORDS,
-        variables: { category: selectedCategory },
+        query: GET_WORDS_QUERY,
+        ...queryVars,
         data: { words: words.filter(word => word.id !== id) }
       });
-    }
+
+      // TODO: DRY
+      const paginationChache = cache.readQuery({
+        query: PAGINATION_QUERY,
+        ...queryVars
+      });
+      const {
+        wordsConnection: {
+          aggregate: { count: cachedCount }
+        }
+      } = paginationChache;
+      cache.writeQuery({
+        query: PAGINATION_QUERY,
+        ...queryVars,
+        data: {
+          wordsConnection: {
+            aggregate: {
+              count: cachedCount - 1,
+              __typename: 'AggregateWord'
+            },
+            __typename: 'WordConnection'
+          }
+        }
+      });
+    },
+    // refetching queries
+    refetchQueries: [
+      { query: PAGINATION_QUERY, variables: { category: selectedCategory } }
+    ]
   });
 
   return (
