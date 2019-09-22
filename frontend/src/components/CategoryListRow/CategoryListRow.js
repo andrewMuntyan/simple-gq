@@ -13,7 +13,7 @@ import gql from 'graphql-tag';
 import { GET_CATEGORIES } from '../CategoriesList';
 import { GET_WORDS_QUERY } from '../CategoryContent';
 
-import { AppContext } from '../../context';
+import { AppStateCtx, AppStateSetterCtx } from '../../context';
 
 import getClasses from './styles';
 
@@ -27,7 +27,8 @@ export const DELETE_CATEGORY = gql`
 `;
 
 const ListRow = ({ data: categoryData }) => {
-  const [{ selectedCategory }, setAppContext] = useContext(AppContext);
+  const { selectedCategory } = useContext(AppStateCtx);
+  const setAppState = useContext(AppStateSetterCtx);
 
   const { name } = categoryData;
   const classes = getClasses();
@@ -86,12 +87,13 @@ const ListRow = ({ data: categoryData }) => {
       const {
         target: { textContent }
       } = e;
-      setAppContext(appContextValue => ({
-        ...appContextValue,
-        selectedCategory: textContent
-      }));
+      setAppState({
+        selectedCategory: textContent,
+        // to reset searchTerm after selectedCategory is changed
+        searchTerm: ''
+      });
     },
-    [setAppContext]
+    [setAppState]
   );
 
   return (

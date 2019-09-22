@@ -1,5 +1,4 @@
-import { act } from 'react-test-renderer';
-import wait from 'waait';
+import { act } from 'react-dom/test-utils';
 
 export const fakeWord = () => ({
   content: 'word',
@@ -12,17 +11,23 @@ export const getFakeCategoriesData = () => ({
     {
       id: 'uuid1',
       name: 'category 1',
-      __typename: 'Category'
+      __typename: 'Category',
+      createdAt: '',
+      updatedAt: ''
     },
     {
       id: 'uuid2',
       name: 'category 2',
-      __typename: 'Category'
+      __typename: 'Category',
+      createdAt: '',
+      updatedAt: ''
     },
     {
       id: 'uuid3',
       name: 'category 3',
-      __typename: 'Category'
+      __typename: 'Category',
+      createdAt: '',
+      updatedAt: ''
     }
   ]
 });
@@ -39,18 +44,9 @@ export const fakePaginationResponse = (count = 0) => ({
 });
 
 // see https://github.com/airbnb/enzyme/issues/2073
-
-// Use this in your test after mounting if you need just need to let the query finish without updating the wrapper
-export async function actWait(amount = 0) {
+export const waitAndUpdateWrapper = async (wrapper, time = 0) => {
   await act(async () => {
-    await wait(amount);
+    await new Promise(res => setTimeout(res, time));
+    await wrapper.update();
   });
-}
-
-// Use this in your test after mounting if you want the query to finish and update the wrapper
-export async function updateWrapper(wrapper, amount = 0) {
-  await act(async () => {
-    await wait(amount);
-    wrapper.update();
-  });
-}
+};

@@ -3,6 +3,7 @@ import { mount } from 'enzyme';
 import toJSON from 'enzyme-to-json';
 import wait from 'waait';
 import { defaultOnSMTH } from '../../utils';
+import { waitAndUpdateWrapper } from '../../testUtils';
 
 import { LoadMoreBtn } from '.';
 
@@ -29,7 +30,7 @@ describe('<LoadMoreBtn />', () => {
     expect(wrapper.html()).toEqual(null);
   });
 
-  it('sets correct visible state', () => {
+  it('sets correct visible state', async () => {
     // not visible
     const wrapper = mount(<LoadMoreBtn />);
     expect(wrapper.html()).toBeFalsy();
@@ -39,7 +40,7 @@ describe('<LoadMoreBtn />', () => {
       displayedItemsCount: 1,
       allItemsCount: 2
     });
-    wrapper.update();
+    await waitAndUpdateWrapper(wrapper);
     expect(wrapper.html()).toBeTruthy();
 
     // not visible
@@ -47,9 +48,10 @@ describe('<LoadMoreBtn />', () => {
       displayedItemsCount: 2,
       allItemsCount: 1
     });
-    wrapper.update();
+    await waitAndUpdateWrapper(wrapper);
     expect(wrapper.html()).toBeFalsy();
   });
+
   it('should call onClick callback and change loading state', async () => {
     const onClick = jest.fn(async () => {
       await wait(100);
@@ -78,7 +80,7 @@ describe('<LoadMoreBtn />', () => {
 
     // loading spinner dispalyed
     // btn is disabled
-    wrapper.update();
+    await waitAndUpdateWrapper(wrapper);
     const displayedSpinner = getSpinner();
     const disabledBtn = getBtn();
     expect(displayedSpinner.exists()).toBeTruthy();
@@ -86,8 +88,7 @@ describe('<LoadMoreBtn />', () => {
 
     // loading spinner is hidden
     // btn is enabled
-    await wait(1000);
-    wrapper.update();
+    await waitAndUpdateWrapper(wrapper, 1000);
     const enabledBtn = getBtn();
     const hiddenSpinner = getSpinner();
     expect(enabledBtn.props().disabled).toBeFalsy();

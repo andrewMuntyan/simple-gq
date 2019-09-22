@@ -14,7 +14,7 @@ import gql from 'graphql-tag';
 import { GET_WORDS_QUERY } from '../CategoryContent';
 import { PAGINATION_QUERY } from '../WordsLoadMoreBtn';
 
-import { AppContext } from '../../context';
+import { AppStateCtx } from '../../context';
 
 import getClasses from './styles';
 
@@ -28,7 +28,7 @@ export const DELETE_WORD = gql`
 
 const WordContent = ({ data: { content, createdAt, id } }) => {
   const classes = getClasses();
-  const [{ selectedCategory }] = useContext(AppContext);
+  const { selectedCategory } = useContext(AppStateCtx);
 
   const [deleteWord, { loading }] = useMutation(DELETE_WORD, {
     variables: { id },

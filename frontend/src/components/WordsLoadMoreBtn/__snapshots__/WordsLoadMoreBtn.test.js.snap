@@ -58,6 +58,20 @@ exports[`<WordsLoadMoreBtn /> renders and displays properly 1`] = `
                                   "kind": "ObjectValue",
                                 },
                               },
+                              Object {
+                                "kind": "ObjectField",
+                                "name": Object {
+                                  "kind": "Name",
+                                  "value": "content_contains",
+                                },
+                                "value": Object {
+                                  "kind": "Variable",
+                                  "name": Object {
+                                    "kind": "Name",
+                                    "value": "searchTerm",
+                                  },
+                                },
+                              },
                             ],
                             "kind": "ObjectValue",
                           },
@@ -126,12 +140,35 @@ exports[`<WordsLoadMoreBtn /> renders and displays properly 1`] = `
                       },
                     },
                   },
+                  Object {
+                    "defaultValue": Object {
+                      "block": false,
+                      "kind": "StringValue",
+                      "value": "",
+                    },
+                    "directives": Array [],
+                    "kind": "VariableDefinition",
+                    "type": Object {
+                      "kind": "NamedType",
+                      "name": Object {
+                        "kind": "Name",
+                        "value": "String",
+                      },
+                    },
+                    "variable": Object {
+                      "kind": "Variable",
+                      "name": Object {
+                        "kind": "Name",
+                        "value": "searchTerm",
+                      },
+                    },
+                  },
                 ],
               },
             ],
             "kind": "Document",
             "loc": Object {
-              "end": 162,
+              "end": 231,
               "start": 0,
             },
           },
@@ -238,6 +275,20 @@ exports[`<WordsLoadMoreBtn /> renders and displays properly 1`] = `
                                     "kind": "ObjectValue",
                                   },
                                 },
+                                Object {
+                                  "kind": "ObjectField",
+                                  "name": Object {
+                                    "kind": "Name",
+                                    "value": "content_contains",
+                                  },
+                                  "value": Object {
+                                    "kind": "Variable",
+                                    "name": Object {
+                                      "kind": "Name",
+                                      "value": "searchTerm",
+                                    },
+                                  },
+                                },
                               ],
                               "kind": "ObjectValue",
                             },
@@ -306,12 +357,35 @@ exports[`<WordsLoadMoreBtn /> renders and displays properly 1`] = `
                         },
                       },
                     },
+                    Object {
+                      "defaultValue": Object {
+                        "block": false,
+                        "kind": "StringValue",
+                        "value": "",
+                      },
+                      "directives": Array [],
+                      "kind": "VariableDefinition",
+                      "type": Object {
+                        "kind": "NamedType",
+                        "name": Object {
+                          "kind": "Name",
+                          "value": "String",
+                        },
+                      },
+                      "variable": Object {
+                        "kind": "Variable",
+                        "name": Object {
+                          "kind": "Name",
+                          "value": "searchTerm",
+                        },
+                      },
+                    },
                   ],
                 },
               ],
               "kind": "Document",
               "loc": Object {
-                "end": 162,
+                "end": 231,
                 "start": 0,
               },
             } => Object {
@@ -362,6 +436,20 @@ exports[`<WordsLoadMoreBtn /> renders and displays properly 1`] = `
                                       },
                                     ],
                                     "kind": "ObjectValue",
+                                  },
+                                },
+                                Object {
+                                  "kind": "ObjectField",
+                                  "name": Object {
+                                    "kind": "Name",
+                                    "value": "content_contains",
+                                  },
+                                  "value": Object {
+                                    "kind": "Variable",
+                                    "name": Object {
+                                      "kind": "Name",
+                                      "value": "searchTerm",
+                                    },
                                   },
                                 },
                               ],
@@ -446,12 +534,35 @@ exports[`<WordsLoadMoreBtn /> renders and displays properly 1`] = `
                         },
                       },
                     },
+                    Object {
+                      "defaultValue": Object {
+                        "block": false,
+                        "kind": "StringValue",
+                        "value": "",
+                      },
+                      "directives": Array [],
+                      "kind": "VariableDefinition",
+                      "type": Object {
+                        "kind": "NamedType",
+                        "name": Object {
+                          "kind": "Name",
+                          "value": "String",
+                        },
+                      },
+                      "variable": Object {
+                        "kind": "Variable",
+                        "name": Object {
+                          "kind": "Name",
+                          "value": "searchTerm",
+                        },
+                      },
+                    },
                   ],
                 },
               ],
               "kind": "Document",
               "loc": Object {
-                "end": 162,
+                "end": 231,
                 "start": 0,
               },
             },
@@ -505,144 +616,18 @@ exports[`<WordsLoadMoreBtn /> renders and displays properly 1`] = `
                                     "kind": "ObjectValue",
                                   },
                                 },
-                              ],
-                              "kind": "ObjectValue",
-                            },
-                          },
-                        ],
-                        "directives": Array [],
-                        "kind": "Field",
-                        "name": Object {
-                          "kind": "Name",
-                          "value": "wordsConnection",
-                        },
-                        "selectionSet": Object {
-                          "kind": "SelectionSet",
-                          "selections": Array [
-                            Object {
-                              "alias": undefined,
-                              "arguments": Array [],
-                              "directives": Array [],
-                              "kind": "Field",
-                              "name": Object {
-                                "kind": "Name",
-                                "value": "aggregate",
-                              },
-                              "selectionSet": Object {
-                                "kind": "SelectionSet",
-                                "selections": Array [
-                                  Object {
-                                    "alias": undefined,
-                                    "arguments": Array [],
-                                    "directives": Array [],
-                                    "kind": "Field",
-                                    "name": Object {
-                                      "kind": "Name",
-                                      "value": "count",
-                                    },
-                                    "selectionSet": undefined,
-                                  },
-                                  Object {
-                                    "kind": "Field",
-                                    "name": Object {
-                                      "kind": "Name",
-                                      "value": "__typename",
-                                    },
-                                  },
-                                ],
-                              },
-                            },
-                            Object {
-                              "kind": "Field",
-                              "name": Object {
-                                "kind": "Name",
-                                "value": "__typename",
-                              },
-                            },
-                          ],
-                        },
-                      },
-                    ],
-                  },
-                  "variableDefinitions": Array [
-                    Object {
-                      "defaultValue": undefined,
-                      "directives": Array [],
-                      "kind": "VariableDefinition",
-                      "type": Object {
-                        "kind": "NonNullType",
-                        "type": Object {
-                          "kind": "NamedType",
-                          "name": Object {
-                            "kind": "Name",
-                            "value": "String",
-                          },
-                        },
-                      },
-                      "variable": Object {
-                        "kind": "Variable",
-                        "name": Object {
-                          "kind": "Name",
-                          "value": "category",
-                        },
-                      },
-                    },
-                  ],
-                },
-              ],
-              "kind": "Document",
-              "loc": Object {
-                "end": 162,
-                "start": 0,
-              },
-            } => Object {
-              "definitions": Array [
-                Object {
-                  "directives": Array [],
-                  "kind": "OperationDefinition",
-                  "name": Object {
-                    "kind": "Name",
-                    "value": "PAGINATION_QUERY",
-                  },
-                  "operation": "query",
-                  "selectionSet": Object {
-                    "kind": "SelectionSet",
-                    "selections": Array [
-                      Object {
-                        "alias": undefined,
-                        "arguments": Array [
-                          Object {
-                            "kind": "Argument",
-                            "name": Object {
-                              "kind": "Name",
-                              "value": "where",
-                            },
-                            "value": Object {
-                              "fields": Array [
                                 Object {
                                   "kind": "ObjectField",
                                   "name": Object {
                                     "kind": "Name",
-                                    "value": "category",
+                                    "value": "content_contains",
                                   },
                                   "value": Object {
-                                    "fields": Array [
-                                      Object {
-                                        "kind": "ObjectField",
-                                        "name": Object {
-                                          "kind": "Name",
-                                          "value": "name",
-                                        },
-                                        "value": Object {
-                                          "kind": "Variable",
-                                          "name": Object {
-                                            "kind": "Name",
-                                            "value": "category",
-                                          },
-                                        },
-                                      },
-                                    ],
-                                    "kind": "ObjectValue",
+                                    "kind": "Variable",
+                                    "name": Object {
+                                      "kind": "Name",
+                                      "value": "searchTerm",
+                                    },
                                   },
                                 },
                               ],
@@ -727,12 +712,212 @@ exports[`<WordsLoadMoreBtn /> renders and displays properly 1`] = `
                         },
                       },
                     },
+                    Object {
+                      "defaultValue": Object {
+                        "block": false,
+                        "kind": "StringValue",
+                        "value": "",
+                      },
+                      "directives": Array [],
+                      "kind": "VariableDefinition",
+                      "type": Object {
+                        "kind": "NamedType",
+                        "name": Object {
+                          "kind": "Name",
+                          "value": "String",
+                        },
+                      },
+                      "variable": Object {
+                        "kind": "Variable",
+                        "name": Object {
+                          "kind": "Name",
+                          "value": "searchTerm",
+                        },
+                      },
+                    },
                   ],
                 },
               ],
               "kind": "Document",
               "loc": Object {
-                "end": 162,
+                "end": 231,
+                "start": 0,
+              },
+            } => Object {
+              "definitions": Array [
+                Object {
+                  "directives": Array [],
+                  "kind": "OperationDefinition",
+                  "name": Object {
+                    "kind": "Name",
+                    "value": "PAGINATION_QUERY",
+                  },
+                  "operation": "query",
+                  "selectionSet": Object {
+                    "kind": "SelectionSet",
+                    "selections": Array [
+                      Object {
+                        "alias": undefined,
+                        "arguments": Array [
+                          Object {
+                            "kind": "Argument",
+                            "name": Object {
+                              "kind": "Name",
+                              "value": "where",
+                            },
+                            "value": Object {
+                              "fields": Array [
+                                Object {
+                                  "kind": "ObjectField",
+                                  "name": Object {
+                                    "kind": "Name",
+                                    "value": "category",
+                                  },
+                                  "value": Object {
+                                    "fields": Array [
+                                      Object {
+                                        "kind": "ObjectField",
+                                        "name": Object {
+                                          "kind": "Name",
+                                          "value": "name",
+                                        },
+                                        "value": Object {
+                                          "kind": "Variable",
+                                          "name": Object {
+                                            "kind": "Name",
+                                            "value": "category",
+                                          },
+                                        },
+                                      },
+                                    ],
+                                    "kind": "ObjectValue",
+                                  },
+                                },
+                                Object {
+                                  "kind": "ObjectField",
+                                  "name": Object {
+                                    "kind": "Name",
+                                    "value": "content_contains",
+                                  },
+                                  "value": Object {
+                                    "kind": "Variable",
+                                    "name": Object {
+                                      "kind": "Name",
+                                      "value": "searchTerm",
+                                    },
+                                  },
+                                },
+                              ],
+                              "kind": "ObjectValue",
+                            },
+                          },
+                        ],
+                        "directives": Array [],
+                        "kind": "Field",
+                        "name": Object {
+                          "kind": "Name",
+                          "value": "wordsConnection",
+                        },
+                        "selectionSet": Object {
+                          "kind": "SelectionSet",
+                          "selections": Array [
+                            Object {
+                              "alias": undefined,
+                              "arguments": Array [],
+                              "directives": Array [],
+                              "kind": "Field",
+                              "name": Object {
+                                "kind": "Name",
+                                "value": "aggregate",
+                              },
+                              "selectionSet": Object {
+                                "kind": "SelectionSet",
+                                "selections": Array [
+                                  Object {
+                                    "alias": undefined,
+                                    "arguments": Array [],
+                                    "directives": Array [],
+                                    "kind": "Field",
+                                    "name": Object {
+                                      "kind": "Name",
+                                      "value": "count",
+                                    },
+                                    "selectionSet": undefined,
+                                  },
+                                  Object {
+                                    "kind": "Field",
+                                    "name": Object {
+                                      "kind": "Name",
+                                      "value": "__typename",
+                                    },
+                                  },
+                                ],
+                              },
+                            },
+                            Object {
+                              "kind": "Field",
+                              "name": Object {
+                                "kind": "Name",
+                                "value": "__typename",
+                              },
+                            },
+                          ],
+                        },
+                      },
+                    ],
+                  },
+                  "variableDefinitions": Array [
+                    Object {
+                      "defaultValue": undefined,
+                      "directives": Array [],
+                      "kind": "VariableDefinition",
+                      "type": Object {
+                        "kind": "NonNullType",
+                        "type": Object {
+                          "kind": "NamedType",
+                          "name": Object {
+                            "kind": "Name",
+                            "value": "String",
+                          },
+                        },
+                      },
+                      "variable": Object {
+                        "kind": "Variable",
+                        "name": Object {
+                          "kind": "Name",
+                          "value": "category",
+                        },
+                      },
+                    },
+                    Object {
+                      "defaultValue": Object {
+                        "block": false,
+                        "kind": "StringValue",
+                        "value": "",
+                      },
+                      "directives": Array [],
+                      "kind": "VariableDefinition",
+                      "type": Object {
+                        "kind": "NamedType",
+                        "name": Object {
+                          "kind": "Name",
+                          "value": "String",
+                        },
+                      },
+                      "variable": Object {
+                        "kind": "Variable",
+                        "name": Object {
+                          "kind": "Name",
+                          "value": "searchTerm",
+                        },
+                      },
+                    },
+                  ],
+                },
+              ],
+              "kind": "Document",
+              "loc": Object {
+                "end": 231,
                 "start": 0,
               },
             },
@@ -790,6 +975,20 @@ exports[`<WordsLoadMoreBtn /> renders and displays properly 1`] = `
                                         },
                                       ],
                                       "kind": "ObjectValue",
+                                    },
+                                  },
+                                  Object {
+                                    "kind": "ObjectField",
+                                    "name": Object {
+                                      "kind": "Name",
+                                      "value": "content_contains",
+                                    },
+                                    "value": Object {
+                                      "kind": "Variable",
+                                      "name": Object {
+                                        "kind": "Name",
+                                        "value": "searchTerm",
+                                      },
                                     },
                                   },
                                 ],
@@ -874,17 +1073,41 @@ exports[`<WordsLoadMoreBtn /> renders and displays properly 1`] = `
                           },
                         },
                       },
+                      Object {
+                        "defaultValue": Object {
+                          "block": false,
+                          "kind": "StringValue",
+                          "value": "",
+                        },
+                        "directives": Array [],
+                        "kind": "VariableDefinition",
+                        "type": Object {
+                          "kind": "NamedType",
+                          "name": Object {
+                            "kind": "Name",
+                            "value": "String",
+                          },
+                        },
+                        "variable": Object {
+                          "kind": "Variable",
+                          "name": Object {
+                            "kind": "Name",
+                            "value": "searchTerm",
+                          },
+                        },
+                      },
                     ],
                   },
                 ],
                 "kind": "Document",
                 "loc": Object {
-                  "end": 162,
+                  "end": 231,
                   "start": 0,
                 },
               },
               "variables": Object {
                 "category": "category1",
+                "searchTerm": undefined,
               },
             },
           },
@@ -895,7 +1118,7 @@ exports[`<WordsLoadMoreBtn /> renders and displays properly 1`] = `
         "link": MockLink {
           "addTypename": true,
           "mockedResponsesByKey": Object {
-            "{\\"query\\":\\"query PAGINATION_QUERY($category: String!) {\\\\n  wordsConnection(where: {category: {name: $category}}) {\\\\n    aggregate {\\\\n      count\\\\n      __typename\\\\n    }\\\\n    __typename\\\\n  }\\\\n}\\\\n\\"}": Array [],
+            "{\\"query\\":\\"query PAGINATION_QUERY($category: String!, $searchTerm: String = \\\\\\"\\\\\\") {\\\\n  wordsConnection(where: {category: {name: $category}, content_contains: $searchTerm}) {\\\\n    aggregate {\\\\n      count\\\\n      __typename\\\\n    }\\\\n    __typename\\\\n  }\\\\n}\\\\n\\"}": Array [],
           },
         },
         "localState": LocalState {
@@ -980,6 +1203,20 @@ exports[`<WordsLoadMoreBtn /> renders and displays properly 1`] = `
                                       "kind": "ObjectValue",
                                     },
                                   },
+                                  Object {
+                                    "kind": "ObjectField",
+                                    "name": Object {
+                                      "kind": "Name",
+                                      "value": "content_contains",
+                                    },
+                                    "value": Object {
+                                      "kind": "Variable",
+                                      "name": Object {
+                                        "kind": "Name",
+                                        "value": "searchTerm",
+                                      },
+                                    },
+                                  },
                                 ],
                                 "kind": "ObjectValue",
                               },
@@ -1048,12 +1285,35 @@ exports[`<WordsLoadMoreBtn /> renders and displays properly 1`] = `
                           },
                         },
                       },
+                      Object {
+                        "defaultValue": Object {
+                          "block": false,
+                          "kind": "StringValue",
+                          "value": "",
+                        },
+                        "directives": Array [],
+                        "kind": "VariableDefinition",
+                        "type": Object {
+                          "kind": "NamedType",
+                          "name": Object {
+                            "kind": "Name",
+                            "value": "String",
+                          },
+                        },
+                        "variable": Object {
+                          "kind": "Variable",
+                          "name": Object {
+                            "kind": "Name",
+                            "value": "searchTerm",
+                          },
+                        },
+                      },
                     ],
                   },
                 ],
                 "kind": "Document",
                 "loc": Object {
-                  "end": 162,
+                  "end": 231,
                   "start": 0,
                 },
               } => Object {
@@ -1104,6 +1364,20 @@ exports[`<WordsLoadMoreBtn /> renders and displays properly 1`] = `
                                         },
                                       ],
                                       "kind": "ObjectValue",
+                                    },
+                                  },
+                                  Object {
+                                    "kind": "ObjectField",
+                                    "name": Object {
+                                      "kind": "Name",
+                                      "value": "content_contains",
+                                    },
+                                    "value": Object {
+                                      "kind": "Variable",
+                                      "name": Object {
+                                        "kind": "Name",
+                                        "value": "searchTerm",
+                                      },
                                     },
                                   },
                                 ],
@@ -1188,12 +1462,35 @@ exports[`<WordsLoadMoreBtn /> renders and displays properly 1`] = `
                           },
                         },
                       },
+                      Object {
+                        "defaultValue": Object {
+                          "block": false,
+                          "kind": "StringValue",
+                          "value": "",
+                        },
+                        "directives": Array [],
+                        "kind": "VariableDefinition",
+                        "type": Object {
+                          "kind": "NamedType",
+                          "name": Object {
+                            "kind": "Name",
+                            "value": "String",
+                          },
+                        },
+                        "variable": Object {
+                          "kind": "Variable",
+                          "name": Object {
+                            "kind": "Name",
+                            "value": "searchTerm",
+                          },
+                        },
+                      },
                     ],
                   },
                 ],
                 "kind": "Document",
                 "loc": Object {
-                  "end": 162,
+                  "end": 231,
                   "start": 0,
                 },
               },
@@ -1247,144 +1544,18 @@ exports[`<WordsLoadMoreBtn /> renders and displays properly 1`] = `
                                       "kind": "ObjectValue",
                                     },
                                   },
-                                ],
-                                "kind": "ObjectValue",
-                              },
-                            },
-                          ],
-                          "directives": Array [],
-                          "kind": "Field",
-                          "name": Object {
-                            "kind": "Name",
-                            "value": "wordsConnection",
-                          },
-                          "selectionSet": Object {
-                            "kind": "SelectionSet",
-                            "selections": Array [
-                              Object {
-                                "alias": undefined,
-                                "arguments": Array [],
-                                "directives": Array [],
-                                "kind": "Field",
-                                "name": Object {
-                                  "kind": "Name",
-                                  "value": "aggregate",
-                                },
-                                "selectionSet": Object {
-                                  "kind": "SelectionSet",
-                                  "selections": Array [
-                                    Object {
-                                      "alias": undefined,
-                                      "arguments": Array [],
-                                      "directives": Array [],
-                                      "kind": "Field",
-                                      "name": Object {
-                                        "kind": "Name",
-                                        "value": "count",
-                                      },
-                                      "selectionSet": undefined,
-                                    },
-                                    Object {
-                                      "kind": "Field",
-                                      "name": Object {
-                                        "kind": "Name",
-                                        "value": "__typename",
-                                      },
-                                    },
-                                  ],
-                                },
-                              },
-                              Object {
-                                "kind": "Field",
-                                "name": Object {
-                                  "kind": "Name",
-                                  "value": "__typename",
-                                },
-                              },
-                            ],
-                          },
-                        },
-                      ],
-                    },
-                    "variableDefinitions": Array [
-                      Object {
-                        "defaultValue": undefined,
-                        "directives": Array [],
-                        "kind": "VariableDefinition",
-                        "type": Object {
-                          "kind": "NonNullType",
-                          "type": Object {
-                            "kind": "NamedType",
-                            "name": Object {
-                              "kind": "Name",
-                              "value": "String",
-                            },
-                          },
-                        },
-                        "variable": Object {
-                          "kind": "Variable",
-                          "name": Object {
-                            "kind": "Name",
-                            "value": "category",
-                          },
-                        },
-                      },
-                    ],
-                  },
-                ],
-                "kind": "Document",
-                "loc": Object {
-                  "end": 162,
-                  "start": 0,
-                },
-              } => Object {
-                "definitions": Array [
-                  Object {
-                    "directives": Array [],
-                    "kind": "OperationDefinition",
-                    "name": Object {
-                      "kind": "Name",
-                      "value": "PAGINATION_QUERY",
-                    },
-                    "operation": "query",
-                    "selectionSet": Object {
-                      "kind": "SelectionSet",
-                      "selections": Array [
-                        Object {
-                          "alias": undefined,
-                          "arguments": Array [
-                            Object {
-                              "kind": "Argument",
-                              "name": Object {
-                                "kind": "Name",
-                                "value": "where",
-                              },
-                              "value": Object {
-                                "fields": Array [
                                   Object {
                                     "kind": "ObjectField",
                                     "name": Object {
                                       "kind": "Name",
-                                      "value": "category",
+                                      "value": "content_contains",
                                     },
                                     "value": Object {
-                                      "fields": Array [
-                                        Object {
-                                          "kind": "ObjectField",
-                                          "name": Object {
-                                            "kind": "Name",
-                                            "value": "name",
-                                          },
-                                          "value": Object {
-                                            "kind": "Variable",
-                                            "name": Object {
-                                              "kind": "Name",
-                                              "value": "category",
-                                            },
-                                          },
-                                        },
-                                      ],
-                                      "kind": "ObjectValue",
+                                      "kind": "Variable",
+                                      "name": Object {
+                                        "kind": "Name",
+                                        "value": "searchTerm",
+                                      },
                                     },
                                   },
                                 ],
@@ -1469,12 +1640,212 @@ exports[`<WordsLoadMoreBtn /> renders and displays properly 1`] = `
                           },
                         },
                       },
+                      Object {
+                        "defaultValue": Object {
+                          "block": false,
+                          "kind": "StringValue",
+                          "value": "",
+                        },
+                        "directives": Array [],
+                        "kind": "VariableDefinition",
+                        "type": Object {
+                          "kind": "NamedType",
+                          "name": Object {
+                            "kind": "Name",
+                            "value": "String",
+                          },
+                        },
+                        "variable": Object {
+                          "kind": "Variable",
+                          "name": Object {
+                            "kind": "Name",
+                            "value": "searchTerm",
+                          },
+                        },
+                      },
                     ],
                   },
                 ],
                 "kind": "Document",
                 "loc": Object {
-                  "end": 162,
+                  "end": 231,
+                  "start": 0,
+                },
+              } => Object {
+                "definitions": Array [
+                  Object {
+                    "directives": Array [],
+                    "kind": "OperationDefinition",
+                    "name": Object {
+                      "kind": "Name",
+                      "value": "PAGINATION_QUERY",
+                    },
+                    "operation": "query",
+                    "selectionSet": Object {
+                      "kind": "SelectionSet",
+                      "selections": Array [
+                        Object {
+                          "alias": undefined,
+                          "arguments": Array [
+                            Object {
+                              "kind": "Argument",
+                              "name": Object {
+                                "kind": "Name",
+                                "value": "where",
+                              },
+                              "value": Object {
+                                "fields": Array [
+                                  Object {
+                                    "kind": "ObjectField",
+                                    "name": Object {
+                                      "kind": "Name",
+                                      "value": "category",
+                                    },
+                                    "value": Object {
+                                      "fields": Array [
+                                        Object {
+                                          "kind": "ObjectField",
+                                          "name": Object {
+                                            "kind": "Name",
+                                            "value": "name",
+                                          },
+                                          "value": Object {
+                                            "kind": "Variable",
+                                            "name": Object {
+                                              "kind": "Name",
+                                              "value": "category",
+                                            },
+                                          },
+                                        },
+                                      ],
+                                      "kind": "ObjectValue",
+                                    },
+                                  },
+                                  Object {
+                                    "kind": "ObjectField",
+                                    "name": Object {
+                                      "kind": "Name",
+                                      "value": "content_contains",
+                                    },
+                                    "value": Object {
+                                      "kind": "Variable",
+                                      "name": Object {
+                                        "kind": "Name",
+                                        "value": "searchTerm",
+                                      },
+                                    },
+                                  },
+                                ],
+                                "kind": "ObjectValue",
+                              },
+                            },
+                          ],
+                          "directives": Array [],
+                          "kind": "Field",
+                          "name": Object {
+                            "kind": "Name",
+                            "value": "wordsConnection",
+                          },
+                          "selectionSet": Object {
+                            "kind": "SelectionSet",
+                            "selections": Array [
+                              Object {
+                                "alias": undefined,
+                                "arguments": Array [],
+                                "directives": Array [],
+                                "kind": "Field",
+                                "name": Object {
+                                  "kind": "Name",
+                                  "value": "aggregate",
+                                },
+                                "selectionSet": Object {
+                                  "kind": "SelectionSet",
+                                  "selections": Array [
+                                    Object {
+                                      "alias": undefined,
+                                      "arguments": Array [],
+                                      "directives": Array [],
+                                      "kind": "Field",
+                                      "name": Object {
+                                        "kind": "Name",
+                                        "value": "count",
+                                      },
+                                      "selectionSet": undefined,
+                                    },
+                                    Object {
+                                      "kind": "Field",
+                                      "name": Object {
+                                        "kind": "Name",
+                                        "value": "__typename",
+                                      },
+                                    },
+                                  ],
+                                },
+                              },
+                              Object {
+                                "kind": "Field",
+                                "name": Object {
+                                  "kind": "Name",
+                                  "value": "__typename",
+                                },
+                              },
+                            ],
+                          },
+                        },
+                      ],
+                    },
+                    "variableDefinitions": Array [
+                      Object {
+                        "defaultValue": undefined,
+                        "directives": Array [],
+                        "kind": "VariableDefinition",
+                        "type": Object {
+                          "kind": "NonNullType",
+                          "type": Object {
+                            "kind": "NamedType",
+                            "name": Object {
+                              "kind": "Name",
+                              "value": "String",
+                            },
+                          },
+                        },
+                        "variable": Object {
+                          "kind": "Variable",
+                          "name": Object {
+                            "kind": "Name",
+                            "value": "category",
+                          },
+                        },
+                      },
+                      Object {
+                        "defaultValue": Object {
+                          "block": false,
+                          "kind": "StringValue",
+                          "value": "",
+                        },
+                        "directives": Array [],
+                        "kind": "VariableDefinition",
+                        "type": Object {
+                          "kind": "NamedType",
+                          "name": Object {
+                            "kind": "Name",
+                            "value": "String",
+                          },
+                        },
+                        "variable": Object {
+                          "kind": "Variable",
+                          "name": Object {
+                            "kind": "Name",
+                            "value": "searchTerm",
+                          },
+                        },
+                      },
+                    ],
+                  },
+                ],
+                "kind": "Document",
+                "loc": Object {
+                  "end": 231,
                   "start": 0,
                 },
               },
@@ -1532,6 +1903,20 @@ exports[`<WordsLoadMoreBtn /> renders and displays properly 1`] = `
                                           },
                                         ],
                                         "kind": "ObjectValue",
+                                      },
+                                    },
+                                    Object {
+                                      "kind": "ObjectField",
+                                      "name": Object {
+                                        "kind": "Name",
+                                        "value": "content_contains",
+                                      },
+                                      "value": Object {
+                                        "kind": "Variable",
+                                        "name": Object {
+                                          "kind": "Name",
+                                          "value": "searchTerm",
+                                        },
                                       },
                                     },
                                   ],
@@ -1616,17 +2001,41 @@ exports[`<WordsLoadMoreBtn /> renders and displays properly 1`] = `
                             },
                           },
                         },
+                        Object {
+                          "defaultValue": Object {
+                            "block": false,
+                            "kind": "StringValue",
+                            "value": "",
+                          },
+                          "directives": Array [],
+                          "kind": "VariableDefinition",
+                          "type": Object {
+                            "kind": "NamedType",
+                            "name": Object {
+                              "kind": "Name",
+                              "value": "String",
+                            },
+                          },
+                          "variable": Object {
+                            "kind": "Variable",
+                            "name": Object {
+                              "kind": "Name",
+                              "value": "searchTerm",
+                            },
+                          },
+                        },
                       ],
                     },
                   ],
                   "kind": "Document",
                   "loc": Object {
-                    "end": 162,
+                    "end": 231,
                     "start": 0,
                   },
                 },
                 "variables": Object {
                   "category": "category1",
+                  "searchTerm": undefined,
                 },
               },
             },
@@ -1724,6 +2133,20 @@ exports[`<WordsLoadMoreBtn /> renders and displays properly 1`] = `
                                         "kind": "ObjectValue",
                                       },
                                     },
+                                    Object {
+                                      "kind": "ObjectField",
+                                      "name": Object {
+                                        "kind": "Name",
+                                        "value": "content_contains",
+                                      },
+                                      "value": Object {
+                                        "kind": "Variable",
+                                        "name": Object {
+                                          "kind": "Name",
+                                          "value": "searchTerm",
+                                        },
+                                      },
+                                    },
                                   ],
                                   "kind": "ObjectValue",
                                 },
@@ -1792,12 +2215,35 @@ exports[`<WordsLoadMoreBtn /> renders and displays properly 1`] = `
                             },
                           },
                         },
+                        Object {
+                          "defaultValue": Object {
+                            "block": false,
+                            "kind": "StringValue",
+                            "value": "",
+                          },
+                          "directives": Array [],
+                          "kind": "VariableDefinition",
+                          "type": Object {
+                            "kind": "NamedType",
+                            "name": Object {
+                              "kind": "Name",
+                              "value": "String",
+                            },
+                          },
+                          "variable": Object {
+                            "kind": "Variable",
+                            "name": Object {
+                              "kind": "Name",
+                              "value": "searchTerm",
+                            },
+                          },
+                        },
                       ],
                     },
                   ],
                   "kind": "Document",
                   "loc": Object {
-                    "end": 162,
+                    "end": 231,
                     "start": 0,
                   },
                 } => Object {
@@ -1848,6 +2294,20 @@ exports[`<WordsLoadMoreBtn /> renders and displays properly 1`] = `
                                           },
                                         ],
                                         "kind": "ObjectValue",
+                                      },
+                                    },
+                                    Object {
+                                      "kind": "ObjectField",
+                                      "name": Object {
+                                        "kind": "Name",
+                                        "value": "content_contains",
+                                      },
+                                      "value": Object {
+                                        "kind": "Variable",
+                                        "name": Object {
+                                          "kind": "Name",
+                                          "value": "searchTerm",
+                                        },
                                       },
                                     },
                                   ],
@@ -1932,12 +2392,35 @@ exports[`<WordsLoadMoreBtn /> renders and displays properly 1`] = `
                             },
                           },
                         },
+                        Object {
+                          "defaultValue": Object {
+                            "block": false,
+                            "kind": "StringValue",
+                            "value": "",
+                          },
+                          "directives": Array [],
+                          "kind": "VariableDefinition",
+                          "type": Object {
+                            "kind": "NamedType",
+                            "name": Object {
+                              "kind": "Name",
+                              "value": "String",
+                            },
+                          },
+                          "variable": Object {
+                            "kind": "Variable",
+                            "name": Object {
+                              "kind": "Name",
+                              "value": "searchTerm",
+                            },
+                          },
+                        },
                       ],
                     },
                   ],
                   "kind": "Document",
                   "loc": Object {
-                    "end": 162,
+                    "end": 231,
                     "start": 0,
                   },
                 },
@@ -1991,144 +2474,18 @@ exports[`<WordsLoadMoreBtn /> renders and displays properly 1`] = `
                                         "kind": "ObjectValue",
                                       },
                                     },
-                                  ],
-                                  "kind": "ObjectValue",
-                                },
-                              },
-                            ],
-                            "directives": Array [],
-                            "kind": "Field",
-                            "name": Object {
-                              "kind": "Name",
-                              "value": "wordsConnection",
-                            },
-                            "selectionSet": Object {
-                              "kind": "SelectionSet",
-                              "selections": Array [
-                                Object {
-                                  "alias": undefined,
-                                  "arguments": Array [],
-                                  "directives": Array [],
-                                  "kind": "Field",
-                                  "name": Object {
-                                    "kind": "Name",
-                                    "value": "aggregate",
-                                  },
-                                  "selectionSet": Object {
-                                    "kind": "SelectionSet",
-                                    "selections": Array [
-                                      Object {
-                                        "alias": undefined,
-                                        "arguments": Array [],
-                                        "directives": Array [],
-                                        "kind": "Field",
-                                        "name": Object {
-                                          "kind": "Name",
-                                          "value": "count",
-                                        },
-                                        "selectionSet": undefined,
-                                      },
-                                      Object {
-                                        "kind": "Field",
-                                        "name": Object {
-                                          "kind": "Name",
-                                          "value": "__typename",
-                                        },
-                                      },
-                                    ],
-                                  },
-                                },
-                                Object {
-                                  "kind": "Field",
-                                  "name": Object {
-                                    "kind": "Name",
-                                    "value": "__typename",
-                                  },
-                                },
-                              ],
-                            },
-                          },
-                        ],
-                      },
-                      "variableDefinitions": Array [
-                        Object {
-                          "defaultValue": undefined,
-                          "directives": Array [],
-                          "kind": "VariableDefinition",
-                          "type": Object {
-                            "kind": "NonNullType",
-                            "type": Object {
-                              "kind": "NamedType",
-                              "name": Object {
-                                "kind": "Name",
-                                "value": "String",
-                              },
-                            },
-                          },
-                          "variable": Object {
-                            "kind": "Variable",
-                            "name": Object {
-                              "kind": "Name",
-                              "value": "category",
-                            },
-                          },
-                        },
-                      ],
-                    },
-                  ],
-                  "kind": "Document",
-                  "loc": Object {
-                    "end": 162,
-                    "start": 0,
-                  },
-                } => Object {
-                  "definitions": Array [
-                    Object {
-                      "directives": Array [],
-                      "kind": "OperationDefinition",
-                      "name": Object {
-                        "kind": "Name",
-                        "value": "PAGINATION_QUERY",
-                      },
-                      "operation": "query",
-                      "selectionSet": Object {
-                        "kind": "SelectionSet",
-                        "selections": Array [
-                          Object {
-                            "alias": undefined,
-                            "arguments": Array [
-                              Object {
-                                "kind": "Argument",
-                                "name": Object {
-                                  "kind": "Name",
-                                  "value": "where",
-                                },
-                                "value": Object {
-                                  "fields": Array [
                                     Object {
                                       "kind": "ObjectField",
                                       "name": Object {
                                         "kind": "Name",
-                                        "value": "category",
+                                        "value": "content_contains",
                                       },
                                       "value": Object {
-                                        "fields": Array [
-                                          Object {
-                                            "kind": "ObjectField",
-                                            "name": Object {
-                                              "kind": "Name",
-                                              "value": "name",
-                                            },
-                                            "value": Object {
-                                              "kind": "Variable",
-                                              "name": Object {
-                                                "kind": "Name",
-                                                "value": "category",
-                                              },
-                                            },
-                                          },
-                                        ],
-                                        "kind": "ObjectValue",
+                                        "kind": "Variable",
+                                        "name": Object {
+                                          "kind": "Name",
+                                          "value": "searchTerm",
+                                        },
                                       },
                                     },
                                   ],
@@ -2213,12 +2570,212 @@ exports[`<WordsLoadMoreBtn /> renders and displays properly 1`] = `
                             },
                           },
                         },
+                        Object {
+                          "defaultValue": Object {
+                            "block": false,
+                            "kind": "StringValue",
+                            "value": "",
+                          },
+                          "directives": Array [],
+                          "kind": "VariableDefinition",
+                          "type": Object {
+                            "kind": "NamedType",
+                            "name": Object {
+                              "kind": "Name",
+                              "value": "String",
+                            },
+                          },
+                          "variable": Object {
+                            "kind": "Variable",
+                            "name": Object {
+                              "kind": "Name",
+                              "value": "searchTerm",
+                            },
+                          },
+                        },
                       ],
                     },
                   ],
                   "kind": "Document",
                   "loc": Object {
-                    "end": 162,
+                    "end": 231,
+                    "start": 0,
+                  },
+                } => Object {
+                  "definitions": Array [
+                    Object {
+                      "directives": Array [],
+                      "kind": "OperationDefinition",
+                      "name": Object {
+                        "kind": "Name",
+                        "value": "PAGINATION_QUERY",
+                      },
+                      "operation": "query",
+                      "selectionSet": Object {
+                        "kind": "SelectionSet",
+                        "selections": Array [
+                          Object {
+                            "alias": undefined,
+                            "arguments": Array [
+                              Object {
+                                "kind": "Argument",
+                                "name": Object {
+                                  "kind": "Name",
+                                  "value": "where",
+                                },
+                                "value": Object {
+                                  "fields": Array [
+                                    Object {
+                                      "kind": "ObjectField",
+                                      "name": Object {
+                                        "kind": "Name",
+                                        "value": "category",
+                                      },
+                                      "value": Object {
+                                        "fields": Array [
+                                          Object {
+                                            "kind": "ObjectField",
+                                            "name": Object {
+                                              "kind": "Name",
+                                              "value": "name",
+                                            },
+                                            "value": Object {
+                                              "kind": "Variable",
+                                              "name": Object {
+                                                "kind": "Name",
+                                                "value": "category",
+                                              },
+                                            },
+                                          },
+                                        ],
+                                        "kind": "ObjectValue",
+                                      },
+                                    },
+                                    Object {
+                                      "kind": "ObjectField",
+                                      "name": Object {
+                                        "kind": "Name",
+                                        "value": "content_contains",
+                                      },
+                                      "value": Object {
+                                        "kind": "Variable",
+                                        "name": Object {
+                                          "kind": "Name",
+                                          "value": "searchTerm",
+                                        },
+                                      },
+                                    },
+                                  ],
+                                  "kind": "ObjectValue",
+                                },
+                              },
+                            ],
+                            "directives": Array [],
+                            "kind": "Field",
+                            "name": Object {
+                              "kind": "Name",
+                              "value": "wordsConnection",
+                            },
+                            "selectionSet": Object {
+                              "kind": "SelectionSet",
+                              "selections": Array [
+                                Object {
+                                  "alias": undefined,
+                                  "arguments": Array [],
+                                  "directives": Array [],
+                                  "kind": "Field",
+                                  "name": Object {
+                                    "kind": "Name",
+                                    "value": "aggregate",
+                                  },
+                                  "selectionSet": Object {
+                                    "kind": "SelectionSet",
+                                    "selections": Array [
+                                      Object {
+                                        "alias": undefined,
+                                        "arguments": Array [],
+                                        "directives": Array [],
+                                        "kind": "Field",
+                                        "name": Object {
+                                          "kind": "Name",
+                                          "value": "count",
+                                        },
+                                        "selectionSet": undefined,
+                                      },
+                                      Object {
+                                        "kind": "Field",
+                                        "name": Object {
+                                          "kind": "Name",
+                                          "value": "__typename",
+                                        },
+                                      },
+                                    ],
+                                  },
+                                },
+                                Object {
+                                  "kind": "Field",
+                                  "name": Object {
+                                    "kind": "Name",
+                                    "value": "__typename",
+                                  },
+                                },
+                              ],
+                            },
+                          },
+                        ],
+                      },
+                      "variableDefinitions": Array [
+                        Object {
+                          "defaultValue": undefined,
+                          "directives": Array [],
+                          "kind": "VariableDefinition",
+                          "type": Object {
+                            "kind": "NonNullType",
+                            "type": Object {
+                              "kind": "NamedType",
+                              "name": Object {
+                                "kind": "Name",
+                                "value": "String",
+                              },
+                            },
+                          },
+                          "variable": Object {
+                            "kind": "Variable",
+                            "name": Object {
+                              "kind": "Name",
+                              "value": "category",
+                            },
+                          },
+                        },
+                        Object {
+                          "defaultValue": Object {
+                            "block": false,
+                            "kind": "StringValue",
+                            "value": "",
+                          },
+                          "directives": Array [],
+                          "kind": "VariableDefinition",
+                          "type": Object {
+                            "kind": "NamedType",
+                            "name": Object {
+                              "kind": "Name",
+                              "value": "String",
+                            },
+                          },
+                          "variable": Object {
+                            "kind": "Variable",
+                            "name": Object {
+                              "kind": "Name",
+                              "value": "searchTerm",
+                            },
+                          },
+                        },
+                      ],
+                    },
+                  ],
+                  "kind": "Document",
+                  "loc": Object {
+                    "end": 231,
                     "start": 0,
                   },
                 },
@@ -2276,6 +2833,20 @@ exports[`<WordsLoadMoreBtn /> renders and displays properly 1`] = `
                                             },
                                           ],
                                           "kind": "ObjectValue",
+                                        },
+                                      },
+                                      Object {
+                                        "kind": "ObjectField",
+                                        "name": Object {
+                                          "kind": "Name",
+                                          "value": "content_contains",
+                                        },
+                                        "value": Object {
+                                          "kind": "Variable",
+                                          "name": Object {
+                                            "kind": "Name",
+                                            "value": "searchTerm",
+                                          },
                                         },
                                       },
                                     ],
@@ -2360,17 +2931,41 @@ exports[`<WordsLoadMoreBtn /> renders and displays properly 1`] = `
                               },
                             },
                           },
+                          Object {
+                            "defaultValue": Object {
+                              "block": false,
+                              "kind": "StringValue",
+                              "value": "",
+                            },
+                            "directives": Array [],
+                            "kind": "VariableDefinition",
+                            "type": Object {
+                              "kind": "NamedType",
+                              "name": Object {
+                                "kind": "Name",
+                                "value": "String",
+                              },
+                            },
+                            "variable": Object {
+                              "kind": "Variable",
+                              "name": Object {
+                                "kind": "Name",
+                                "value": "searchTerm",
+                              },
+                            },
+                          },
                         ],
                       },
                     ],
                     "kind": "Document",
                     "loc": Object {
-                      "end": 162,
+                      "end": 231,
                       "start": 0,
                     },
                   },
                   "variables": Object {
                     "category": "category1",
+                    "searchTerm": undefined,
                   },
                 },
               },
@@ -2429,6 +3024,20 @@ exports[`<WordsLoadMoreBtn /> renders and displays properly 1`] = `
                                       },
                                     ],
                                     "kind": "ObjectValue",
+                                  },
+                                },
+                                Object {
+                                  "kind": "ObjectField",
+                                  "name": Object {
+                                    "kind": "Name",
+                                    "value": "content_contains",
+                                  },
+                                  "value": Object {
+                                    "kind": "Variable",
+                                    "name": Object {
+                                      "kind": "Name",
+                                      "value": "searchTerm",
+                                    },
                                   },
                                 },
                               ],
@@ -2513,12 +3122,35 @@ exports[`<WordsLoadMoreBtn /> renders and displays properly 1`] = `
                         },
                       },
                     },
+                    Object {
+                      "defaultValue": Object {
+                        "block": false,
+                        "kind": "StringValue",
+                        "value": "",
+                      },
+                      "directives": Array [],
+                      "kind": "VariableDefinition",
+                      "type": Object {
+                        "kind": "NamedType",
+                        "name": Object {
+                          "kind": "Name",
+                          "value": "String",
+                        },
+                      },
+                      "variable": Object {
+                        "kind": "Variable",
+                        "name": Object {
+                          "kind": "Name",
+                          "value": "searchTerm",
+                        },
+                      },
+                    },
                   ],
                 },
               ],
               "kind": "Document",
               "loc": Object {
-                "end": 162,
+                "end": 231,
                 "start": 0,
               },
             } => Map {
@@ -2530,7 +3162,7 @@ exports[`<WordsLoadMoreBtn /> renders and displays properly 1`] = `
           "link": MockLink {
             "addTypename": true,
             "mockedResponsesByKey": Object {
-              "{\\"query\\":\\"query PAGINATION_QUERY($category: String!) {\\\\n  wordsConnection(where: {category: {name: $category}}) {\\\\n    aggregate {\\\\n      count\\\\n      __typename\\\\n    }\\\\n    __typename\\\\n  }\\\\n}\\\\n\\"}": Array [],
+              "{\\"query\\":\\"query PAGINATION_QUERY($category: String!, $searchTerm: String = \\\\\\"\\\\\\") {\\\\n  wordsConnection(where: {category: {name: $category}, content_contains: $searchTerm}) {\\\\n    aggregate {\\\\n      count\\\\n      __typename\\\\n    }\\\\n    __typename\\\\n  }\\\\n}\\\\n\\"}": Array [],
             },
           },
           "localState": LocalState {
@@ -2615,6 +3247,20 @@ exports[`<WordsLoadMoreBtn /> renders and displays properly 1`] = `
                                         "kind": "ObjectValue",
                                       },
                                     },
+                                    Object {
+                                      "kind": "ObjectField",
+                                      "name": Object {
+                                        "kind": "Name",
+                                        "value": "content_contains",
+                                      },
+                                      "value": Object {
+                                        "kind": "Variable",
+                                        "name": Object {
+                                          "kind": "Name",
+                                          "value": "searchTerm",
+                                        },
+                                      },
+                                    },
                                   ],
                                   "kind": "ObjectValue",
                                 },
@@ -2683,12 +3329,35 @@ exports[`<WordsLoadMoreBtn /> renders and displays properly 1`] = `
                             },
                           },
                         },
+                        Object {
+                          "defaultValue": Object {
+                            "block": false,
+                            "kind": "StringValue",
+                            "value": "",
+                          },
+                          "directives": Array [],
+                          "kind": "VariableDefinition",
+                          "type": Object {
+                            "kind": "NamedType",
+                            "name": Object {
+                              "kind": "Name",
+                              "value": "String",
+                            },
+                          },
+                          "variable": Object {
+                            "kind": "Variable",
+                            "name": Object {
+                              "kind": "Name",
+                              "value": "searchTerm",
+                            },
+                          },
+                        },
                       ],
                     },
                   ],
                   "kind": "Document",
                   "loc": Object {
-                    "end": 162,
+                    "end": 231,
                     "start": 0,
                   },
                 } => Object {
@@ -2739,6 +3408,20 @@ exports[`<WordsLoadMoreBtn /> renders and displays properly 1`] = `
                                           },
                                         ],
                                         "kind": "ObjectValue",
+                                      },
+                                    },
+                                    Object {
+                                      "kind": "ObjectField",
+                                      "name": Object {
+                                        "kind": "Name",
+                                        "value": "content_contains",
+                                      },
+                                      "value": Object {
+                                        "kind": "Variable",
+                                        "name": Object {
+                                          "kind": "Name",
+                                          "value": "searchTerm",
+                                        },
                                       },
                                     },
                                   ],
@@ -2823,12 +3506,35 @@ exports[`<WordsLoadMoreBtn /> renders and displays properly 1`] = `
                             },
                           },
                         },
+                        Object {
+                          "defaultValue": Object {
+                            "block": false,
+                            "kind": "StringValue",
+                            "value": "",
+                          },
+                          "directives": Array [],
+                          "kind": "VariableDefinition",
+                          "type": Object {
+                            "kind": "NamedType",
+                            "name": Object {
+                              "kind": "Name",
+                              "value": "String",
+                            },
+                          },
+                          "variable": Object {
+                            "kind": "Variable",
+                            "name": Object {
+                              "kind": "Name",
+                              "value": "searchTerm",
+                            },
+                          },
+                        },
                       ],
                     },
                   ],
                   "kind": "Document",
                   "loc": Object {
-                    "end": 162,
+                    "end": 231,
                     "start": 0,
                   },
                 },
@@ -2882,144 +3588,18 @@ exports[`<WordsLoadMoreBtn /> renders and displays properly 1`] = `
                                         "kind": "ObjectValue",
                                       },
                                     },
-                                  ],
-                                  "kind": "ObjectValue",
-                                },
-                              },
-                            ],
-                            "directives": Array [],
-                            "kind": "Field",
-                            "name": Object {
-                              "kind": "Name",
-                              "value": "wordsConnection",
-                            },
-                            "selectionSet": Object {
-                              "kind": "SelectionSet",
-                              "selections": Array [
-                                Object {
-                                  "alias": undefined,
-                                  "arguments": Array [],
-                                  "directives": Array [],
-                                  "kind": "Field",
-                                  "name": Object {
-                                    "kind": "Name",
-                                    "value": "aggregate",
-                                  },
-                                  "selectionSet": Object {
-                                    "kind": "SelectionSet",
-                                    "selections": Array [
-                                      Object {
-                                        "alias": undefined,
-                                        "arguments": Array [],
-                                        "directives": Array [],
-                                        "kind": "Field",
-                                        "name": Object {
-                                          "kind": "Name",
-                                          "value": "count",
-                                        },
-                                        "selectionSet": undefined,
-                                      },
-                                      Object {
-                                        "kind": "Field",
-                                        "name": Object {
-                                          "kind": "Name",
-                                          "value": "__typename",
-                                        },
-                                      },
-                                    ],
-                                  },
-                                },
-                                Object {
-                                  "kind": "Field",
-                                  "name": Object {
-                                    "kind": "Name",
-                                    "value": "__typename",
-                                  },
-                                },
-                              ],
-                            },
-                          },
-                        ],
-                      },
-                      "variableDefinitions": Array [
-                        Object {
-                          "defaultValue": undefined,
-                          "directives": Array [],
-                          "kind": "VariableDefinition",
-                          "type": Object {
-                            "kind": "NonNullType",
-                            "type": Object {
-                              "kind": "NamedType",
-                              "name": Object {
-                                "kind": "Name",
-                                "value": "String",
-                              },
-                            },
-                          },
-                          "variable": Object {
-                            "kind": "Variable",
-                            "name": Object {
-                              "kind": "Name",
-                              "value": "category",
-                            },
-                          },
-                        },
-                      ],
-                    },
-                  ],
-                  "kind": "Document",
-                  "loc": Object {
-                    "end": 162,
-                    "start": 0,
-                  },
-                } => Object {
-                  "definitions": Array [
-                    Object {
-                      "directives": Array [],
-                      "kind": "OperationDefinition",
-                      "name": Object {
-                        "kind": "Name",
-                        "value": "PAGINATION_QUERY",
-                      },
-                      "operation": "query",
-                      "selectionSet": Object {
-                        "kind": "SelectionSet",
-                        "selections": Array [
-                          Object {
-                            "alias": undefined,
-                            "arguments": Array [
-                              Object {
-                                "kind": "Argument",
-                                "name": Object {
-                                  "kind": "Name",
-                                  "value": "where",
-                                },
-                                "value": Object {
-                                  "fields": Array [
                                     Object {
                                       "kind": "ObjectField",
                                       "name": Object {
                                         "kind": "Name",
-                                        "value": "category",
+                                        "value": "content_contains",
                                       },
                                       "value": Object {
-                                        "fields": Array [
-                                          Object {
-                                            "kind": "ObjectField",
-                                            "name": Object {
-                                              "kind": "Name",
-                                              "value": "name",
-                                            },
-                                            "value": Object {
-                                              "kind": "Variable",
-                                              "name": Object {
-                                                "kind": "Name",
-                                                "value": "category",
-                                              },
-                                            },
-                                          },
-                                        ],
-                                        "kind": "ObjectValue",
+                                        "kind": "Variable",
+                                        "name": Object {
+                                          "kind": "Name",
+                                          "value": "searchTerm",
+                                        },
                                       },
                                     },
                                   ],
@@ -3104,12 +3684,212 @@ exports[`<WordsLoadMoreBtn /> renders and displays properly 1`] = `
                             },
                           },
                         },
+                        Object {
+                          "defaultValue": Object {
+                            "block": false,
+                            "kind": "StringValue",
+                            "value": "",
+                          },
+                          "directives": Array [],
+                          "kind": "VariableDefinition",
+                          "type": Object {
+                            "kind": "NamedType",
+                            "name": Object {
+                              "kind": "Name",
+                              "value": "String",
+                            },
+                          },
+                          "variable": Object {
+                            "kind": "Variable",
+                            "name": Object {
+                              "kind": "Name",
+                              "value": "searchTerm",
+                            },
+                          },
+                        },
                       ],
                     },
                   ],
                   "kind": "Document",
                   "loc": Object {
-                    "end": 162,
+                    "end": 231,
+                    "start": 0,
+                  },
+                } => Object {
+                  "definitions": Array [
+                    Object {
+                      "directives": Array [],
+                      "kind": "OperationDefinition",
+                      "name": Object {
+                        "kind": "Name",
+                        "value": "PAGINATION_QUERY",
+                      },
+                      "operation": "query",
+                      "selectionSet": Object {
+                        "kind": "SelectionSet",
+                        "selections": Array [
+                          Object {
+                            "alias": undefined,
+                            "arguments": Array [
+                              Object {
+                                "kind": "Argument",
+                                "name": Object {
+                                  "kind": "Name",
+                                  "value": "where",
+                                },
+                                "value": Object {
+                                  "fields": Array [
+                                    Object {
+                                      "kind": "ObjectField",
+                                      "name": Object {
+                                        "kind": "Name",
+                                        "value": "category",
+                                      },
+                                      "value": Object {
+                                        "fields": Array [
+                                          Object {
+                                            "kind": "ObjectField",
+                                            "name": Object {
+                                              "kind": "Name",
+                                              "value": "name",
+                                            },
+                                            "value": Object {
+                                              "kind": "Variable",
+                                              "name": Object {
+                                                "kind": "Name",
+                                                "value": "category",
+                                              },
+                                            },
+                                          },
+                                        ],
+                                        "kind": "ObjectValue",
+                                      },
+                                    },
+                                    Object {
+                                      "kind": "ObjectField",
+                                      "name": Object {
+                                        "kind": "Name",
+                                        "value": "content_contains",
+                                      },
+                                      "value": Object {
+                                        "kind": "Variable",
+                                        "name": Object {
+                                          "kind": "Name",
+                                          "value": "searchTerm",
+                                        },
+                                      },
+                                    },
+                                  ],
+                                  "kind": "ObjectValue",
+                                },
+                              },
+                            ],
+                            "directives": Array [],
+                            "kind": "Field",
+                            "name": Object {
+                              "kind": "Name",
+                              "value": "wordsConnection",
+                            },
+                            "selectionSet": Object {
+                              "kind": "SelectionSet",
+                              "selections": Array [
+                                Object {
+                                  "alias": undefined,
+                                  "arguments": Array [],
+                                  "directives": Array [],
+                                  "kind": "Field",
+                                  "name": Object {
+                                    "kind": "Name",
+                                    "value": "aggregate",
+                                  },
+                                  "selectionSet": Object {
+                                    "kind": "SelectionSet",
+                                    "selections": Array [
+                                      Object {
+                                        "alias": undefined,
+                                        "arguments": Array [],
+                                        "directives": Array [],
+                                        "kind": "Field",
+                                        "name": Object {
+                                          "kind": "Name",
+                                          "value": "count",
+                                        },
+                                        "selectionSet": undefined,
+                                      },
+                                      Object {
+                                        "kind": "Field",
+                                        "name": Object {
+                                          "kind": "Name",
+                                          "value": "__typename",
+                                        },
+                                      },
+                                    ],
+                                  },
+                                },
+                                Object {
+                                  "kind": "Field",
+                                  "name": Object {
+                                    "kind": "Name",
+                                    "value": "__typename",
+                                  },
+                                },
+                              ],
+                            },
+                          },
+                        ],
+                      },
+                      "variableDefinitions": Array [
+                        Object {
+                          "defaultValue": undefined,
+                          "directives": Array [],
+                          "kind": "VariableDefinition",
+                          "type": Object {
+                            "kind": "NonNullType",
+                            "type": Object {
+                              "kind": "NamedType",
+                              "name": Object {
+                                "kind": "Name",
+                                "value": "String",
+                              },
+                            },
+                          },
+                          "variable": Object {
+                            "kind": "Variable",
+                            "name": Object {
+                              "kind": "Name",
+                              "value": "category",
+                            },
+                          },
+                        },
+                        Object {
+                          "defaultValue": Object {
+                            "block": false,
+                            "kind": "StringValue",
+                            "value": "",
+                          },
+                          "directives": Array [],
+                          "kind": "VariableDefinition",
+                          "type": Object {
+                            "kind": "NamedType",
+                            "name": Object {
+                              "kind": "Name",
+                              "value": "String",
+                            },
+                          },
+                          "variable": Object {
+                            "kind": "Variable",
+                            "name": Object {
+                              "kind": "Name",
+                              "value": "searchTerm",
+                            },
+                          },
+                        },
+                      ],
+                    },
+                  ],
+                  "kind": "Document",
+                  "loc": Object {
+                    "end": 231,
                     "start": 0,
                   },
                 },
@@ -3167,6 +3947,20 @@ exports[`<WordsLoadMoreBtn /> renders and displays properly 1`] = `
                                             },
                                           ],
                                           "kind": "ObjectValue",
+                                        },
+                                      },
+                                      Object {
+                                        "kind": "ObjectField",
+                                        "name": Object {
+                                          "kind": "Name",
+                                          "value": "content_contains",
+                                        },
+                                        "value": Object {
+                                          "kind": "Variable",
+                                          "name": Object {
+                                            "kind": "Name",
+                                            "value": "searchTerm",
+                                          },
                                         },
                                       },
                                     ],
@@ -3251,17 +4045,41 @@ exports[`<WordsLoadMoreBtn /> renders and displays properly 1`] = `
                               },
                             },
                           },
+                          Object {
+                            "defaultValue": Object {
+                              "block": false,
+                              "kind": "StringValue",
+                              "value": "",
+                            },
+                            "directives": Array [],
+                            "kind": "VariableDefinition",
+                            "type": Object {
+                              "kind": "NamedType",
+                              "name": Object {
+                                "kind": "Name",
+                                "value": "String",
+                              },
+                            },
+                            "variable": Object {
+                              "kind": "Variable",
+                              "name": Object {
+                                "kind": "Name",
+                                "value": "searchTerm",
+                              },
+                            },
+                          },
                         ],
                       },
                     ],
                     "kind": "Document",
                     "loc": Object {
-                      "end": 162,
+                      "end": 231,
                       "start": 0,
                     },
                   },
                   "variables": Object {
                     "category": "category1",
+                    "searchTerm": undefined,
                   },
                 },
               },
@@ -3324,6 +4142,20 @@ exports[`<WordsLoadMoreBtn /> renders and displays properly 1`] = `
                                         },
                                       ],
                                       "kind": "ObjectValue",
+                                    },
+                                  },
+                                  Object {
+                                    "kind": "ObjectField",
+                                    "name": Object {
+                                      "kind": "Name",
+                                      "value": "content_contains",
+                                    },
+                                    "value": Object {
+                                      "kind": "Variable",
+                                      "name": Object {
+                                        "kind": "Name",
+                                        "value": "searchTerm",
+                                      },
                                     },
                                   },
                                 ],
@@ -3408,12 +4240,35 @@ exports[`<WordsLoadMoreBtn /> renders and displays properly 1`] = `
                           },
                         },
                       },
+                      Object {
+                        "defaultValue": Object {
+                          "block": false,
+                          "kind": "StringValue",
+                          "value": "",
+                        },
+                        "directives": Array [],
+                        "kind": "VariableDefinition",
+                        "type": Object {
+                          "kind": "NamedType",
+                          "name": Object {
+                            "kind": "Name",
+                            "value": "String",
+                          },
+                        },
+                        "variable": Object {
+                          "kind": "Variable",
+                          "name": Object {
+                            "kind": "Name",
+                            "value": "searchTerm",
+                          },
+                        },
+                      },
                     ],
                   },
                 ],
                 "kind": "Document",
                 "loc": Object {
-                  "end": 162,
+                  "end": 231,
                   "start": 0,
                 },
               },
@@ -3498,6 +4353,20 @@ exports[`<WordsLoadMoreBtn /> renders and displays properly 1`] = `
                                           "kind": "ObjectValue",
                                         },
                                       },
+                                      Object {
+                                        "kind": "ObjectField",
+                                        "name": Object {
+                                          "kind": "Name",
+                                          "value": "content_contains",
+                                        },
+                                        "value": Object {
+                                          "kind": "Variable",
+                                          "name": Object {
+                                            "kind": "Name",
+                                            "value": "searchTerm",
+                                          },
+                                        },
+                                      },
                                     ],
                                     "kind": "ObjectValue",
                                   },
@@ -3566,17 +4435,41 @@ exports[`<WordsLoadMoreBtn /> renders and displays properly 1`] = `
                               },
                             },
                           },
+                          Object {
+                            "defaultValue": Object {
+                              "block": false,
+                              "kind": "StringValue",
+                              "value": "",
+                            },
+                            "directives": Array [],
+                            "kind": "VariableDefinition",
+                            "type": Object {
+                              "kind": "NamedType",
+                              "name": Object {
+                                "kind": "Name",
+                                "value": "String",
+                              },
+                            },
+                            "variable": Object {
+                              "kind": "Variable",
+                              "name": Object {
+                                "kind": "Name",
+                                "value": "searchTerm",
+                              },
+                            },
+                          },
                         ],
                       },
                     ],
                     "kind": "Document",
                     "loc": Object {
-                      "end": 162,
+                      "end": 231,
                       "start": 0,
                     },
                   },
                   "variables": Object {
                     "category": "category1",
+                    "searchTerm": undefined,
                   },
                 },
                 "queryId": "1",
@@ -3586,6 +4479,7 @@ exports[`<WordsLoadMoreBtn /> renders and displays properly 1`] = `
                 "subscriptions": Set {},
                 "variables": Object {
                   "category": "category1",
+                  "searchTerm": undefined,
                 },
               },
               "subscriptions": Set {
@@ -3662,6 +4556,20 @@ exports[`<WordsLoadMoreBtn /> renders and displays properly 1`] = `
                                           },
                                         ],
                                         "kind": "ObjectValue",
+                                      },
+                                    },
+                                    Object {
+                                      "kind": "ObjectField",
+                                      "name": Object {
+                                        "kind": "Name",
+                                        "value": "content_contains",
+                                      },
+                                      "value": Object {
+                                        "kind": "Variable",
+                                        "name": Object {
+                                          "kind": "Name",
+                                          "value": "searchTerm",
+                                        },
                                       },
                                     },
                                   ],
@@ -3746,12 +4654,35 @@ exports[`<WordsLoadMoreBtn /> renders and displays properly 1`] = `
                             },
                           },
                         },
+                        Object {
+                          "defaultValue": Object {
+                            "block": false,
+                            "kind": "StringValue",
+                            "value": "",
+                          },
+                          "directives": Array [],
+                          "kind": "VariableDefinition",
+                          "type": Object {
+                            "kind": "NamedType",
+                            "name": Object {
+                              "kind": "Name",
+                              "value": "String",
+                            },
+                          },
+                          "variable": Object {
+                            "kind": "Variable",
+                            "name": Object {
+                              "kind": "Name",
+                              "value": "searchTerm",
+                            },
+                          },
+                        },
                       ],
                     },
                   ],
                   "kind": "Document",
                   "loc": Object {
-                    "end": 162,
+                    "end": 231,
                     "start": 0,
                   },
                 },
@@ -3766,6 +4697,7 @@ exports[`<WordsLoadMoreBtn /> renders and displays properly 1`] = `
                 "previousVariables": null,
                 "variables": Object {
                   "category": "category1",
+                  "searchTerm": undefined,
                 },
               },
             },
@@ -3858,6 +4790,20 @@ exports[`<WordsLoadMoreBtn /> renders and displays properly 1`] = `
                                       "kind": "ObjectValue",
                                     },
                                   },
+                                  Object {
+                                    "kind": "ObjectField",
+                                    "name": Object {
+                                      "kind": "Name",
+                                      "value": "content_contains",
+                                    },
+                                    "value": Object {
+                                      "kind": "Variable",
+                                      "name": Object {
+                                        "kind": "Name",
+                                        "value": "searchTerm",
+                                      },
+                                    },
+                                  },
                                 ],
                                 "kind": "ObjectValue",
                               },
@@ -3926,12 +4872,35 @@ exports[`<WordsLoadMoreBtn /> renders and displays properly 1`] = `
                           },
                         },
                       },
+                      Object {
+                        "defaultValue": Object {
+                          "block": false,
+                          "kind": "StringValue",
+                          "value": "",
+                        },
+                        "directives": Array [],
+                        "kind": "VariableDefinition",
+                        "type": Object {
+                          "kind": "NamedType",
+                          "name": Object {
+                            "kind": "Name",
+                            "value": "String",
+                          },
+                        },
+                        "variable": Object {
+                          "kind": "Variable",
+                          "name": Object {
+                            "kind": "Name",
+                            "value": "searchTerm",
+                          },
+                        },
+                      },
                     ],
                   },
                 ],
                 "kind": "Document",
                 "loc": Object {
-                  "end": 162,
+                  "end": 231,
                   "start": 0,
                 },
               } => Object {
@@ -3982,6 +4951,20 @@ exports[`<WordsLoadMoreBtn /> renders and displays properly 1`] = `
                                         },
                                       ],
                                       "kind": "ObjectValue",
+                                    },
+                                  },
+                                  Object {
+                                    "kind": "ObjectField",
+                                    "name": Object {
+                                      "kind": "Name",
+                                      "value": "content_contains",
+                                    },
+                                    "value": Object {
+                                      "kind": "Variable",
+                                      "name": Object {
+                                        "kind": "Name",
+                                        "value": "searchTerm",
+                                      },
                                     },
                                   },
                                 ],
@@ -4066,12 +5049,35 @@ exports[`<WordsLoadMoreBtn /> renders and displays properly 1`] = `
                           },
                         },
                       },
+                      Object {
+                        "defaultValue": Object {
+                          "block": false,
+                          "kind": "StringValue",
+                          "value": "",
+                        },
+                        "directives": Array [],
+                        "kind": "VariableDefinition",
+                        "type": Object {
+                          "kind": "NamedType",
+                          "name": Object {
+                            "kind": "Name",
+                            "value": "String",
+                          },
+                        },
+                        "variable": Object {
+                          "kind": "Variable",
+                          "name": Object {
+                            "kind": "Name",
+                            "value": "searchTerm",
+                          },
+                        },
+                      },
                     ],
                   },
                 ],
                 "kind": "Document",
                 "loc": Object {
-                  "end": 162,
+                  "end": 231,
                   "start": 0,
                 },
               },
@@ -4125,144 +5131,18 @@ exports[`<WordsLoadMoreBtn /> renders and displays properly 1`] = `
                                       "kind": "ObjectValue",
                                     },
                                   },
-                                ],
-                                "kind": "ObjectValue",
-                              },
-                            },
-                          ],
-                          "directives": Array [],
-                          "kind": "Field",
-                          "name": Object {
-                            "kind": "Name",
-                            "value": "wordsConnection",
-                          },
-                          "selectionSet": Object {
-                            "kind": "SelectionSet",
-                            "selections": Array [
-                              Object {
-                                "alias": undefined,
-                                "arguments": Array [],
-                                "directives": Array [],
-                                "kind": "Field",
-                                "name": Object {
-                                  "kind": "Name",
-                                  "value": "aggregate",
-                                },
-                                "selectionSet": Object {
-                                  "kind": "SelectionSet",
-                                  "selections": Array [
-                                    Object {
-                                      "alias": undefined,
-                                      "arguments": Array [],
-                                      "directives": Array [],
-                                      "kind": "Field",
-                                      "name": Object {
-                                        "kind": "Name",
-                                        "value": "count",
-                                      },
-                                      "selectionSet": undefined,
-                                    },
-                                    Object {
-                                      "kind": "Field",
-                                      "name": Object {
-                                        "kind": "Name",
-                                        "value": "__typename",
-                                      },
-                                    },
-                                  ],
-                                },
-                              },
-                              Object {
-                                "kind": "Field",
-                                "name": Object {
-                                  "kind": "Name",
-                                  "value": "__typename",
-                                },
-                              },
-                            ],
-                          },
-                        },
-                      ],
-                    },
-                    "variableDefinitions": Array [
-                      Object {
-                        "defaultValue": undefined,
-                        "directives": Array [],
-                        "kind": "VariableDefinition",
-                        "type": Object {
-                          "kind": "NonNullType",
-                          "type": Object {
-                            "kind": "NamedType",
-                            "name": Object {
-                              "kind": "Name",
-                              "value": "String",
-                            },
-                          },
-                        },
-                        "variable": Object {
-                          "kind": "Variable",
-                          "name": Object {
-                            "kind": "Name",
-                            "value": "category",
-                          },
-                        },
-                      },
-                    ],
-                  },
-                ],
-                "kind": "Document",
-                "loc": Object {
-                  "end": 162,
-                  "start": 0,
-                },
-              } => Object {
-                "definitions": Array [
-                  Object {
-                    "directives": Array [],
-                    "kind": "OperationDefinition",
-                    "name": Object {
-                      "kind": "Name",
-                      "value": "PAGINATION_QUERY",
-                    },
-                    "operation": "query",
-                    "selectionSet": Object {
-                      "kind": "SelectionSet",
-                      "selections": Array [
-                        Object {
-                          "alias": undefined,
-                          "arguments": Array [
-                            Object {
-                              "kind": "Argument",
-                              "name": Object {
-                                "kind": "Name",
-                                "value": "where",
-                              },
-                              "value": Object {
-                                "fields": Array [
                                   Object {
                                     "kind": "ObjectField",
                                     "name": Object {
                                       "kind": "Name",
-                                      "value": "category",
+                                      "value": "content_contains",
                                     },
                                     "value": Object {
-                                      "fields": Array [
-                                        Object {
-                                          "kind": "ObjectField",
-                                          "name": Object {
-                                            "kind": "Name",
-                                            "value": "name",
-                                          },
-                                          "value": Object {
-                                            "kind": "Variable",
-                                            "name": Object {
-                                              "kind": "Name",
-                                              "value": "category",
-                                            },
-                                          },
-                                        },
-                                      ],
-                                      "kind": "ObjectValue",
+                                      "kind": "Variable",
+                                      "name": Object {
+                                        "kind": "Name",
+                                        "value": "searchTerm",
+                                      },
                                     },
                                   },
                                 ],
@@ -4347,12 +5227,212 @@ exports[`<WordsLoadMoreBtn /> renders and displays properly 1`] = `
                           },
                         },
                       },
+                      Object {
+                        "defaultValue": Object {
+                          "block": false,
+                          "kind": "StringValue",
+                          "value": "",
+                        },
+                        "directives": Array [],
+                        "kind": "VariableDefinition",
+                        "type": Object {
+                          "kind": "NamedType",
+                          "name": Object {
+                            "kind": "Name",
+                            "value": "String",
+                          },
+                        },
+                        "variable": Object {
+                          "kind": "Variable",
+                          "name": Object {
+                            "kind": "Name",
+                            "value": "searchTerm",
+                          },
+                        },
+                      },
                     ],
                   },
                 ],
                 "kind": "Document",
                 "loc": Object {
-                  "end": 162,
+                  "end": 231,
+                  "start": 0,
+                },
+              } => Object {
+                "definitions": Array [
+                  Object {
+                    "directives": Array [],
+                    "kind": "OperationDefinition",
+                    "name": Object {
+                      "kind": "Name",
+                      "value": "PAGINATION_QUERY",
+                    },
+                    "operation": "query",
+                    "selectionSet": Object {
+                      "kind": "SelectionSet",
+                      "selections": Array [
+                        Object {
+                          "alias": undefined,
+                          "arguments": Array [
+                            Object {
+                              "kind": "Argument",
+                              "name": Object {
+                                "kind": "Name",
+                                "value": "where",
+                              },
+                              "value": Object {
+                                "fields": Array [
+                                  Object {
+                                    "kind": "ObjectField",
+                                    "name": Object {
+                                      "kind": "Name",
+                                      "value": "category",
+                                    },
+                                    "value": Object {
+                                      "fields": Array [
+                                        Object {
+                                          "kind": "ObjectField",
+                                          "name": Object {
+                                            "kind": "Name",
+                                            "value": "name",
+                                          },
+                                          "value": Object {
+                                            "kind": "Variable",
+                                            "name": Object {
+                                              "kind": "Name",
+                                              "value": "category",
+                                            },
+                                          },
+                                        },
+                                      ],
+                                      "kind": "ObjectValue",
+                                    },
+                                  },
+                                  Object {
+                                    "kind": "ObjectField",
+                                    "name": Object {
+                                      "kind": "Name",
+                                      "value": "content_contains",
+                                    },
+                                    "value": Object {
+                                      "kind": "Variable",
+                                      "name": Object {
+                                        "kind": "Name",
+                                        "value": "searchTerm",
+                                      },
+                                    },
+                                  },
+                                ],
+                                "kind": "ObjectValue",
+                              },
+                            },
+                          ],
+                          "directives": Array [],
+                          "kind": "Field",
+                          "name": Object {
+                            "kind": "Name",
+                            "value": "wordsConnection",
+                          },
+                          "selectionSet": Object {
+                            "kind": "SelectionSet",
+                            "selections": Array [
+                              Object {
+                                "alias": undefined,
+                                "arguments": Array [],
+                                "directives": Array [],
+                                "kind": "Field",
+                                "name": Object {
+                                  "kind": "Name",
+                                  "value": "aggregate",
+                                },
+                                "selectionSet": Object {
+                                  "kind": "SelectionSet",
+                                  "selections": Array [
+                                    Object {
+                                      "alias": undefined,
+                                      "arguments": Array [],
+                                      "directives": Array [],
+                                      "kind": "Field",
+                                      "name": Object {
+                                        "kind": "Name",
+                                        "value": "count",
+                                      },
+                                      "selectionSet": undefined,
+                                    },
+                                    Object {
+                                      "kind": "Field",
+                                      "name": Object {
+                                        "kind": "Name",
+                                        "value": "__typename",
+                                      },
+                                    },
+                                  ],
+                                },
+                              },
+                              Object {
+                                "kind": "Field",
+                                "name": Object {
+                                  "kind": "Name",
+                                  "value": "__typename",
+                                },
+                              },
+                            ],
+                          },
+                        },
+                      ],
+                    },
+                    "variableDefinitions": Array [
+                      Object {
+                        "defaultValue": undefined,
+                        "directives": Array [],
+                        "kind": "VariableDefinition",
+                        "type": Object {
+                          "kind": "NonNullType",
+                          "type": Object {
+                            "kind": "NamedType",
+                            "name": Object {
+                              "kind": "Name",
+                              "value": "String",
+                            },
+                          },
+                        },
+                        "variable": Object {
+                          "kind": "Variable",
+                          "name": Object {
+                            "kind": "Name",
+                            "value": "category",
+                          },
+                        },
+                      },
+                      Object {
+                        "defaultValue": Object {
+                          "block": false,
+                          "kind": "StringValue",
+                          "value": "",
+                        },
+                        "directives": Array [],
+                        "kind": "VariableDefinition",
+                        "type": Object {
+                          "kind": "NamedType",
+                          "name": Object {
+                            "kind": "Name",
+                            "value": "String",
+                          },
+                        },
+                        "variable": Object {
+                          "kind": "Variable",
+                          "name": Object {
+                            "kind": "Name",
+                            "value": "searchTerm",
+                          },
+                        },
+                      },
+                    ],
+                  },
+                ],
+                "kind": "Document",
+                "loc": Object {
+                  "end": 231,
                   "start": 0,
                 },
               },
@@ -4410,6 +5490,20 @@ exports[`<WordsLoadMoreBtn /> renders and displays properly 1`] = `
                                           },
                                         ],
                                         "kind": "ObjectValue",
+                                      },
+                                    },
+                                    Object {
+                                      "kind": "ObjectField",
+                                      "name": Object {
+                                        "kind": "Name",
+                                        "value": "content_contains",
+                                      },
+                                      "value": Object {
+                                        "kind": "Variable",
+                                        "name": Object {
+                                          "kind": "Name",
+                                          "value": "searchTerm",
+                                        },
                                       },
                                     },
                                   ],
@@ -4494,17 +5588,41 @@ exports[`<WordsLoadMoreBtn /> renders and displays properly 1`] = `
                             },
                           },
                         },
+                        Object {
+                          "defaultValue": Object {
+                            "block": false,
+                            "kind": "StringValue",
+                            "value": "",
+                          },
+                          "directives": Array [],
+                          "kind": "VariableDefinition",
+                          "type": Object {
+                            "kind": "NamedType",
+                            "name": Object {
+                              "kind": "Name",
+                              "value": "String",
+                            },
+                          },
+                          "variable": Object {
+                            "kind": "Variable",
+                            "name": Object {
+                              "kind": "Name",
+                              "value": "searchTerm",
+                            },
+                          },
+                        },
                       ],
                     },
                   ],
                   "kind": "Document",
                   "loc": Object {
-                    "end": 162,
+                    "end": 231,
                     "start": 0,
                   },
                 },
                 "variables": Object {
                   "category": "category1",
+                  "searchTerm": undefined,
                 },
               },
             },

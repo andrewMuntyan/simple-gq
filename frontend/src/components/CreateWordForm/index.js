@@ -1,1 +1,1 @@
-export { default as CreateWord } from './CreateWordForm';
+export { default as CreateWordForm } from './CreateWordForm';

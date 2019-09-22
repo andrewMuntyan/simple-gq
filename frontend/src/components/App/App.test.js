@@ -26,9 +26,9 @@ describe('<App />', () => {
   });
 
   it('should be wrapped in AppContextProvider and render all necessary elements', () => {
-    const AppContextProvider = wrapper.find('FinalAppContextProvider');
+    const AppContextProvider = wrapper.find('AppProvider');
     const CssBaseline = wrapper.find('CssBaseline');
-    const SearchAppBar = wrapper.find('SearchAppBar');
+    const AppBar = wrapper.find('AppBar');
     const CreateCategoryForm = wrapper.find('CreateCategoryForm');
     const CreateWordForm = wrapper.find('CreateWordForm');
     const CategoriesList = wrapper.find('CategoriesList');
@@ -36,7 +36,7 @@ describe('<App />', () => {
 
     expect(AppContextProvider).toHaveLength(1);
     expect(CssBaseline).toHaveLength(1);
-    expect(SearchAppBar).toHaveLength(1);
+    expect(AppBar).toHaveLength(1);
     expect(CreateCategoryForm).toHaveLength(1);
     expect(CreateWordForm).toHaveLength(1);
     expect(CategoriesList).toHaveLength(1);

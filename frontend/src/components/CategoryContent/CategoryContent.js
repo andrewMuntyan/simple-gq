@@ -7,16 +7,16 @@ import { WordContent } from '../WordContent';
 import { CardsList } from '../CardsList';
 import { WordsLoadMoreBtn } from '../WordsLoadMoreBtn';
 
-import { AppContext } from '../../context';
+import { AppStateCtx, SnackBarCtx } from '../../context';
 
-import { WORDS_PER_PAGE } from '../../config';
+import { WORDS_PER_PAGE, SEARCH_RESULTS_COUNT } from '../../config';
 
 import getClasses from './styles';
 
 export const GET_WORDS_QUERY = gql`
-  query GET_WORDS_QUERY($category: String!, $skip: Int = 0, $first: Int = ${WORDS_PER_PAGE}) {
+  query GET_WORDS_QUERY($category: String!, $skip: Int = 0, $first: Int = ${WORDS_PER_PAGE}, $searchTerm: String) {
     words(
-      where: { category: { name: $category } },
+      where: { category: { name: $category }, content_contains: $searchTerm },
       first: $first,
       skip: $skip,
       orderBy: createdAt_DESC
@@ -34,10 +34,16 @@ export const GET_WORDS_QUERY = gql`
 
 const CategoryContent = () => {
   const classes = getClasses();
-  const [{ selectedCategory, onActionDone }] = useContext(AppContext);
+  const { selectedCategory, searchTerm } = useContext(AppStateCtx);
+  const { onActionDone } = useContext(SnackBarCtx);
 
+  const dataSize = searchTerm ? SEARCH_RESULTS_COUNT : WORDS_PER_PAGE;
   const { data, loading, fetchMore, error } = useQuery(GET_WORDS_QUERY, {
-    variables: { category: selectedCategory }
+    variables: {
+      category: selectedCategory,
+      searchTerm,
+      first: dataSize
+    }
   });
 
   // do not render until category is chosen
@@ -51,11 +57,18 @@ const CategoryContent = () => {
     return <h2 className="infoMessage">Something went wrong...</h2>;
   }
 
-  // TODO: add spinner
   if (loading) {
+    if (searchTerm) {
+      return (
+        <h2 className="infoMessage">
+          Looking for <i>{searchTerm}</i> in category
+          <i>{selectedCategory}</i>...
+        </h2>
+      );
+    }
     return (
       <h2 className="infoMessage">
-        Loading Words for {selectedCategory} category...
+        Loading Words for <i>{selectedCategory}</i> category...
       </h2>
     );
   }

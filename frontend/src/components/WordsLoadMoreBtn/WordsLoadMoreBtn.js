@@ -4,14 +4,16 @@ import PropTypes from 'prop-types';
 import { useQuery } from '@apollo/react-hooks';
 import gql from 'graphql-tag';
 
-import { AppContext } from '../../context';
+import { AppStateCtx, SnackBarCtx } from '../../context';
 import { defaultOnSMTH } from '../../utils';
 
 import { LoadMoreBtn } from '../LoadMoreBtn';
 
 export const PAGINATION_QUERY = gql`
-  query PAGINATION_QUERY($category: String!) {
-    wordsConnection(where: { category: { name: $category } }) {
+  query PAGINATION_QUERY($category: String!, $searchTerm: String = "") {
+    wordsConnection(
+      where: { category: { name: $category }, content_contains: $searchTerm }
+    ) {
       aggregate {
         count
       }
@@ -20,9 +22,13 @@ export const PAGINATION_QUERY = gql`
 `;
 
 const WordsLoadMoreBtn = ({ fetchMore, displayedWordsCount }) => {
-  const [{ selectedCategory, onActionDone }] = useContext(AppContext);
+  const { selectedCategory, searchTerm } = useContext(AppStateCtx);
+  const { onActionDone } = useContext(SnackBarCtx);
   const { data: paginationData, error, loading } = useQuery(PAGINATION_QUERY, {
-    variables: { category: selectedCategory }
+    variables: {
+      category: selectedCategory,
+      searchTerm
+    }
   });
 
   const makeFetchMore = useCallback(async () => {

@@ -6,7 +6,7 @@ import { AddEntityForm } from '../AddEntityForm';
 import { GET_WORDS_QUERY } from '../CategoryContent';
 import { PAGINATION_QUERY } from '../WordsLoadMoreBtn';
 
-import { AppContext } from '../../context';
+import { AppStateCtx, SnackBarCtx } from '../../context';
 
 export const CREATE_WORD = gql`
   mutation CREATE_WORD(
@@ -26,7 +26,8 @@ export const CREATE_WORD = gql`
 `;
 
 const CreateWordForm = () => {
-  const [{ selectedCategory, onActionDone }] = useContext(AppContext);
+  const { selectedCategory } = useContext(AppStateCtx);
+  const { onActionDone } = useContext(SnackBarCtx);
 
   const [createWord, { loading, error }] = useMutation(CREATE_WORD, {
     // cache updating

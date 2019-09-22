@@ -1,18 +1,47 @@
-import React from 'react';
-import AppBar from '@material-ui/core/AppBar';
+import React, { useContext, useState, useCallback, useEffect } from 'react';
+import MaterialAppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
 import InputBase from '@material-ui/core/InputBase';
 import SearchIcon from '@material-ui/icons/Search';
 
+import { AppStateCtx, AppStateSetterCtx } from '../../context';
+import { useDebounce } from '../../utils';
+
 import getClasses from './styles';
 
-export default function SearchAppBar() {
+export default function AppBar() {
   const classes = getClasses();
+
+  const [searchTerm, setSearchInput] = useState('');
+  const debouncedSearchTerm = useDebounce(searchTerm, 1500);
+  const { selectedCategory, searchTerm: appStateSearchTerm } = useContext(
+    AppStateCtx
+  );
+
+  const setAppState = useContext(AppStateSetterCtx);
+
+  useEffect(() => {
+    setAppState({
+      searchTerm: debouncedSearchTerm
+    });
+  }, [debouncedSearchTerm, setAppState]);
+
+  // to reset value after selectedCategory is changed
+  useEffect(() => {
+    setSearchInput(appStateSearchTerm);
+  }, [appStateSearchTerm, selectedCategory]);
+
+  const onChangeHandler = useCallback(
+    e => {
+      setSearchInput(e.target.value);
+    },
+    [setSearchInput]
+  );
 
   return (
     <div className={classes.root}>
-      <AppBar position="static" color="inherit">
+      <MaterialAppBar position="static" color="inherit">
         <Toolbar>
           {/* <IconButton
             edge="start"
@@ -25,21 +54,26 @@ export default function SearchAppBar() {
           <Typography className={classes.title} variant="h6" noWrap>
             Keyword Manager
           </Typography>
-          <div className={classes.search}>
-            <div className={classes.searchIcon}>
-              <SearchIcon />
+          {selectedCategory && (
+            <div className={classes.search}>
+              <div className={classes.searchIcon}>
+                <SearchIcon />
+              </div>
+
+              <InputBase
+                value={searchTerm}
+                onChange={onChangeHandler}
+                placeholder="Search word..."
+                classes={{
+                  root: classes.inputRoot,
+                  input: classes.inputInput
+                }}
+                inputProps={{ 'aria-label': 'search' }}
+              />
             </div>
-            <InputBase
-              placeholder="Search word..."
-              classes={{
-                root: classes.inputRoot,
-                input: classes.inputInput
-              }}
-              inputProps={{ 'aria-label': 'search' }}
-            />
-          </div>
+          )}
         </Toolbar>
-      </AppBar>
+      </MaterialAppBar>
     </div>
   );
 }

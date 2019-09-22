@@ -1,2 +1,2 @@
 export { App } from './App';
-export { Shield } from './ErrorBoundary';
+export { ErrorBoundary } from './ErrorBoundary';

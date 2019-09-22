@@ -3,7 +3,8 @@ import React from 'react';
 import { mount } from 'enzyme';
 import { MockedProvider } from '@apollo/react-testing';
 
-import { getFakeCategoriesData, updateWrapper } from '../../testUtils';
+import { getFakeCategoriesData, waitAndUpdateWrapper } from '../../testUtils';
+import { SnackBarCtx } from '../../context';
 
 import { CategoriesList, GET_CATEGORIES } from '.';
 
@@ -19,9 +20,12 @@ describe('<CategoriesList />', () => {
         }
       }
     ];
+    const onActionDone = jest.fn();
     const wrapper = mount(
       <MockedProvider mocks={mocks}>
-        <CategoriesList />
+        <SnackBarCtx.Provider value={{ onActionDone }}>
+          <CategoriesList />
+        </SnackBarCtx.Provider>
       </MockedProvider>
     );
 
@@ -34,7 +38,7 @@ describe('<CategoriesList />', () => {
     expect(wrapper.text()).toContain('Loading Categories...');
 
     // wait for query result
-    await updateWrapper(wrapper);
+    await waitAndUpdateWrapper(wrapper);
 
     const ListComponent = wrapper.find(ListComponentSelector);
     // ListComponent should be rendered
@@ -56,13 +60,16 @@ describe('<CategoriesList />', () => {
         }
       }
     ];
+    const onActionDone = jest.fn();
     const wrapper = mount(
       <MockedProvider mocks={mocks}>
-        <CategoriesList />
+        <SnackBarCtx.Provider value={{ onActionDone }}>
+          <CategoriesList />
+        </SnackBarCtx.Provider>
       </MockedProvider>
     );
     // wait for query result
-    await updateWrapper(wrapper);
+    await waitAndUpdateWrapper(wrapper);
     const ListComponentSelector = '[data-test="list-component"]';
 
     // ListComponent should not be rendered

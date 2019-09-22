@@ -41,8 +41,21 @@
     "start": "serve -s build",
     "build": "react-scripts build",
     "test": "react-scripts test",
+    "test-coverage": "react-scripts test --coverage --watchAll=false",
     "eject": "react-scripts eject",
     "heroku-postbuild": "react-scripts build"
+  },
+  "jest": {
+    "collectCoverageFrom": [
+      "<rootDir>/src/**/*.{js,jsx,ts,tsx}",
+      "!<rootDir>/node_modules/",
+      "!<rootDir>/src/**/styles.{js,jsx,ts,tsx}",
+      "!<rootDir>/src/**/index.{js,jsx,ts,tsx}",
+      "!<rootDir>/src/**/serviceWorker.js"
+    ],
+    "coverageReporters": [
+      "text"
+    ]
   },
   "eslintConfig": {
     "extends": "react-app"

@@ -1,0 +1,33 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<AddEntityForm /> renders and displays properly 1`] = `
+<form
+  className="makeStyles-container-1"
+  data-test="add-entity-form"
+  noValidate={true}
+  onSubmit={[Function]}
+>
+  <span
+    className="makeStyles-input-2"
+  >
+    <TextInput
+      disabled={false}
+      error={false}
+      label={null}
+      onChange={[Function]}
+      required={true}
+      value=""
+    />
+  </span>
+  <WithStyles(ForwardRef(Fab))
+    aria-label="add"
+    className="makeStyles-fab-3"
+    color="secondary"
+    disabled={true}
+    size="small"
+    type="submit"
+  >
+    <AddIcon />
+  </WithStyles(ForwardRef(Fab))>
+</form>
+`;

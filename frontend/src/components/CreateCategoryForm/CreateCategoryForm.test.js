@@ -1,16 +1,15 @@
 import React from 'react';
 
 import { mount } from 'enzyme';
-import wait from 'waait';
 import toJSON from 'enzyme-to-json';
 import { MockedProvider } from '@apollo/react-testing';
 import { InMemoryCache } from 'apollo-cache-inmemory';
 
 import { CreateCategoryForm, CREATE_CATEGORY_MUTATION } from '.';
 import { GET_CATEGORIES } from '../CategoriesList';
-import { AppContext } from '../../context';
+import { SnackBarCtx } from '../../context';
 
-import { fakeCategory, updateWrapper } from '../../testUtils';
+import { fakeCategory, waitAndUpdateWrapper } from '../../testUtils';
 
 const categoryData = fakeCategory();
 const { name: newCategoryName } = categoryData;
@@ -62,9 +61,9 @@ describe('<CreateCategoryForm />', () => {
     const onActionDone = jest.fn();
     const wrapper = mount(
       <MockedProvider mocks={mocks} cache={cache}>
-        <AppContext.Provider value={[{ onActionDone }]}>
+        <SnackBarCtx.Provider value={{ onActionDone }}>
           <CreateCategoryForm />
-        </AppContext.Provider>
+        </SnackBarCtx.Provider>
       </MockedProvider>
     );
 
@@ -81,7 +80,7 @@ describe('<CreateCategoryForm />', () => {
       target: { value: newCategoryName }
     });
 
-    await updateWrapper(wrapper);
+    await waitAndUpdateWrapper(wrapper);
 
     // input value is changed
     const dirtyInput = wrapper.find(inputSelector);
@@ -92,7 +91,7 @@ describe('<CreateCategoryForm />', () => {
     expect(form).toHaveLength(1);
     form.simulate('submit');
 
-    await updateWrapper(wrapper);
+    await waitAndUpdateWrapper(wrapper);
 
     // Check if mutation has been called
     expect(mocks[0].result).toHaveBeenCalledTimes(1);

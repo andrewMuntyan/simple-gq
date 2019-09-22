@@ -3,12 +3,8 @@ import { mount } from 'enzyme';
 import toJSON from 'enzyme-to-json';
 import { MockedProvider } from '@apollo/react-testing';
 
-import { AppContext } from '../../context';
-import {
-  fakePaginationResponse,
-  updateWrapper,
-  actWait
-} from '../../testUtils';
+import { AppStateCtx, SnackBarCtx } from '../../context';
+import { fakePaginationResponse, waitAndUpdateWrapper } from '../../testUtils';
 
 import { WordsLoadMoreBtn, PAGINATION_QUERY } from '.';
 
@@ -29,9 +25,9 @@ describe('<WordsLoadMoreBtn />', () => {
   it('renders and displays properly', () => {
     const wrapper = mount(
       <MockedProvider mocks={getMocks(fakePaginationResponse(5))}>
-        <AppContext.Provider value={[{ selectedCategory }]}>
+        <AppStateCtx.Provider value={{ selectedCategory }}>
           <WordsLoadMoreBtn />
-        </AppContext.Provider>
+        </AppStateCtx.Provider>
       </MockedProvider>
     );
 
@@ -41,15 +37,15 @@ describe('<WordsLoadMoreBtn />', () => {
   it('should call the PAGINATION_QUERY mutation', async () => {
     const gettingResult = jest.fn(() => ({ data: fakePaginationResponse(5) }));
     expect(gettingResult).toHaveBeenCalledTimes(0);
-    mount(
+    const wrapper = mount(
       <MockedProvider mocks={getMocks(gettingResult)}>
-        <AppContext.Provider value={[{ selectedCategory }]}>
+        <AppStateCtx.Provider value={{ selectedCategory }}>
           <WordsLoadMoreBtn displayedWordsCount={1} />
-        </AppContext.Provider>
+        </AppStateCtx.Provider>
       </MockedProvider>
     );
     // wait for query result
-    await actWait();
+    await waitAndUpdateWrapper(wrapper);
     expect(gettingResult).toHaveBeenCalledTimes(1);
   });
 
@@ -60,9 +56,9 @@ describe('<WordsLoadMoreBtn />', () => {
 
     const wrapper = mount(
       <MockedProvider mocks={mocks}>
-        <AppContext.Provider value={[{ selectedCategory }]}>
+        <AppStateCtx.Provider value={{ selectedCategory }}>
           <WordsLoadMoreBtn displayedWordsCount={1} />
-        </AppContext.Provider>
+        </AppStateCtx.Provider>
       </MockedProvider>
     );
 
@@ -73,7 +69,7 @@ describe('<WordsLoadMoreBtn />', () => {
     expect(getLoadMoreBtn().exists()).toBeFalsy();
 
     // wait for query result
-    await updateWrapper(wrapper);
+    await waitAndUpdateWrapper(wrapper);
     // child dummy LoadMoreBtn should not be rendered
     // as PAGINATION_QUERY is done
     // but displayedWordsCount !< allItemsCount
@@ -88,9 +84,9 @@ describe('<WordsLoadMoreBtn />', () => {
 
     const wrapper = mount(
       <MockedProvider mocks={mocks}>
-        <AppContext.Provider value={[{ selectedCategory }]}>
+        <AppStateCtx.Provider value={{ selectedCategory }}>
           <WordsLoadMoreBtn displayedWordsCount={10} />
-        </AppContext.Provider>
+        </AppStateCtx.Provider>
       </MockedProvider>
     );
 
@@ -101,7 +97,7 @@ describe('<WordsLoadMoreBtn />', () => {
     expect(getLoadMoreBtn().exists()).toBeFalsy();
 
     // wait for query result
-    await updateWrapper(wrapper, 1000);
+    await waitAndUpdateWrapper(wrapper);
     expect(getLoadMoreBtn().exists()).toBeTruthy();
   });
 
@@ -112,12 +108,12 @@ describe('<WordsLoadMoreBtn />', () => {
     const mocks = getMocks(fakePaginationResponse(120));
     const wrapper = mount(
       <MockedProvider mocks={mocks}>
-        <AppContext.Provider value={[{ selectedCategory }]}>
+        <AppStateCtx.Provider value={{ selectedCategory }}>
           <WordsLoadMoreBtn displayedWordsCount={15} fetchMore={fetchMore} />
-        </AppContext.Provider>
+        </AppStateCtx.Provider>
       </MockedProvider>
     );
-    await updateWrapper(wrapper);
+    await waitAndUpdateWrapper(wrapper);
 
     expect(wrapper.find('LoadMoreBtn').props()).toMatchObject({
       displayedItemsCount: 15,
@@ -125,14 +121,14 @@ describe('<WordsLoadMoreBtn />', () => {
     });
 
     // fetchMore function from props is called after
-    // buttin inside LoadMoreBtn is clicked
+    // button inside LoadMoreBtn is clicked
     expect(fetchMore).toHaveBeenCalledTimes(0);
     wrapper.find('button').simulate('click');
+    await waitAndUpdateWrapper(wrapper);
     expect(fetchMore).toHaveBeenCalledTimes(1);
   });
 
   it('should show error notification', async () => {
-    const onActionDone = jest.fn();
     const mocks = getMocks(null, [
       {
         message: 'lol',
@@ -144,15 +140,18 @@ describe('<WordsLoadMoreBtn />', () => {
       }
     ]);
 
-    mount(
+    const onActionDone = jest.fn();
+    const wrapper = mount(
       <MockedProvider mocks={mocks}>
-        <AppContext.Provider value={[{ selectedCategory, onActionDone }]}>
-          <WordsLoadMoreBtn displayedWordsCount={15} />
-        </AppContext.Provider>
+        <AppStateCtx.Provider value={{ selectedCategory }}>
+          <SnackBarCtx.Provider value={{ onActionDone }}>
+            <WordsLoadMoreBtn displayedWordsCount={15} />
+          </SnackBarCtx.Provider>
+        </AppStateCtx.Provider>
       </MockedProvider>
     );
     expect(onActionDone).toHaveBeenCalledTimes(0);
-    await actWait();
+    await waitAndUpdateWrapper(wrapper);
     // TODO: figure  out why is is called twice
     expect(onActionDone).toHaveBeenCalledTimes(2);
   });

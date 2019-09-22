@@ -3,7 +3,7 @@ import React, { useCallback, useContext } from 'react';
 import { useMutation } from '@apollo/react-hooks';
 import gql from 'graphql-tag';
 
-import { AppContext } from '../../context';
+import { SnackBarCtx } from '../../context';
 
 import { AddEntityForm } from '../AddEntityForm';
 import { GET_CATEGORIES } from '../CategoriesList';
@@ -20,7 +20,8 @@ export const CREATE_CATEGORY_MUTATION = gql`
 `;
 
 const CreateCategoryForm = () => {
-  const [{ onActionDone }] = useContext(AppContext);
+  const { onActionDone } = useContext(SnackBarCtx);
+
   const [createcategory, { loading, error }] = useMutation(
     CREATE_CATEGORY_MUTATION,
     {

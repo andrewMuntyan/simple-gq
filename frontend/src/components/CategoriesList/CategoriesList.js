@@ -6,19 +6,21 @@ import gql from 'graphql-tag';
 import { CategoryListRow } from '../CategoryListRow';
 import { List } from '../List';
 
-import { AppContext } from '../../context';
+import { SnackBarCtx } from '../../context';
 
 export const GET_CATEGORIES = gql`
   query GET_CATEGORIES {
     categories {
       id
       name
+      createdAt
+      updatedAt
     }
   }
 `;
 
 const CategoriesList = () => {
-  const [{ onActionDone }] = useContext(AppContext);
+  const { onActionDone } = useContext(SnackBarCtx);
 
   const { data, loading, error } = useQuery(GET_CATEGORIES);
 
