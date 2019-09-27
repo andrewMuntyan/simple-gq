@@ -48,7 +48,6 @@ const CreateCategoryForm = () => {
         .then(onActionDone)
         .catch(e => {
           onActionDone(e);
-          throw e;
         });
     },
     [createcategory, onActionDone]

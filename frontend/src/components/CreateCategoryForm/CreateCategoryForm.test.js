@@ -13,7 +13,10 @@ import { fakeCategory, waitAndUpdateWrapper } from '../../testUtils';
 
 const categoryData = fakeCategory();
 const { name: newCategoryName } = categoryData;
-const mutationVariables = { name: newCategoryName };
+const mutationVariables = {
+  ok: { name: newCategoryName },
+  fail: { name: 'error' }
+};
 const newCategoryResponseData = {
   createCategory: categoryData
 };
@@ -22,11 +25,29 @@ const mocks = [
   {
     request: {
       query: CREATE_CATEGORY_MUTATION,
-      variables: mutationVariables
+      variables: mutationVariables.ok
     },
     result: jest.fn(() => ({ data: newCategoryResponseData }))
+  },
+  {
+    request: {
+      query: CREATE_CATEGORY_MUTATION,
+      variables: mutationVariables.fail
+    },
+    result: jest.fn(() => ({
+      errors: [
+        {
+          message: 'invalid input data',
+          path: ['createCategory']
+        }
+      ],
+      data: null
+    }))
   }
 ];
+
+const inputHTMLElementSelector = '[data-test="text-field"]';
+const formSelector = '[data-test="add-entity-form"]';
 
 describe('<CreateCategoryForm />', () => {
   it('renders and maches snapshot', () => {
@@ -36,7 +57,10 @@ describe('<CreateCategoryForm />', () => {
       </MockedProvider>
     );
 
-    const formComponent = wrapper.find('[data-test="add-entity-form"]');
+    expect(toJSON(wrapper)).toMatchSnapshot();
+
+    // create entity form rendered
+    const formComponent = wrapper.find(formSelector);
     expect(formComponent).toHaveLength(1);
     expect(toJSON(formComponent)).toMatchSnapshot();
   });
@@ -67,11 +91,8 @@ describe('<CreateCategoryForm />', () => {
       </MockedProvider>
     );
 
-    const inputSelector = '[data-test="text-field"]';
-    const formSelector = '[data-test="add-entity-form"]';
-
     // we have the input control
-    const pristineInput = wrapper.find(inputSelector);
+    const pristineInput = wrapper.find(inputHTMLElementSelector);
     expect(pristineInput).toHaveLength(1);
     expect(pristineInput.props().value).toEqual('');
 
@@ -83,7 +104,7 @@ describe('<CreateCategoryForm />', () => {
     await waitAndUpdateWrapper(wrapper);
 
     // input value is changed
-    const dirtyInput = wrapper.find(inputSelector);
+    const dirtyInput = wrapper.find(inputHTMLElementSelector);
     expect(dirtyInput.props().value).toEqual(newCategoryName);
 
     // form submitted
@@ -99,6 +120,11 @@ describe('<CreateCategoryForm />', () => {
     // Check if success message was shown
     expect(onActionDone).toHaveBeenCalledTimes(1);
 
+    // Check if input value was cleared
+    await waitAndUpdateWrapper(wrapper);
+    const submittedInput = wrapper.find(inputHTMLElementSelector);
+    expect(submittedInput.props().value).toEqual('');
+
     expect(onActionDone).toHaveBeenCalledWith({
       data: { createCategory: categoryData }
     });
@@ -113,5 +139,41 @@ describe('<CreateCategoryForm />', () => {
     expect(resultedCategoriesData[0]).toEqual(categoryData);
   });
 
-  // TODO: add test for case whent there is an error
+  it('correctly reacts on an graphql error', async () => {
+    const onActionDone = jest.fn();
+    const wrapper = mount(
+      <MockedProvider mocks={mocks}>
+        <SnackBarCtx.Provider value={{ onActionDone }}>
+          <CreateCategoryForm />
+        </SnackBarCtx.Provider>
+      </MockedProvider>
+    );
+
+    const inputValue = mutationVariables.fail.name;
+
+    // typing to input and form submitting
+    const input = wrapper.find(inputHTMLElementSelector);
+    const form = wrapper.find(formSelector);
+    input.simulate('change', {
+      target: { value: inputValue }
+    });
+    form.simulate('submit');
+
+    await waitAndUpdateWrapper(wrapper);
+
+    // Check if mutation has been called
+    expect(mocks[1].result).toHaveBeenCalledTimes(1);
+
+    // Check if input value was not cleared
+    await waitAndUpdateWrapper(wrapper);
+    const submittedInput = wrapper.find(inputHTMLElementSelector);
+    expect(submittedInput.props().value).toEqual(inputValue);
+
+    // Check if error message was shown
+    expect(onActionDone).toHaveBeenCalledTimes(1);
+    const error = onActionDone.mock.calls[0][0];
+    expect(error.toString()).toEqual(
+      'Error: GraphQL error: invalid input data'
+    );
+  });
 });

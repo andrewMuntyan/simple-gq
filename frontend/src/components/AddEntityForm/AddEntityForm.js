@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import PropTypes from 'prop-types';
 
 import Fab from '@material-ui/core/Fab';
@@ -16,24 +16,29 @@ const AddEnity = ({ onSubmit, loading, error, label }) => {
   const [value, setValue] = useState('');
   const [errorState, setErrorState] = useState(error);
 
-  const submitHandler = async e => {
-    e.preventDefault();
-
-    const result = await onSubmit(value).then(() => {
-      setValue('');
-    });
-
-    return result;
-  };
-
   useEffect(() => {
     setErrorState(error);
-  }, [error]);
 
-  const onChangeHandler = e => {
-    setValue(e.target.value);
-    setErrorState(false);
-  };
+    if (!error && !loading) {
+      setValue('');
+    }
+  }, [error, loading]);
+
+  const submitHandler = useCallback(
+    async e => {
+      e.preventDefault();
+      return onSubmit(value);
+    },
+    [onSubmit, value]
+  );
+
+  const onChangeHandler = useCallback(
+    e => {
+      setValue(e.target.value);
+      setErrorState(false);
+    },
+    [setValue, setErrorState]
+  );
 
   return (
     <form
