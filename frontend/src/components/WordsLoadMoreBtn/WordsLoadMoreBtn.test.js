@@ -152,7 +152,6 @@ describe('<WordsLoadMoreBtn />', () => {
     );
     expect(onActionDone).toHaveBeenCalledTimes(0);
     await waitAndUpdateWrapper(wrapper);
-    // TODO: figure  out why is is called twice
-    expect(onActionDone).toHaveBeenCalledTimes(2);
+    expect(onActionDone).toHaveBeenCalledTimes(1);
   });
 });

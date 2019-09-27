@@ -270,6 +270,7 @@ exports[`<CreateCategoryForm /> renders and maches snapshot 1`] = `
                             data-test="text-field"
                             disabled={false}
                             id="standard-dense"
+                            onAnimationStart={[Function]}
                             onBlur={[Function]}
                             onChange={[Function]}
                             onFocus={[Function]}

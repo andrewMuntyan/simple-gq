@@ -1,25 +1,590 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`<WordContent /> renders and displays properly 1`] = `
-<WithStyles(ForwardRef(ListItem))>
-  <WithStyles(ForwardRef(Card))
-    className="makeStyles-card-1"
+<MockedProvider
+  addTypename={true}
+>
+  <ApolloProvider
+    client={
+      ApolloClient {
+        "cache": InMemoryCache {
+          "addTypename": true,
+          "cacheKeyRoot": KeyTrie {
+            "weakness": true,
+          },
+          "config": Object {
+            "addTypename": true,
+            "dataIdFromObject": [Function],
+            "fragmentMatcher": HeuristicFragmentMatcher {},
+            "freezeResults": false,
+            "resultCaching": true,
+          },
+          "data": DepTrackingCache {
+            "data": Object {},
+            "depend": [Function],
+          },
+          "maybeBroadcastWatch": [Function],
+          "optimisticData": DepTrackingCache {
+            "data": Object {},
+            "depend": [Function],
+          },
+          "silenceBroadcast": false,
+          "storeReader": StoreReader {
+            "executeSelectionSet": [Function],
+            "executeStoreQuery": [Function],
+            "executeSubSelectedArray": [Function],
+            "freezeResults": false,
+          },
+          "storeWriter": StoreWriter {},
+          "typenameDocumentCache": Map {},
+          "watches": Set {},
+        },
+        "clearStoreCallbacks": Array [],
+        "defaultOptions": Object {},
+        "disableNetworkFetches": false,
+        "link": MockLink {
+          "addTypename": true,
+          "mockedResponsesByKey": Object {},
+        },
+        "localState": LocalState {
+          "cache": InMemoryCache {
+            "addTypename": true,
+            "cacheKeyRoot": KeyTrie {
+              "weakness": true,
+            },
+            "config": Object {
+              "addTypename": true,
+              "dataIdFromObject": [Function],
+              "fragmentMatcher": HeuristicFragmentMatcher {},
+              "freezeResults": false,
+              "resultCaching": true,
+            },
+            "data": DepTrackingCache {
+              "data": Object {},
+              "depend": [Function],
+            },
+            "maybeBroadcastWatch": [Function],
+            "optimisticData": DepTrackingCache {
+              "data": Object {},
+              "depend": [Function],
+            },
+            "silenceBroadcast": false,
+            "storeReader": StoreReader {
+              "executeSelectionSet": [Function],
+              "executeStoreQuery": [Function],
+              "executeSubSelectedArray": [Function],
+              "freezeResults": false,
+            },
+            "storeWriter": StoreWriter {},
+            "typenameDocumentCache": Map {},
+            "watches": Set {},
+          },
+          "client": [Circular],
+        },
+        "mutate": [Function],
+        "query": [Function],
+        "queryDeduplication": true,
+        "queryManager": QueryManager {
+          "assumeImmutableResults": false,
+          "clientAwareness": Object {
+            "name": undefined,
+            "version": undefined,
+          },
+          "dataStore": DataStore {
+            "cache": InMemoryCache {
+              "addTypename": true,
+              "cacheKeyRoot": KeyTrie {
+                "weakness": true,
+              },
+              "config": Object {
+                "addTypename": true,
+                "dataIdFromObject": [Function],
+                "fragmentMatcher": HeuristicFragmentMatcher {},
+                "freezeResults": false,
+                "resultCaching": true,
+              },
+              "data": DepTrackingCache {
+                "data": Object {},
+                "depend": [Function],
+              },
+              "maybeBroadcastWatch": [Function],
+              "optimisticData": DepTrackingCache {
+                "data": Object {},
+                "depend": [Function],
+              },
+              "silenceBroadcast": false,
+              "storeReader": StoreReader {
+                "executeSelectionSet": [Function],
+                "executeStoreQuery": [Function],
+                "executeSubSelectedArray": [Function],
+                "freezeResults": false,
+              },
+              "storeWriter": StoreWriter {},
+              "typenameDocumentCache": Map {},
+              "watches": Set {},
+            },
+          },
+          "fetchQueryRejectFns": Map {},
+          "idCounter": 1,
+          "inFlightLinkObservables": Map {},
+          "link": MockLink {
+            "addTypename": true,
+            "mockedResponsesByKey": Object {},
+          },
+          "localState": LocalState {
+            "cache": InMemoryCache {
+              "addTypename": true,
+              "cacheKeyRoot": KeyTrie {
+                "weakness": true,
+              },
+              "config": Object {
+                "addTypename": true,
+                "dataIdFromObject": [Function],
+                "fragmentMatcher": HeuristicFragmentMatcher {},
+                "freezeResults": false,
+                "resultCaching": true,
+              },
+              "data": DepTrackingCache {
+                "data": Object {},
+                "depend": [Function],
+              },
+              "maybeBroadcastWatch": [Function],
+              "optimisticData": DepTrackingCache {
+                "data": Object {},
+                "depend": [Function],
+              },
+              "silenceBroadcast": false,
+              "storeReader": StoreReader {
+                "executeSelectionSet": [Function],
+                "executeStoreQuery": [Function],
+                "executeSubSelectedArray": [Function],
+                "freezeResults": false,
+              },
+              "storeWriter": StoreWriter {},
+              "typenameDocumentCache": Map {},
+              "watches": Set {},
+            },
+            "client": [Circular],
+          },
+          "mutationStore": MutationStore {
+            "store": Object {},
+          },
+          "onBroadcast": [Function],
+          "pollingInfoByQueryId": Map {},
+          "queries": Map {},
+          "queryDeduplication": true,
+          "queryStore": QueryStore {
+            "store": Object {},
+          },
+          "ssrMode": false,
+          "transformCache": WeakMap {},
+        },
+        "reFetchObservableQueries": [Function],
+        "resetStore": [Function],
+        "resetStoreCallbacks": Array [],
+        "store": DataStore {
+          "cache": InMemoryCache {
+            "addTypename": true,
+            "cacheKeyRoot": KeyTrie {
+              "weakness": true,
+            },
+            "config": Object {
+              "addTypename": true,
+              "dataIdFromObject": [Function],
+              "fragmentMatcher": HeuristicFragmentMatcher {},
+              "freezeResults": false,
+              "resultCaching": true,
+            },
+            "data": DepTrackingCache {
+              "data": Object {},
+              "depend": [Function],
+            },
+            "maybeBroadcastWatch": [Function],
+            "optimisticData": DepTrackingCache {
+              "data": Object {},
+              "depend": [Function],
+            },
+            "silenceBroadcast": false,
+            "storeReader": StoreReader {
+              "executeSelectionSet": [Function],
+              "executeStoreQuery": [Function],
+              "executeSubSelectedArray": [Function],
+              "freezeResults": false,
+            },
+            "storeWriter": StoreWriter {},
+            "typenameDocumentCache": Map {},
+            "watches": Set {},
+          },
+        },
+        "typeDefs": undefined,
+        "version": "2.6.4",
+        "watchQuery": [Function],
+      }
+    }
   >
-    <WithStyles(ForwardRef(CardHeader))
-      data-test="wordContentHeader"
-      subheader="9/12/2019, 12:13:39 AM"
-      title="word"
-    />
-    <WithStyles(ForwardRef(CardContent))>
-      <WithStyles(ForwardRef(Button))
-        color="secondary"
-        fullWidth={true}
-        onClick={[Function]}
-        size="small"
-      >
-        Delete
-      </WithStyles(ForwardRef(Button))>
-    </WithStyles(ForwardRef(CardContent))>
-  </WithStyles(ForwardRef(Card))>
-</WithStyles(ForwardRef(ListItem))>
+    <WordContent
+      data={
+        Object {
+          "content": "word",
+          "createdAt": "2019-09-11T21:13:39.695Z",
+          "id": "uniqueId",
+        }
+      }
+    >
+      <WithStyles(ForwardRef(ListItem))>
+        <ForwardRef(ListItem)
+          classes={
+            Object {
+              "alignItemsFlexStart": "MuiListItem-alignItemsFlexStart",
+              "button": "MuiListItem-button",
+              "container": "MuiListItem-container",
+              "dense": "MuiListItem-dense",
+              "disabled": "Mui-disabled",
+              "divider": "MuiListItem-divider",
+              "focusVisible": "Mui-focusVisible",
+              "gutters": "MuiListItem-gutters",
+              "root": "MuiListItem-root",
+              "secondaryAction": "MuiListItem-secondaryAction",
+              "selected": "Mui-selected",
+            }
+          }
+        >
+          <li
+            className="MuiListItem-root MuiListItem-gutters"
+            disabled={false}
+          >
+            <WithStyles(ForwardRef(Card))
+              className="makeStyles-card-1"
+              key=".0"
+            >
+              <ForwardRef(Card)
+                className="makeStyles-card-1"
+                classes={
+                  Object {
+                    "root": "MuiCard-root",
+                  }
+                }
+              >
+                <WithStyles(ForwardRef(Paper))
+                  className="MuiCard-root makeStyles-card-1"
+                  elevation={1}
+                >
+                  <ForwardRef(Paper)
+                    className="MuiCard-root makeStyles-card-1"
+                    classes={
+                      Object {
+                        "elevation0": "MuiPaper-elevation0",
+                        "elevation1": "MuiPaper-elevation1",
+                        "elevation10": "MuiPaper-elevation10",
+                        "elevation11": "MuiPaper-elevation11",
+                        "elevation12": "MuiPaper-elevation12",
+                        "elevation13": "MuiPaper-elevation13",
+                        "elevation14": "MuiPaper-elevation14",
+                        "elevation15": "MuiPaper-elevation15",
+                        "elevation16": "MuiPaper-elevation16",
+                        "elevation17": "MuiPaper-elevation17",
+                        "elevation18": "MuiPaper-elevation18",
+                        "elevation19": "MuiPaper-elevation19",
+                        "elevation2": "MuiPaper-elevation2",
+                        "elevation20": "MuiPaper-elevation20",
+                        "elevation21": "MuiPaper-elevation21",
+                        "elevation22": "MuiPaper-elevation22",
+                        "elevation23": "MuiPaper-elevation23",
+                        "elevation24": "MuiPaper-elevation24",
+                        "elevation3": "MuiPaper-elevation3",
+                        "elevation4": "MuiPaper-elevation4",
+                        "elevation5": "MuiPaper-elevation5",
+                        "elevation6": "MuiPaper-elevation6",
+                        "elevation7": "MuiPaper-elevation7",
+                        "elevation8": "MuiPaper-elevation8",
+                        "elevation9": "MuiPaper-elevation9",
+                        "root": "MuiPaper-root",
+                        "rounded": "MuiPaper-rounded",
+                      }
+                    }
+                    elevation={1}
+                  >
+                    <div
+                      className="MuiPaper-root MuiPaper-elevation1 MuiCard-root makeStyles-card-1 MuiPaper-rounded"
+                    >
+                      <WithStyles(ForwardRef(CardHeader))
+                        data-test="wordContentHeader"
+                        subheader="9/12/2019, 12:13:39 AM"
+                        title="word"
+                      >
+                        <ForwardRef(CardHeader)
+                          classes={
+                            Object {
+                              "action": "MuiCardHeader-action",
+                              "avatar": "MuiCardHeader-avatar",
+                              "content": "MuiCardHeader-content",
+                              "root": "MuiCardHeader-root",
+                              "subheader": "MuiCardHeader-subheader",
+                              "title": "MuiCardHeader-title",
+                            }
+                          }
+                          data-test="wordContentHeader"
+                          subheader="9/12/2019, 12:13:39 AM"
+                          title="word"
+                        >
+                          <div
+                            className="MuiCardHeader-root"
+                            data-test="wordContentHeader"
+                          >
+                            <div
+                              className="MuiCardHeader-content"
+                            >
+                              <WithStyles(ForwardRef(Typography))
+                                className="MuiCardHeader-title"
+                                component="span"
+                                display="block"
+                                variant="h5"
+                              >
+                                <ForwardRef(Typography)
+                                  className="MuiCardHeader-title"
+                                  classes={
+                                    Object {
+                                      "alignCenter": "MuiTypography-alignCenter",
+                                      "alignJustify": "MuiTypography-alignJustify",
+                                      "alignLeft": "MuiTypography-alignLeft",
+                                      "alignRight": "MuiTypography-alignRight",
+                                      "body1": "MuiTypography-body1",
+                                      "body2": "MuiTypography-body2",
+                                      "button": "MuiTypography-button",
+                                      "caption": "MuiTypography-caption",
+                                      "colorError": "MuiTypography-colorError",
+                                      "colorInherit": "MuiTypography-colorInherit",
+                                      "colorPrimary": "MuiTypography-colorPrimary",
+                                      "colorSecondary": "MuiTypography-colorSecondary",
+                                      "colorTextPrimary": "MuiTypography-colorTextPrimary",
+                                      "colorTextSecondary": "MuiTypography-colorTextSecondary",
+                                      "displayBlock": "MuiTypography-displayBlock",
+                                      "displayInline": "MuiTypography-displayInline",
+                                      "gutterBottom": "MuiTypography-gutterBottom",
+                                      "h1": "MuiTypography-h1",
+                                      "h2": "MuiTypography-h2",
+                                      "h3": "MuiTypography-h3",
+                                      "h4": "MuiTypography-h4",
+                                      "h5": "MuiTypography-h5",
+                                      "h6": "MuiTypography-h6",
+                                      "noWrap": "MuiTypography-noWrap",
+                                      "overline": "MuiTypography-overline",
+                                      "paragraph": "MuiTypography-paragraph",
+                                      "root": "MuiTypography-root",
+                                      "srOnly": "MuiTypography-srOnly",
+                                      "subtitle1": "MuiTypography-subtitle1",
+                                      "subtitle2": "MuiTypography-subtitle2",
+                                    }
+                                  }
+                                  component="span"
+                                  display="block"
+                                  variant="h5"
+                                >
+                                  <span
+                                    className="MuiTypography-root MuiCardHeader-title MuiTypography-h5 MuiTypography-displayBlock"
+                                  >
+                                    word
+                                  </span>
+                                </ForwardRef(Typography)>
+                              </WithStyles(ForwardRef(Typography))>
+                              <WithStyles(ForwardRef(Typography))
+                                className="MuiCardHeader-subheader"
+                                color="textSecondary"
+                                component="span"
+                                display="block"
+                                variant="body1"
+                              >
+                                <ForwardRef(Typography)
+                                  className="MuiCardHeader-subheader"
+                                  classes={
+                                    Object {
+                                      "alignCenter": "MuiTypography-alignCenter",
+                                      "alignJustify": "MuiTypography-alignJustify",
+                                      "alignLeft": "MuiTypography-alignLeft",
+                                      "alignRight": "MuiTypography-alignRight",
+                                      "body1": "MuiTypography-body1",
+                                      "body2": "MuiTypography-body2",
+                                      "button": "MuiTypography-button",
+                                      "caption": "MuiTypography-caption",
+                                      "colorError": "MuiTypography-colorError",
+                                      "colorInherit": "MuiTypography-colorInherit",
+                                      "colorPrimary": "MuiTypography-colorPrimary",
+                                      "colorSecondary": "MuiTypography-colorSecondary",
+                                      "colorTextPrimary": "MuiTypography-colorTextPrimary",
+                                      "colorTextSecondary": "MuiTypography-colorTextSecondary",
+                                      "displayBlock": "MuiTypography-displayBlock",
+                                      "displayInline": "MuiTypography-displayInline",
+                                      "gutterBottom": "MuiTypography-gutterBottom",
+                                      "h1": "MuiTypography-h1",
+                                      "h2": "MuiTypography-h2",
+                                      "h3": "MuiTypography-h3",
+                                      "h4": "MuiTypography-h4",
+                                      "h5": "MuiTypography-h5",
+                                      "h6": "MuiTypography-h6",
+                                      "noWrap": "MuiTypography-noWrap",
+                                      "overline": "MuiTypography-overline",
+                                      "paragraph": "MuiTypography-paragraph",
+                                      "root": "MuiTypography-root",
+                                      "srOnly": "MuiTypography-srOnly",
+                                      "subtitle1": "MuiTypography-subtitle1",
+                                      "subtitle2": "MuiTypography-subtitle2",
+                                    }
+                                  }
+                                  color="textSecondary"
+                                  component="span"
+                                  display="block"
+                                  variant="body1"
+                                >
+                                  <span
+                                    className="MuiTypography-root MuiCardHeader-subheader MuiTypography-body1 MuiTypography-colorTextSecondary MuiTypography-displayBlock"
+                                  >
+                                    9/12/2019, 12:13:39 AM
+                                  </span>
+                                </ForwardRef(Typography)>
+                              </WithStyles(ForwardRef(Typography))>
+                            </div>
+                          </div>
+                        </ForwardRef(CardHeader)>
+                      </WithStyles(ForwardRef(CardHeader))>
+                      <WithStyles(ForwardRef(CardContent))>
+                        <ForwardRef(CardContent)
+                          classes={
+                            Object {
+                              "root": "MuiCardContent-root",
+                            }
+                          }
+                        >
+                          <div
+                            className="MuiCardContent-root"
+                          >
+                            <WithStyles(ForwardRef(Button))
+                              color="secondary"
+                              fullWidth={true}
+                              onClick={[Function]}
+                              size="small"
+                            >
+                              <ForwardRef(Button)
+                                classes={
+                                  Object {
+                                    "colorInherit": "MuiButton-colorInherit",
+                                    "contained": "MuiButton-contained",
+                                    "containedPrimary": "MuiButton-containedPrimary",
+                                    "containedSecondary": "MuiButton-containedSecondary",
+                                    "disabled": "Mui-disabled",
+                                    "focusVisible": "Mui-focusVisible",
+                                    "fullWidth": "MuiButton-fullWidth",
+                                    "label": "MuiButton-label",
+                                    "outlined": "MuiButton-outlined",
+                                    "outlinedPrimary": "MuiButton-outlinedPrimary",
+                                    "outlinedSecondary": "MuiButton-outlinedSecondary",
+                                    "root": "MuiButton-root",
+                                    "sizeLarge": "MuiButton-sizeLarge",
+                                    "sizeSmall": "MuiButton-sizeSmall",
+                                    "text": "MuiButton-text",
+                                    "textPrimary": "MuiButton-textPrimary",
+                                    "textSecondary": "MuiButton-textSecondary",
+                                  }
+                                }
+                                color="secondary"
+                                fullWidth={true}
+                                onClick={[Function]}
+                                size="small"
+                              >
+                                <WithStyles(ForwardRef(ButtonBase))
+                                  className="MuiButton-root MuiButton-text MuiButton-textSecondary MuiButton-sizeSmall MuiButton-fullWidth"
+                                  component="button"
+                                  disabled={false}
+                                  focusRipple={true}
+                                  focusVisibleClassName="Mui-focusVisible"
+                                  onClick={[Function]}
+                                  type="button"
+                                >
+                                  <ForwardRef(ButtonBase)
+                                    className="MuiButton-root MuiButton-text MuiButton-textSecondary MuiButton-sizeSmall MuiButton-fullWidth"
+                                    classes={
+                                      Object {
+                                        "disabled": "Mui-disabled",
+                                        "focusVisible": "Mui-focusVisible",
+                                        "root": "MuiButtonBase-root",
+                                      }
+                                    }
+                                    component="button"
+                                    disabled={false}
+                                    focusRipple={true}
+                                    focusVisibleClassName="Mui-focusVisible"
+                                    onClick={[Function]}
+                                    type="button"
+                                  >
+                                    <button
+                                      className="MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-textSecondary MuiButton-sizeSmall MuiButton-fullWidth"
+                                      disabled={false}
+                                      onBlur={[Function]}
+                                      onClick={[Function]}
+                                      onDragLeave={[Function]}
+                                      onFocus={[Function]}
+                                      onKeyDown={[Function]}
+                                      onKeyUp={[Function]}
+                                      onMouseDown={[Function]}
+                                      onMouseLeave={[Function]}
+                                      onMouseUp={[Function]}
+                                      onTouchEnd={[Function]}
+                                      onTouchMove={[Function]}
+                                      onTouchStart={[Function]}
+                                      tabIndex={0}
+                                      type="button"
+                                    >
+                                      <span
+                                        className="MuiButton-label"
+                                      >
+                                        Delete
+                                      </span>
+                                      <NoSsr>
+                                        <WithStyles(undefined)
+                                          center={false}
+                                        >
+                                          <ForwardRef(TouchRipple)
+                                            center={false}
+                                            classes={
+                                              Object {
+                                                "child": "MuiTouchRipple-child",
+                                                "childLeaving": "MuiTouchRipple-childLeaving",
+                                                "childPulsate": "MuiTouchRipple-childPulsate",
+                                                "ripple": "MuiTouchRipple-ripple",
+                                                "ripplePulsate": "MuiTouchRipple-ripplePulsate",
+                                                "rippleVisible": "MuiTouchRipple-rippleVisible",
+                                                "root": "MuiTouchRipple-root",
+                                              }
+                                            }
+                                          >
+                                            <span
+                                              className="MuiTouchRipple-root"
+                                            >
+                                              <TransitionGroup
+                                                childFactory={[Function]}
+                                                component={null}
+                                                exit={true}
+                                              />
+                                            </span>
+                                          </ForwardRef(TouchRipple)>
+                                        </WithStyles(undefined)>
+                                      </NoSsr>
+                                    </button>
+                                  </ForwardRef(ButtonBase)>
+                                </WithStyles(ForwardRef(ButtonBase))>
+                              </ForwardRef(Button)>
+                            </WithStyles(ForwardRef(Button))>
+                          </div>
+                        </ForwardRef(CardContent)>
+                      </WithStyles(ForwardRef(CardContent))>
+                    </div>
+                  </ForwardRef(Paper)>
+                </WithStyles(ForwardRef(Paper))>
+              </ForwardRef(Card)>
+            </WithStyles(ForwardRef(Card))>
+          </li>
+        </ForwardRef(ListItem)>
+      </WithStyles(ForwardRef(ListItem))>
+    </WordContent>
+  </ApolloProvider>
+</MockedProvider>
 `;
