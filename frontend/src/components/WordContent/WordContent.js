@@ -15,6 +15,8 @@ import { GET_WORDS_QUERY } from '../CategoryContent';
 import { PAGINATION_QUERY } from '../WordsLoadMoreBtn';
 
 import { AppStateCtx } from '../../context';
+import { WORDS_PER_PAGE, SEARCH_RESULTS_COUNT } from '../../config';
+import { showDevError } from '../../utils';
 
 import getClasses from './styles';
 
@@ -28,50 +30,60 @@ export const DELETE_WORD = gql`
 
 const WordContent = ({ data: { content, createdAt, id } }) => {
   const classes = getClasses();
-  const { selectedCategory } = useContext(AppStateCtx);
+  const { selectedCategory, searchTerm } = useContext(AppStateCtx);
 
   const [deleteWord, { loading }] = useMutation(DELETE_WORD, {
     variables: { id },
     update(cache) {
-      const queryVars = { variables: { category: selectedCategory } };
-      const { words } = cache.readQuery({
-        query: GET_WORDS_QUERY,
-        ...queryVars
-      });
-      cache.writeQuery({
-        query: GET_WORDS_QUERY,
-        ...queryVars,
-        data: { words: words.filter(word => word.id !== id) }
-      });
+      const dataSize = searchTerm ? SEARCH_RESULTS_COUNT : WORDS_PER_PAGE;
+      const queryVars = {
+        variables: { category: selectedCategory, searchTerm, first: dataSize }
+      };
 
-      // TODO: DRY
-      const paginationChache = cache.readQuery({
-        query: PAGINATION_QUERY,
-        ...queryVars
-      });
-      const {
-        wordsConnection: {
-          aggregate: { count: cachedCount }
-        }
-      } = paginationChache;
-      cache.writeQuery({
-        query: PAGINATION_QUERY,
-        ...queryVars,
-        data: {
+      // cache.readQuery throws an error if there are no words in local cache
+      // see https://github.com/apollographql/react-apollo/issues/2175
+      // make it silent for now
+      try {
+        const { words } = cache.readQuery({
+          query: GET_WORDS_QUERY,
+          ...queryVars
+        });
+        cache.writeQuery({
+          query: GET_WORDS_QUERY,
+          ...queryVars,
+          data: { words: words.filter(word => word.id !== id) }
+        });
+      } catch (queryError) {
+        showDevError(queryError);
+      }
+
+      try {
+        const paginationChache = cache.readQuery({
+          query: PAGINATION_QUERY,
+          ...queryVars
+        });
+        const {
           wordsConnection: {
-            aggregate: {
-              count: cachedCount - 1,
-              __typename: 'AggregateWord'
-            },
-            __typename: 'WordConnection'
+            aggregate: { count: cachedCount }
           }
-        }
-      });
-    },
-    // refetching queries
-    refetchQueries: [
-      { query: PAGINATION_QUERY, variables: { category: selectedCategory } }
-    ]
+        } = paginationChache;
+        cache.writeQuery({
+          query: PAGINATION_QUERY,
+          ...queryVars,
+          data: {
+            wordsConnection: {
+              aggregate: {
+                count: cachedCount - 1,
+                __typename: 'AggregateWord'
+              },
+              __typename: 'WordConnection'
+            }
+          }
+        });
+      } catch (queryError) {
+        showDevError(queryError);
+      }
+    }
   });
 
   return (

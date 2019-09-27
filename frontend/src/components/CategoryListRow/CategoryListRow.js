@@ -14,6 +14,7 @@ import { GET_CATEGORIES } from '../CategoriesList';
 import { GET_WORDS_QUERY } from '../CategoryContent';
 
 import { AppStateCtx, AppStateSetterCtx } from '../../context';
+import { showDevError } from '../../utils';
 
 import getClasses from './styles';
 
@@ -42,24 +43,31 @@ const ListRow = ({ data: categoryData }) => {
         data: { deleteCategory: deletedCategory }
       }
     ) {
-      const { categories } = cache.readQuery({
-        query: GET_CATEGORIES
-      });
+      // cache.readQuery throws an error if there are no words in local cache
+      // see https://github.com/apollographql/react-apollo/issues/2175
+      // make it silent for now
+      try {
+        const { categories } = cache.readQuery({
+          query: GET_CATEGORIES
+        });
 
-      const newCategories = categories.filter(
-        category => category.name !== deletedCategory.name
-      );
+        const newCategories = categories.filter(
+          category => category.name !== deletedCategory.name
+        );
 
-      cache.writeQuery({
-        query: GET_CATEGORIES,
-        data: {
-          categories: newCategories
-        }
-      });
+        cache.writeQuery({
+          query: GET_CATEGORIES,
+          data: {
+            categories: newCategories
+          }
+        });
+      } catch (queryError) {
+        showDevError(queryError);
+      }
 
       // cache.readQuery throws an error if there are no words in local cache
+      // see https://github.com/apollographql/react-apollo/issues/2175
       // make it silent for now
-      // TODO: try to use fragment here
       try {
         const { words } = cache.readQuery({
           query: GET_WORDS_QUERY,
@@ -74,10 +82,7 @@ const ListRow = ({ data: categoryData }) => {
           data: { words: newWords }
         });
       } catch (queryError) {
-        if (process.env.NODE_ENV === 'development') {
-          // eslint-disable-next-line no-console
-          console.error(queryError);
-        }
+        showDevError(queryError);
       }
     }
   });

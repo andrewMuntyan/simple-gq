@@ -7,9 +7,11 @@ import { GET_WORDS_QUERY } from '../CategoryContent';
 import { PAGINATION_QUERY } from '../WordsLoadMoreBtn';
 
 import { AppStateCtx, SnackBarCtx } from '../../context';
+import { showDevError } from '../../utils';
+import { WORDS_PER_PAGE, SEARCH_RESULTS_COUNT } from '../../config';
 
-export const CREATE_WORD = gql`
-  mutation CREATE_WORD(
+export const CREATE_WORD_MUTATION = gql`
+  mutation CREATE_WORD_MUTATION(
     $content: String!
     $category: CategoryCreateOneWithoutWordsInput!
   ) {
@@ -26,10 +28,10 @@ export const CREATE_WORD = gql`
 `;
 
 const CreateWordForm = () => {
-  const { selectedCategory } = useContext(AppStateCtx);
+  const { selectedCategory, searchTerm } = useContext(AppStateCtx);
   const { onActionDone } = useContext(SnackBarCtx);
 
-  const [createWord, { loading, error }] = useMutation(CREATE_WORD, {
+  const [createWord, { loading, error }] = useMutation(CREATE_WORD_MUTATION, {
     // cache updating
     update(
       cache,
@@ -37,41 +39,60 @@ const CreateWordForm = () => {
         data: { createWord: newWordData }
       }
     ) {
-      const queryVars = { variables: { category: selectedCategory } };
+      const dataSize = searchTerm ? SEARCH_RESULTS_COUNT : WORDS_PER_PAGE;
+      const queryVars = {
+        variables: { category: selectedCategory, searchTerm, first: dataSize }
+      };
 
-      const { words } = cache.readQuery({
-        query: GET_WORDS_QUERY,
-        ...queryVars
-      });
-      cache.writeQuery({
-        query: GET_WORDS_QUERY,
-        ...queryVars,
-        data: { words: [newWordData, ...words] }
-      });
+      // cache.readQuery throws an error if there are no words in local cache
+      // see https://github.com/apollographql/react-apollo/issues/2175
+      // make it silent for now
+      try {
+        const { words } = cache.readQuery({
+          query: GET_WORDS_QUERY,
+          ...queryVars
+        });
+
+        cache.writeQuery({
+          query: GET_WORDS_QUERY,
+          ...queryVars,
+          data: { words: [newWordData, ...words] }
+        });
+      } catch (queryError) {
+        showDevError(queryError);
+      }
 
       // TODO: DRY
-      const paginationChache = cache.readQuery({
-        query: PAGINATION_QUERY,
-        ...queryVars
-      });
-      const {
-        wordsConnection: {
-          aggregate: { count: cachedCount }
-        }
-      } = paginationChache;
-      cache.writeQuery({
-        query: PAGINATION_QUERY,
-        ...queryVars,
-        data: {
+      // cache.readQuery throws an error if there are no words in local cache
+      // see https://github.com/apollographql/react-apollo/issues/2175
+      // make it silent for now
+      try {
+        const paginationChache = cache.readQuery({
+          query: PAGINATION_QUERY,
+          ...queryVars
+        });
+        const {
           wordsConnection: {
-            aggregate: {
-              count: cachedCount + 1,
-              __typename: 'AggregateWord'
-            },
-            __typename: 'WordConnection'
+            aggregate: { count: cachedCount }
           }
-        }
-      });
+        } = paginationChache;
+
+        cache.writeQuery({
+          query: PAGINATION_QUERY,
+          ...queryVars,
+          data: {
+            wordsConnection: {
+              aggregate: {
+                count: cachedCount + 1,
+                __typename: 'AggregateWord'
+              },
+              __typename: 'WordConnection'
+            }
+          }
+        });
+      } catch (queryError) {
+        showDevError(queryError);
+      }
     }
   });
 
@@ -86,7 +107,6 @@ const CreateWordForm = () => {
         .then(onActionDone)
         .catch(e => {
           onActionDone(e);
-          throw e;
         });
     },
     [createWord, selectedCategory, onActionDone]

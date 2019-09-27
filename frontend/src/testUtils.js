@@ -1,9 +1,12 @@
 import { act } from 'react-dom/test-utils';
 
 export const fakeWord = () => ({
-  content: 'word',
-  id: 'uniqueId',
-  createdAt: '2019-09-11T21:13:39.695Z'
+  id: 'ck12ag7onfkqb0b1715rirdve',
+  content: 'fakeWordContent',
+  createdAt: '2019-09-27T15:35:49.223Z',
+  updatedAt: '2019-09-27T15:35:49.223Z',
+  category: { name: '1', __typename: 'Category' },
+  __typename: 'Word'
 });
 
 export const getFakeCategoriesData = () => ({
@@ -42,6 +45,16 @@ export const fakePaginationResponse = (count = 0) => ({
     }
   }
 });
+
+export const fakeGQError = {
+  errors: [
+    {
+      message: 'invalid input data',
+      path: ['createCategory']
+    }
+  ],
+  data: null
+};
 
 // see https://github.com/airbnb/enzyme/issues/2073
 export const waitAndUpdateWrapper = async (wrapper, time = 0) => {

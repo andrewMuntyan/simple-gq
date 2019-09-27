@@ -225,9 +225,15 @@ exports[`<WordContent /> renders and displays properly 1`] = `
     <WordContent
       data={
         Object {
-          "content": "word",
-          "createdAt": "2019-09-11T21:13:39.695Z",
-          "id": "uniqueId",
+          "__typename": "Word",
+          "category": Object {
+            "__typename": "Category",
+            "name": "1",
+          },
+          "content": "fakeWordContent",
+          "createdAt": "2019-09-27T15:35:49.223Z",
+          "id": "ck12ag7onfkqb0b1715rirdve",
+          "updatedAt": "2019-09-27T15:35:49.223Z",
         }
       }
     >
@@ -309,8 +315,8 @@ exports[`<WordContent /> renders and displays properly 1`] = `
                     >
                       <WithStyles(ForwardRef(CardHeader))
                         data-test="wordContentHeader"
-                        subheader="9/12/2019, 12:13:39 AM"
-                        title="word"
+                        subheader="9/27/2019, 6:35:49 PM"
+                        title="fakeWordContent"
                       >
                         <ForwardRef(CardHeader)
                           classes={
@@ -324,8 +330,8 @@ exports[`<WordContent /> renders and displays properly 1`] = `
                             }
                           }
                           data-test="wordContentHeader"
-                          subheader="9/12/2019, 12:13:39 AM"
-                          title="word"
+                          subheader="9/27/2019, 6:35:49 PM"
+                          title="fakeWordContent"
                         >
                           <div
                             className="MuiCardHeader-root"
@@ -383,7 +389,7 @@ exports[`<WordContent /> renders and displays properly 1`] = `
                                   <span
                                     className="MuiTypography-root MuiCardHeader-title MuiTypography-h5 MuiTypography-displayBlock"
                                   >
-                                    word
+                                    fakeWordContent
                                   </span>
                                 </ForwardRef(Typography)>
                               </WithStyles(ForwardRef(Typography))>
@@ -438,7 +444,7 @@ exports[`<WordContent /> renders and displays properly 1`] = `
                                   <span
                                     className="MuiTypography-root MuiCardHeader-subheader MuiTypography-body1 MuiTypography-colorTextSecondary MuiTypography-displayBlock"
                                   >
-                                    9/12/2019, 12:13:39 AM
+                                    9/27/2019, 6:35:49 PM
                                   </span>
                                 </ForwardRef(Typography)>
                               </WithStyles(ForwardRef(Typography))>

@@ -13,4 +13,15 @@ export const defaultOnSMTH = async () => {
   return wait(5000);
 };
 
+export const showDevError = e => {
+  if (process.env.NODE_ENV === 'development') {
+    // eslint-disable-next-line no-console
+    console.warn('Huston, we have a trouble!');
+    // eslint-disable-next-line no-console
+    console.error(e);
+    // eslint-disable-next-line no-console
+    console.warn('----------------------------');
+  }
+};
+
 export const noop = () => {};
