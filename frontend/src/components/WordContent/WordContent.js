@@ -40,7 +40,7 @@ const WordContent = ({ data: { content, createdAt, id } }) => {
         variables: { category: selectedCategory, searchTerm, first: dataSize }
       };
 
-      // cache.readQuery throws an error if there are no words in local cache
+      // cache.readQuery throws an error if there are no entries in local cache
       // see https://github.com/apollographql/react-apollo/issues/2175
       // make it silent for now
       try {
