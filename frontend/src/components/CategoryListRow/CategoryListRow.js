@@ -13,7 +13,7 @@ import gql from 'graphql-tag';
 import { GET_CATEGORIES } from '../CategoriesList';
 import { GET_WORDS_QUERY } from '../CategoryContent';
 
-import { AppStateCtx, AppStateSetterCtx } from '../../context';
+import { AppStateCtx, AppStateSetterCtx, SnackBarCtx } from '../../context';
 import { showDevError } from '../../utils';
 
 import getClasses from './styles';
@@ -28,7 +28,8 @@ export const DELETE_CATEGORY = gql`
 `;
 
 const ListRow = ({ data: categoryData }) => {
-  const { selectedCategory } = useContext(AppStateCtx);
+  const { selectedCategory, searchTerm } = useContext(AppStateCtx);
+  const { onActionDone } = useContext(SnackBarCtx);
   const setAppState = useContext(AppStateSetterCtx);
 
   const { name } = categoryData;
@@ -43,7 +44,7 @@ const ListRow = ({ data: categoryData }) => {
         data: { deleteCategory: deletedCategory }
       }
     ) {
-      // cache.readQuery throws an error if there are no words in local cache
+      // cache.readQuery throws an error if there are no entries in local cache
       // see https://github.com/apollographql/react-apollo/issues/2175
       // make it silent for now
       try {
@@ -61,25 +62,14 @@ const ListRow = ({ data: categoryData }) => {
             categories: newCategories
           }
         });
-      } catch (queryError) {
-        showDevError(queryError);
-      }
 
-      // cache.readQuery throws an error if there are no words in local cache
-      // see https://github.com/apollographql/react-apollo/issues/2175
-      // make it silent for now
-      try {
-        const { words } = cache.readQuery({
-          query: GET_WORDS_QUERY,
-          variables: { category: deletedCategory.name }
-        });
-        const newWords = words.filter(
-          word => word.category.name !== deletedCategory.name
-        );
+        // words related to removed category will be deleted automatically on backend side
+        // since we have `onDelete: CASCADE` in our schema.
+        // but we still have to remove words from cache
         cache.writeQuery({
           query: GET_WORDS_QUERY,
-          variables: { category: deletedCategory.name },
-          data: { words: newWords }
+          variables: { category: deletedCategory.name, searchTerm },
+          data: { words: [] }
         });
       } catch (queryError) {
         showDevError(queryError);
@@ -89,6 +79,7 @@ const ListRow = ({ data: categoryData }) => {
 
   const onClickHandler = useCallback(
     e => {
+      e.preventDefault();
       const {
         target: { textContent }
       } = e;
@@ -99,6 +90,18 @@ const ListRow = ({ data: categoryData }) => {
       });
     },
     [setAppState]
+  );
+
+  const onDeleteHandler = useCallback(
+    async e => {
+      e.stopPropagation();
+      return deleteCategory()
+        .then(onActionDone)
+        .catch(error => {
+          onActionDone(error);
+        });
+    },
+    [deleteCategory, onActionDone]
   );
 
   return (
@@ -120,7 +123,7 @@ const ListRow = ({ data: categoryData }) => {
           aria-label="delete"
           color="secondary"
           size="small"
-          onClick={deleteCategory}
+          onClick={onDeleteHandler}
         >
           <DeleteIcon />
         </IconButton>
